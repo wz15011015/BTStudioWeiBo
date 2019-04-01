@@ -13,9 +13,15 @@ class BWProfileViewController: BWBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupUI()
     }
     
+    
+    // MARK: - 监听方法
+    @objc func showNext() {
+        let vc = BWProfileViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     /*
     // MARK: - Navigation
@@ -27,4 +33,15 @@ class BWProfileViewController: BWBaseViewController {
     }
     */
 
+}
+
+
+extension BWProfileViewController {
+    override func setupUI() {
+        super.setupUI()
+        
+        // 设置右侧按钮
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Haha", style: .plain, target: self, action: #selector(showNext))
+        navigationItemCustom.rightBarButtonItem = UIBarButtonItem(title: "Haha", target: self, action: #selector(showNext), isBack: false)
+    }
 }

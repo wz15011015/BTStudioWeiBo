@@ -13,7 +13,14 @@ class BWHomeViewController: BWBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupUI()
+    }
+    
+    /// 显示好友
+    @objc func showFriends() {
+        let vc = BWProfileViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 
@@ -27,4 +34,16 @@ class BWHomeViewController: BWBaseViewController {
     }
     */
 
+}
+
+extension BWHomeViewController {
+    
+    /// 重写父类的方法
+    override func setupUI() {
+        super.setupUI()
+        
+        // 设置导航栏按钮
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
+        navigationItemCustom.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
+    }
 }

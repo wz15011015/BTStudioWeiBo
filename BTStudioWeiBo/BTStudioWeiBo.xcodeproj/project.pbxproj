@@ -10,6 +10,7 @@
 		06914FF1224EF7A0002F3E1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06914FF0224EF7A0002F3E1C /* AppDelegate.swift */; };
 		06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF4224EF7A0002F3E1C /* Main.storyboard */; };
 		06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF7224EF7A2002F3E1C /* Assets.xcassets */; };
+		06DC3F102251A989002044E1 /* BWNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC3F0F2251A989002044E1 /* BWNavigationBar.swift */; };
 		06E21CB8224F107900FFF5C3 /* BWMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CB7224F107900FFF5C3 /* BWMainViewController.swift */; };
 		06E21CBA224F10AA00FFF5C3 /* BWNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CB9224F10AA00FFF5C3 /* BWNavigationController.swift */; };
 		06E21CBC224F10CE00FFF5C3 /* BWBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CBB224F10CE00FFF5C3 /* BWBaseViewController.swift */; };
@@ -29,6 +30,10 @@
 		06E21CE8224F139000FFF5C3 /* NSString+CZHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CD9224F139000FFF5C3 /* NSString+CZHash.m */; };
 		06E21CE9224F139000FFF5C3 /* NSAttributedString+CZAdditon.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CDC224F139000FFF5C3 /* NSAttributedString+CZAdditon.m */; };
 		06E21CEA224F139000FFF5C3 /* NSArray+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CDD224F139000FFF5C3 /* NSArray+Log.m */; };
+		06E21CEE224F191800FFF5C3 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CED224F191700FFF5C3 /* Bundle+Extensions.swift */; };
+		06E21CF0224F4EC200FFF5C3 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CEF224F4EC200FFF5C3 /* Common.swift */; };
+		06E21CF2224F4EF500FFF5C3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CF1224F4EF500FFF5C3 /* UIColorExtension.swift */; };
+		06E21CF4224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +42,7 @@
 		06914FF5224EF7A0002F3E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06914FF7224EF7A2002F3E1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06914FFC224EF7A2002F3E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06DC3F0F2251A989002044E1 /* BWNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNavigationBar.swift; sourceTree = "<group>"; };
 		06E21CB7224F107900FFF5C3 /* BWMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWMainViewController.swift; sourceTree = "<group>"; };
 		06E21CB9224F10AA00FFF5C3 /* BWNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNavigationController.swift; sourceTree = "<group>"; };
 		06E21CBB224F10CE00FFF5C3 /* BWBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWBaseViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +76,10 @@
 		06E21CDD224F139000FFF5C3 /* NSArray+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Log.m"; sourceTree = "<group>"; };
 		06E21CDE224F139000FFF5C3 /* NSString+CZPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CZPath.h"; sourceTree = "<group>"; };
 		06E21CEB224F13DF00FFF5C3 /* WeiBo_Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeiBo_Bridge.h; sourceTree = "<group>"; };
+		06E21CED224F191700FFF5C3 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
+		06E21CEF224F4EC200FFF5C3 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		06E21CF1224F4EF500FFF5C3 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +122,14 @@
 			path = BTStudioWeiBo;
 			sourceTree = "<group>";
 		};
+		06DC3F0E2251A971002044E1 /* BWNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				06DC3F0F2251A989002044E1 /* BWNavigationBar.swift */,
+			);
+			path = BWNavigationBar;
+			sourceTree = "<group>";
+		};
 		06E21CAD224F101600FFF5C3 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +144,8 @@
 		06E21CAE224F101600FFF5C3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				06DC3F0E2251A971002044E1 /* BWNavigationBar */,
+				06E21CEC224F191700FFF5C3 /* Extensions */,
 				06E21CC5224F139000FFF5C3 /* Additions */,
 			);
 			path = Tools;
@@ -202,6 +222,7 @@
 		06E21CC5224F139000FFF5C3 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				06E21CEF224F4EC200FFF5C3 /* Common.swift */,
 				06E21CDB224F139000FFF5C3 /* CZAdditions.h */,
 				06E21CD0224F139000FFF5C3 /* NSArray+Log.h */,
 				06E21CDD224F139000FFF5C3 /* NSArray+Log.m */,
@@ -229,6 +250,16 @@
 				06E21CD8224F139000FFF5C3 /* UIViewController+CZAddition.m */,
 			);
 			path = Additions;
+			sourceTree = "<group>";
+		};
+		06E21CEC224F191700FFF5C3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				06E21CF1224F4EF500FFF5C3 /* UIColorExtension.swift */,
+				06E21CED224F191700FFF5C3 /* Bundle+Extensions.swift */,
+				06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,8 +337,12 @@
 				06E21CE3224F139000FFF5C3 /* NSString+CZBase64.m in Sources */,
 				06E21CC4224F113100FFF5C3 /* BWProfileViewController.swift in Sources */,
 				06E21CE6224F139000FFF5C3 /* NSObject+CZRuntime.m in Sources */,
+				06E21CF2224F4EF500FFF5C3 /* UIColorExtension.swift in Sources */,
+				06E21CF0224F4EC200FFF5C3 /* Common.swift in Sources */,
+				06DC3F102251A989002044E1 /* BWNavigationBar.swift in Sources */,
 				06E21CE9224F139000FFF5C3 /* NSAttributedString+CZAdditon.m in Sources */,
 				06E21CEA224F139000FFF5C3 /* NSArray+Log.m in Sources */,
+				06E21CEE224F191800FFF5C3 /* Bundle+Extensions.swift in Sources */,
 				06E21CE1224F139000FFF5C3 /* UIScreen+CZAddition.m in Sources */,
 				06E21CC0224F111B00FFF5C3 /* BWMessageViewController.swift in Sources */,
 				06E21CB8224F107900FFF5C3 /* BWMainViewController.swift in Sources */,
@@ -315,6 +350,7 @@
 				06E21CE5224F139000FFF5C3 /* UIButton+CZAddition.m in Sources */,
 				06E21CC2224F112700FFF5C3 /* BWDiscoveryViewController.swift in Sources */,
 				06E21CE8224F139000FFF5C3 /* NSString+CZHash.m in Sources */,
+				06E21CF4224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift in Sources */,
 				06E21CE7224F139000FFF5C3 /* UIViewController+CZAddition.m in Sources */,
 				06E21CBA224F10AA00FFF5C3 /* BWNavigationController.swift in Sources */,
 				06914FF1224EF7A0002F3E1C /* AppDelegate.swift in Sources */,
