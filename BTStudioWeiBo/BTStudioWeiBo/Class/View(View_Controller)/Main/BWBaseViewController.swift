@@ -15,6 +15,9 @@ class BWBaseViewController: UIViewController {
     
     /// 自定义导航栏Item, 以后设置导航栏内容时,统一使用'navigationItemCustom'
     lazy var navigationItemCustom = UINavigationItem()
+    
+    /// 表格视图 - 如果用户未登录,就不创建
+    var tableView: UITableView?
 
     
     override func viewDidLoad() {
@@ -51,6 +54,13 @@ extension BWBaseViewController {
     @objc func setupUI() {
         view.backgroundColor = UIColor.cz_random()
         
+        setupNavigationBar()
+        
+        setupTableView()
+    }
+    
+    /// 设置自定义导航栏
+    private func setupNavigationBar() {
         // 自定义导航栏的设置
         // 1. 将item设置给自定义导航栏
         navigationBarCustom.items = [navigationItemCustom]
@@ -58,11 +68,20 @@ extension BWBaseViewController {
         // 2. 设置自定义导航栏的渲染颜色
         navigationBarCustom.barTintColor = UIColor.cz_color(withHex: 0xF6F6F6)
         
-        // 3. 设置自定义导航栏字体颜色
+        // 3. 设置自定义导航栏左右按钮的字体颜色
+//        navigationBarCustom.tintColor = UIColor.darkGray
+        
+        // 4. 设置自定义导航栏标题颜色
         navigationBarCustom.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
-
         
         // 添加自定义导航栏
         view.addSubview(navigationBarCustom)
+    }
+    
+    /// 设置表格视图
+    private func setupTableView() {
+        tableView = UITableView(frame: view.bounds, style: .plain)
+        
+        view.insertSubview(tableView!, belowSubview: navigationBarCustom)
     }
 }

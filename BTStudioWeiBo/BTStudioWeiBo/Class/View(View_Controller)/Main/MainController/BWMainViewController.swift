@@ -18,6 +18,15 @@ class BWMainViewController: UITabBarController {
         setupComposeButton()
     }
     
+    /// 使用代码控制设备的方向
+    ///
+    /// 设置支持的方向之后,当前的控制器及其子控制器都会遵守这个方向!
+    ///
+    /// 如果是视频播放,通常通过 modal 推出控制器!
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
     
     // MARK: - 监听方法
     /**

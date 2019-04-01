@@ -130,6 +130,15 @@
 			path = BWNavigationBar;
 			sourceTree = "<group>";
 		};
+		06DC3F11225212E9002044E1 /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				06E21CB7224F107900FFF5C3 /* BWMainViewController.swift */,
+				06E21CB9224F10AA00FFF5C3 /* BWNavigationController.swift */,
+			);
+			path = MainController;
+			sourceTree = "<group>";
+		};
 		06E21CAD224F101600FFF5C3 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,8 +214,7 @@
 		06E21CB5224F101600FFF5C3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				06E21CB7224F107900FFF5C3 /* BWMainViewController.swift */,
-				06E21CB9224F10AA00FFF5C3 /* BWNavigationController.swift */,
+				06DC3F11225212E9002044E1 /* MainController */,
 				06E21CBB224F10CE00FFF5C3 /* BWBaseViewController.swift */,
 			);
 			path = Main;
