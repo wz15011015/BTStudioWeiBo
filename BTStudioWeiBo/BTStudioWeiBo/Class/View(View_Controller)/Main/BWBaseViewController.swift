@@ -8,6 +8,14 @@
 
 import UIKit
 
+/**
+ Swift中,利用 extension 可以把'函数'按照功能分类管理,便于阅读和维护.
+ 需要注意:
+     - extension 中不能有属性;
+     - extension 中不能重写父类方法, 重写父类方法是子类的职责,扩展是对类的扩展.
+ */
+
+/// 基类控制器
 class BWBaseViewController: UIViewController {
     
     /// 自定义导航栏
@@ -31,6 +39,11 @@ class BWBaseViewController: UIViewController {
         didSet {
             navigationItemCustom.title = title
         }
+    }
+    
+    /// 加载数据 - 具体的实现由子类负责
+    func loadData() {
+        
     }
     
     
@@ -82,6 +95,24 @@ extension BWBaseViewController {
     private func setupTableView() {
         tableView = UITableView(frame: view.bounds, style: .plain)
         
+        // 设置数据源代理
+        tableView?.dataSource = self
+        tableView?.delegate = self
+        
         view.insertSubview(tableView!, belowSubview: navigationBarCustom)
+    }
+}
+
+// MARK: - UITableViewDataSource & UITableViewDelegate
+extension BWBaseViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    // 基类只是准备方法,子类负责具体实现
+    // 子类的数据源方法不需要 super
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 此处代码只是保证没有语法错误!
+        return UITableViewCell()
     }
 }
