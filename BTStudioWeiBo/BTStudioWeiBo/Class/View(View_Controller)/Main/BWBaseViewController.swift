@@ -21,6 +21,9 @@ class BWBaseViewController: UIViewController {
     /// 用户是否登录标记
     var userLogon = false
     
+    /// 访客视图信息字典
+    var visitorInfoDictionary: [String: String]?
+    
     /// 自定义导航栏
     lazy var navigationBarCustom = BWNavigationBar(frame: CGRect(x: 0, y: 0, width: BW_Width, height: NavBarHeight))
     
@@ -143,6 +146,7 @@ extension BWBaseViewController {
     /// 设置访客视图
     private func setupVisitorView() {
         let visitorView = BWVisitorView(frame: view.bounds)
+        visitorView.visitorInfo = visitorInfoDictionary
         view.insertSubview(visitorView, belowSubview: navigationBarCustom)
     }
 }

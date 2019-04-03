@@ -11,6 +11,33 @@ import UIKit
 /// 访客视图
 class BWVisitorView: UIView {
     
+    /// 访客视图的信息字典
+    ///
+    /// 提示: 如果是首页,则imageName = ""
+    var visitorInfo: [String: String]? {
+        didSet {
+            guard let imageName = visitorInfo?["imageName"],
+                let message = visitorInfo?["message"] else {
+                    return
+            }
+            
+            // 设置消息
+            tipLabel.text = message
+            
+            // 设置图像
+            if imageName == "" {
+                return
+            }
+            
+            iconView.image = UIImage(named: imageName)
+            
+            // 其他控制器的访客视图不需要显示小房子/遮罩视图
+            houseIconView.isHidden = true
+            maskIconView.isHidden = true
+        }
+    }
+    
+    
     // MARK: - 私有控件
     /// 图像视图
     private lazy var iconView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_smallicon"))
@@ -39,9 +66,11 @@ class BWVisitorView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+//        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
-
+    
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -66,6 +95,9 @@ extension BWVisitorView {
         addSubview(tipLabel)
         addSubview(registerButton)
         addSubview(loginButton)
+        
+        // 提示文本居中
+        tipLabel.textAlignment = .center
         
         // 2. 取消 autoresizing
         for view in subviews {
@@ -150,7 +182,6 @@ extension BWVisitorView {
                                          attribute: .notAnAttribute,
                                          multiplier: 1.0,
                                          constant: CGFloat(BW_Width - 40)))
-        tipLabel.textAlignment = .center
         
         // 注册按钮
         addConstraint(NSLayoutConstraint(item: registerButton,

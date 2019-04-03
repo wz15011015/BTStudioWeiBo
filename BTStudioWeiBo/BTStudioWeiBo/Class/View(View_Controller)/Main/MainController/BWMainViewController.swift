@@ -78,13 +78,38 @@ extension BWMainViewController {
     
     /// 设置所有子控件器
     private func setupChildControllers() {
-        let array: [[String: String]] = [
-            ["clsName": "BWHomeViewController", "title": "首页", "imageName": "home"],
-            ["clsName": "BWMessageViewController", "title": "消息", "imageName": "message_center"],
+        
+        // 在现在的很多流行App中,界面的创建都依赖于网络的json
+        let array: [[String: Any]] = [
+            ["clsName": "BWHomeViewController",
+             "title": "首页",
+             "imageName": "home",
+             "visitorInfo": ["imageName": "", "message": "关注一些人，回这里看看有什么惊喜"]
+            ],
+            
+            ["clsName": "BWMessageViewController",
+             "title": "消息",
+             "imageName": "message_center",
+             "visitorInfo": ["imageName": "visitordiscover_image_message", "message": "登录后，别人评论你的微博，发给你的消息，都会在这里收到通知"]
+            ],
+            
             ["clsName": "UIViewController"], // 占位tabBar
-            ["clsName": "BWDiscoveryViewController", "title": "发现", "imageName": "discover"],
-            ["clsName": "BWProfileViewController", "title": "我的", "imageName": "profile"]
+            
+            ["clsName": "BWDiscoveryViewController",
+             "title": "发现",
+             "imageName": "discover",
+             "visitorInfo": ["imageName": "visitordiscover_image_message", "message": "登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过"]
+            ],
+            
+            ["clsName": "BWProfileViewController",
+             "title": "我的",
+             "imageName": "profile",
+             "visitorInfo": ["imageName": "visitordiscover_image_profile", "message": "登录后，你的微博、相册、个人资料会显示在这里，展示给别人"]
+            ]
         ]
+        
+        // 数组写入plist文件,用来测试数据格式是否正确,转换成plist后查看数据时会更加直观
+//        (array as NSArray).write(toFile: "/Users/hadlinks/Desktop/Demo.plist", atomically: true)
         
         var controllers: [UIViewController] = []
         for dict in array {
@@ -96,15 +121,16 @@ extension BWMainViewController {
     
     /// 使用字典创建一个子控制器
     ///
-    /// - Parameter dict: 信息字典
+    /// - Parameter dict: 信息字典 ["clsName": , "title": , "imageName": , "visitorInfo": ]
     /// - Returns: 子控制器
-    private func controller(dict: [String: String]) -> UIViewController {
+    private func controller(dict: [String: Any]) -> UIViewController {
         // 1. 取得字典内容
-        guard let className = dict["clsName"],
-            let title = dict["title"],
-            let imageName = dict["imageName"],
+        guard let className = dict["clsName"] as? String,
+            let title = dict["title"] as? String,
+            let imageName = dict["imageName"] as? String,
             // 将className转换成class
-            let cls = NSClassFromString(Bundle.main.namespace + "." + className) as? UIViewController.Type
+            let cls = NSClassFromString(Bundle.main.namespace + "." + className) as? BWBaseViewController.Type,
+            let visitorDictionary = dict["visitorInfo"] as? [String: String]
         else {
                 return UIViewController()
         }
@@ -112,6 +138,9 @@ extension BWMainViewController {
         // 2. 创建视图控制器
         let vc = cls.init()
         vc.title = title
+        
+        // 设置控制器的访客视图信息字典
+        vc.visitorInfoDictionary = visitorDictionary
         
         // 设置TabBar图标
         vc.tabBarItem.image = UIImage(named: "tabbar_" + imageName)?.withRenderingMode(.alwaysOriginal)
