@@ -26,6 +26,7 @@ class BWVisitorView: UIView {
             
             // 设置图像
             if imageName == "" {
+                startAnimation()
                 return
             }
             
@@ -68,6 +69,20 @@ class BWVisitorView: UIView {
     required init?(coder aDecoder: NSCoder) {
 //        super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    /// 旋转动画
+    private func startAnimation() {
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        animation.toValue = Double.pi
+        animation.repeatCount = HUGE
+        animation.duration = 15
+        
+        // 动画完成后不删除, 如果 iconView 被释放,则动画会一起销毁!
+        animation.isRemovedOnCompletion = false
+        
+        iconView.layer.add(animation, forKey: nil)
     }
     
     
