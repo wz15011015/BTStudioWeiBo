@@ -18,6 +18,9 @@ import UIKit
 /// 基类控制器
 class BWBaseViewController: UIViewController {
     
+    /// 用户是否登录标记
+    var userLogon = false
+    
     /// 自定义导航栏
     lazy var navigationBarCustom = BWNavigationBar(frame: CGRect(x: 0, y: 0, width: BW_Width, height: NavBarHeight))
     
@@ -26,10 +29,23 @@ class BWBaseViewController: UIViewController {
     
     /// 表格视图 - 如果用户未登录,就不创建
     var tableView: UITableView?
+    
+    /// 刷新控件
+    var refreshControl: UIRefreshControl?
+    
+    /// 是否上拉刷新
+    var isPullUp: Bool = false
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            // iOS 11.0之后使用UIScrollView的 contentInsetAdjustmentBehavior 代替
+        } else {
+            // 取消自动缩进 - 如果隐藏了导航栏,会缩进20个点
+            automaticallyAdjustsScrollViewInsets = false
+        }
         
         setupUI()
     }
@@ -42,8 +58,9 @@ class BWBaseViewController: UIViewController {
     }
     
     /// 加载数据 - 具体的实现由子类负责
-    func loadData() {
-        
+    @objc func loadData() {
+        // 如果子类不实现该方法,则需要结束刷新控件动画
+        refreshControl?.endRefreshing()
     }
     
     
@@ -65,11 +82,11 @@ extension BWBaseViewController {
     
     /// 设置UI
     @objc func setupUI() {
-        view.backgroundColor = UIColor.cz_random()
+        view.backgroundColor = UIColor.white
         
         setupNavigationBar()
         
-        setupTableView()
+        userLogon ? setupTableView() : setupVisitorView()
     }
     
     /// 设置自定义导航栏
@@ -100,6 +117,33 @@ extension BWBaseViewController {
         tableView?.delegate = self
         
         view.insertSubview(tableView!, belowSubview: navigationBarCustom)
+        
+        if #available(iOS 11.0, *) {
+            // 默认为automatic,设置为 automatic 相当于 automaticallyAdjustsScrollViewInsets = YES
+            tableView?.contentInsetAdjustmentBehavior = .automatic
+            
+            // 若使用了系统导航栏,则设置为automatic后,tableView高度会自动适应除去导航栏和工具栏的高度
+            // 本项目中隐藏了系统导航栏,使用了自定义导航栏,因此需要再调整一下tableView的contentInset
+            // 44 为导航栏中导航内容_UINavigationBarContentView的高度
+            tableView?.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
+        } else {
+            // 若不取消自动缩进,则需要设置contentInset来调整
+            //            tableView?.contentInset = UIEdgeInsets(top: CGFloat(NavBarHeight), left: 0, bottom: CGFloat(TabBarHeight), right: 0)
+        }
+        
+        // 设置刷新控件
+        // 1. 实例化控件
+        refreshControl = UIRefreshControl()
+        // 2. 添加到视图
+        tableView?.addSubview(refreshControl!)
+        // 3. 添加监听方法
+        refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
+    }
+    
+    /// 设置访客视图
+    private func setupVisitorView() {
+        let visitorView = BWVisitorView(frame: view.bounds)
+        view.insertSubview(visitorView, belowSubview: navigationBarCustom)
     }
 }
 
@@ -114,5 +158,27 @@ extension BWBaseViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 此处代码只是保证没有语法错误!
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // 在显示最后一行的时候,进行上拉刷新
+        // 1. 判断是否为最后一行
+        let row = indexPath.row
+        let section = tableView.numberOfSections - 1
+        if row < 0 || section < 0 {
+            return
+        }
+        
+        let count = tableView.numberOfRows(inSection: section)
+        // 如果是最后一行,同时没有开始上拉刷新
+        if row == count - 1 && !isPullUp {
+            // 设置上拉刷新标记
+            isPullUp = true
+            
+            // 开始刷新
+            loadData()
+        }
+        
+        
     }
 }

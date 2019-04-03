@@ -10,6 +10,7 @@
 		06914FF1224EF7A0002F3E1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06914FF0224EF7A0002F3E1C /* AppDelegate.swift */; };
 		06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF4224EF7A0002F3E1C /* Main.storyboard */; };
 		06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF7224EF7A2002F3E1C /* Assets.xcassets */; };
+		06C0757422545EDE00C12A16 /* BWVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C0757322545EDE00C12A16 /* BWVisitorView.swift */; };
 		06DC3F102251A989002044E1 /* BWNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC3F0F2251A989002044E1 /* BWNavigationBar.swift */; };
 		06E21CB8224F107900FFF5C3 /* BWMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CB7224F107900FFF5C3 /* BWMainViewController.swift */; };
 		06E21CBA224F10AA00FFF5C3 /* BWNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CB9224F10AA00FFF5C3 /* BWNavigationController.swift */; };
@@ -42,6 +43,7 @@
 		06914FF5224EF7A0002F3E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06914FF7224EF7A2002F3E1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06914FFC224EF7A2002F3E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06C0757322545EDE00C12A16 /* BWVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWVisitorView.swift; sourceTree = "<group>"; };
 		06DC3F0F2251A989002044E1 /* BWNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNavigationBar.swift; sourceTree = "<group>"; };
 		06E21CB7224F107900FFF5C3 /* BWMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWMainViewController.swift; sourceTree = "<group>"; };
 		06E21CB9224F10AA00FFF5C3 /* BWNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNavigationController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 				06914FFC224EF7A2002F3E1C /* Info.plist */,
 			);
 			path = BTStudioWeiBo;
+			sourceTree = "<group>";
+		};
+		06C0757222545ECC00C12A16 /* VisitorView */ = {
+			isa = PBXGroup;
+			children = (
+				06C0757322545EDE00C12A16 /* BWVisitorView.swift */,
+			);
+			path = VisitorView;
 			sourceTree = "<group>";
 		};
 		06DC3F0E2251A971002044E1 /* BWNavigationBar */ = {
@@ -215,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				06DC3F11225212E9002044E1 /* MainController */,
+				06C0757222545ECC00C12A16 /* VisitorView */,
 				06E21CBB224F10CE00FFF5C3 /* BWBaseViewController.swift */,
 			);
 			path = Main;
@@ -361,6 +372,7 @@
 				06E21CF4224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift in Sources */,
 				06E21CE7224F139000FFF5C3 /* UIViewController+CZAddition.m in Sources */,
 				06E21CBA224F10AA00FFF5C3 /* BWNavigationController.swift in Sources */,
+				06C0757422545EDE00C12A16 /* BWVisitorView.swift in Sources */,
 				06914FF1224EF7A0002F3E1C /* AppDelegate.swift in Sources */,
 				06E21CE2224F139000FFF5C3 /* UILabel+CZAddition.m in Sources */,
 				06E21CE4224F139000FFF5C3 /* NSString+CZPath.m in Sources */,

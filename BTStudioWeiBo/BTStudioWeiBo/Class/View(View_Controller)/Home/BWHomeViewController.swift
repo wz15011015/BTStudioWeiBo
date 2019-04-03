@@ -17,15 +17,9 @@ class BWHomeViewController: BWBaseViewController {
     /// 微博数据数组
     private lazy var statusList: [String] = []
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if #available(iOS 11.0, *) {
-            // iOS 11.0之后使用UIScrollView的 contentInsetAdjustmentBehavior 代替
-        } else {
-            // 取消自动缩进 - 如果隐藏了导航栏,会缩进20个点
-            automaticallyAdjustsScrollViewInsets = false
-        }
 
         setupUI()
         
@@ -34,8 +28,24 @@ class BWHomeViewController: BWBaseViewController {
     
     /// 加载数据
     override func loadData() {
-        for i in 0..<20 {
-            statusList.insert(i.description, at: 0)
+        // 模拟延时加载数据
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            for i in 0..<20 {
+                if self.isPullUp {
+                    self.statusList.append("上拉数据-\(i)")
+                } else {
+                    self.statusList.insert(i.description, at: 0)
+                }
+            }
+            
+            // 恢复上拉刷新标记
+            self.isPullUp = false
+            
+            // 刷新表格
+            self.tableView?.reloadData()
+            
+            // 结束刷新动画
+            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -87,18 +97,5 @@ extension BWHomeViewController {
         
         // 注册cell
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
-        
-        if #available(iOS 11.0, *) {
-            // 默认为automatic,设置为 automatic 相当于 automaticallyAdjustsScrollViewInsets = YES
-            tableView?.contentInsetAdjustmentBehavior = .automatic
-            
-            // 若使用了系统导航栏,则设置为automatic后,tableView高度会自动适应除去导航栏和工具栏的高度
-            // 本项目中隐藏了系统导航栏,使用了自定义导航栏,因此需要再调整一下tableView的contentInset
-            // 44 为导航栏中导航内容_UINavigationBarContentView的高度
-            tableView?.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-        } else {
-            // 若不取消自动缩进,则需要设置contentInset来调整
-//            tableView?.contentInset = UIEdgeInsets(top: CGFloat(NavBarHeight), left: 0, bottom: CGFloat(TabBarHeight), right: 0)
-        }
     }
 }
