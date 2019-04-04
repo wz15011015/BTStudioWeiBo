@@ -13,7 +13,7 @@ class BWProfileViewController: BWBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupUI()
+//        setupTableView()
     }
     
     
@@ -37,8 +37,9 @@ class BWProfileViewController: BWBaseViewController {
 
 
 extension BWProfileViewController {
-    override func setupUI() {
-        super.setupUI()
+    
+    override func setupTableView() {
+        super.setupTableView()
         
         // 设置右侧按钮
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Haha", style: .plain, target: self, action: #selector(showNext))

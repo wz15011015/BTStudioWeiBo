@@ -80,11 +80,24 @@ class BWBaseViewController: UIViewController {
 
 }
 
+
+// MARK: - 访客视图监听方法
+extension BWBaseViewController {
+    @objc private func login() {
+        print("用户登录")
+    }
+    
+    @objc private func register() {
+        print("用户注册")
+    }
+}
+
+
 // MARK: - 设置界面
 extension BWBaseViewController {
     
     /// 设置UI
-    @objc func setupUI() {
+    @objc private func setupUI() {
         view.backgroundColor = UIColor.white
         
         setupNavigationBar()
@@ -112,7 +125,9 @@ extension BWBaseViewController {
     }
     
     /// 设置表格视图
-    private func setupTableView() {
+    ///
+    /// 子类重写此方法,因为子类不需要关心用户登录之后的逻辑
+    @objc func setupTableView() {
         tableView = UITableView(frame: view.bounds, style: .plain)
         
         // 设置数据源代理
@@ -148,6 +163,14 @@ extension BWBaseViewController {
         let visitorView = BWVisitorView(frame: view.bounds)
         visitorView.visitorInfo = visitorInfoDictionary
         view.insertSubview(visitorView, belowSubview: navigationBarCustom)
+        
+        // 添加访客视图按钮的监听事件
+        visitorView.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        visitorView.registerButton.addTarget(self, action: #selector(register), for: .touchUpInside)
+        
+        // 设置导航栏按钮
+        navigationItemCustom.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .plain, target: self, action: #selector(register))
+        navigationItemCustom.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .plain, target: self, action: #selector(login))
     }
 }
 
@@ -182,7 +205,5 @@ extension BWBaseViewController: UITableViewDataSource, UITableViewDelegate {
             // 开始刷新
             loadData()
         }
-        
-        
     }
 }

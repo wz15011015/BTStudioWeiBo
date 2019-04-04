@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
+        loadAppInfo()
+        
         return true
     }
 
@@ -50,5 +52,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+
+// MARK: - 从服务器加载应用程序信息
+extension AppDelegate {
+    
+    private func loadAppInfo() {
+        // 1. 模拟异步
+        DispatchQueue.global().sync {
+            let path = Bundle.main.path(forResource: "Main", ofType: "json")
+            let data = NSData(contentsOfFile: path ?? "")
+            
+            // 写入磁盘
+            let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            let jsonPath = docDir.appendingFormat("/%@", "Main.json")
+//            let jsonPath2 = (docDir as NSString).appendingPathComponent("Main.json")
+            print("jsonPath: \(jsonPath)")
+            
+            // 直接保存在沙盒,等待下一次程序启动时使用
+            data?.write(toFile: jsonPath, atomically: true)
+        }
+    }
 }
 

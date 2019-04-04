@@ -79,38 +79,92 @@ extension BWMainViewController {
     /// 设置所有子控件器
     private func setupChildControllers() {
         
+        // 0. 获取沙盒的json文件路径
+        let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let jsonPath = docDir.appendingFormat("/%@", "Main.json")
+        var jsonData = NSData(contentsOfFile: jsonPath)
+        
+        // 判断jsonData是否为空,如果为空,说明本地沙盒中没有json文件,则从bundle中加载配置json
+        if jsonData == nil {
+            let path = Bundle.main.path(forResource: "Main", ofType: "json")
+            jsonData = NSData(contentsOfFile: path!)
+        }
+        
+        /**
+         * try的含义:
+         * throws 表示会抛出异常
+         *
+         * 1. 方法一(推荐) try? (弱try),如果解析成功,就有值;否则为nil
+         *    let array = try? JSONSerialization.jsonObject(with: , options: )
+         *
+         * 2. 方法二(不推荐) try! (强try),如果解析成功,就有值;否则会崩溃
+         *    let array = try! JSONSerialization.jsonObject(with: , options: )
+         *
+         * 3. 方法三(不推荐) try 处理异常,能够接收到错误,并且输出错误
+         *    do {
+         *        let array = try JSONSerialization.jsonObject(with: , options: )
+         *    } catch {
+         *        print(error)
+         *    }
+         *
+         * 小知识: OC中有人用 try catch吗? 为什么?
+         * ARC开发环境下,编译器会自动添加 retain / release / autorelease,
+         * 如果用try catch,一旦出现不平衡,就会造成内存泄漏!
+         */
+        // 此时,jsonData一定会有值,则进行反序列化
+        guard let array = try? JSONSerialization.jsonObject(with: jsonData! as Data, options: []) as? [[String: Any]] else {
+            return
+        }
+        
+        
+        // 1. 从bundle加载配置json,并解析为数组
+//        guard let path = Bundle.main.path(forResource: "Main", ofType: "json"),
+//            let data = NSData(contentsOfFile: path),
+//            let array = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? [[String: Any]] else {
+//            return
+//        }
+        
+        
+        
         // 在现在的很多流行App中,界面的创建都依赖于网络的json
-        let array: [[String: Any]] = [
-            ["clsName": "BWHomeViewController",
-             "title": "首页",
-             "imageName": "home",
-             "visitorInfo": ["imageName": "", "message": "关注一些人，回这里看看有什么惊喜"]
-            ],
-            
-            ["clsName": "BWMessageViewController",
-             "title": "消息",
-             "imageName": "message_center",
-             "visitorInfo": ["imageName": "visitordiscover_image_message", "message": "登录后，别人评论你的微博，发给你的消息，都会在这里收到通知"]
-            ],
-            
-            ["clsName": "UIViewController"], // 占位tabBar
-            
-            ["clsName": "BWDiscoveryViewController",
-             "title": "发现",
-             "imageName": "discover",
-             "visitorInfo": ["imageName": "visitordiscover_image_message", "message": "登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过"]
-            ],
-            
-            ["clsName": "BWProfileViewController",
-             "title": "我的",
-             "imageName": "profile",
-             "visitorInfo": ["imageName": "visitordiscover_image_profile", "message": "登录后，你的微博、相册、个人资料会显示在这里，展示给别人"]
-            ]
-        ]
+//        let array: [[String: Any]] = [
+//            ["clsName": "BWHomeViewController",
+//             "title": "首页",
+//             "imageName": "home",
+//             "visitorInfo": ["imageName": "", "message": "关注一些人，回这里看看有什么惊喜"]
+//            ],
+//
+//            ["clsName": "BWMessageViewController",
+//             "title": "消息",
+//             "imageName": "message_center",
+//             "visitorInfo": ["imageName": "visitordiscover_image_message", "message": "登录后，别人评论你的微博，发给你的消息，都会在这里收到通知"]
+//            ],
+//
+//            ["clsName": "UIViewController"], // 占位tabBar
+//
+//            ["clsName": "BWDiscoveryViewController",
+//             "title": "发现",
+//             "imageName": "discover",
+//             "visitorInfo": ["imageName": "visitordiscover_image_message", "message": "登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过"]
+//            ],
+//
+//            ["clsName": "BWProfileViewController",
+//             "title": "我的",
+//             "imageName": "profile",
+//             "visitorInfo": ["imageName": "visitordiscover_image_profile", "message": "登录后，你的微博、相册、个人资料会显示在这里，展示给别人"]
+//            ]
+//        ]
         
         // 数组写入plist文件,用来测试数据格式是否正确,转换成plist后查看数据时会更加直观
 //        (array as NSArray).write(toFile: "/Users/hadlinks/Desktop/Demo.plist", atomically: true)
         
+        // 数组 -> json (序列化)
+//        let jsonData = try! JSONSerialization.data(withJSONObject: array, options: [.prettyPrinted])
+//        let fileURL = URL(fileURLWithPath: "/Users/hadlinks/Desktop/Demo.json")
+//        try! jsonData.write(to: fileURL)
+        
+        
+        // 2. 遍历数组,循环创建控制器数组
         var controllers: [UIViewController] = []
         for dict in array {
             controllers.append(controller(dict: dict))

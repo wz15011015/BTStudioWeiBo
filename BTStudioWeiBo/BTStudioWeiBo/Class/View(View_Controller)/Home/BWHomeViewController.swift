@@ -20,8 +20,8 @@ class BWHomeViewController: BWBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupUI()
+        
+//        setupTableView()
         
         loadData()
     }
@@ -87,9 +87,8 @@ extension BWHomeViewController {
 // MARK: - 设置界面
 extension BWHomeViewController {
     
-    /// 重写父类的方法
-    override func setupUI() {
-        super.setupUI()
+    override func setupTableView() {
+        super.setupTableView()
         
         // 设置导航栏按钮
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
