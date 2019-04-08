@@ -111,11 +111,11 @@ extension BWBaseViewController {
         // 1. 将item设置给自定义导航栏
         navigationBarCustom.items = [navigationItemCustom]
         
-        // 2. 设置自定义导航栏的渲染颜色
+        // 2. 设置自定义导航栏的背景渲染颜色
         navigationBarCustom.barTintColor = UIColor.cz_color(withHex: 0xF6F6F6)
         
         // 3. 设置自定义导航栏左右按钮的字体颜色
-//        navigationBarCustom.tintColor = UIColor.darkGray
+        navigationBarCustom.tintColor = UIColor.orange
         
         // 4. 设置自定义导航栏标题颜色
         navigationBarCustom.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]

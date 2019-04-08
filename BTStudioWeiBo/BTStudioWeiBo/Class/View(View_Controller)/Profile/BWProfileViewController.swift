@@ -12,8 +12,6 @@ class BWProfileViewController: BWBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        setupTableView()
     }
     
     
