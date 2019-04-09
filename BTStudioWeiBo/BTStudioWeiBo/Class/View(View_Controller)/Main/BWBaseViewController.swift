@@ -19,7 +19,7 @@ import UIKit
 class BWBaseViewController: UIViewController {
     
     /// 用户是否登录标记
-    var userLogon = false
+    var userLogon = true
     
     /// 访客视图信息字典
     var visitorInfoDictionary: [String: String]?

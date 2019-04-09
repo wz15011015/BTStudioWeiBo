@@ -13,11 +13,16 @@ extension BWNetworkManager {
     
     /// 加载微博数据字典数组
     ///
-    /// - Parameter completion: 完成回调 [list: 微博字典数据, isSuccess: 是否成功]
-    func statusList(completion: @escaping (_ list: [[String: Any]]?, _ isSuccess: Bool) -> ()) {
+    /// - Parameters:
+    ///   - since_id: 返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0。
+    ///   - max_id: 则返回ID小于或等于max_id的微博，默认为0。
+    ///   - completion: 完成回调 [list: 微博字典数据, isSuccess: 是否成功]
+    func statusList(since_id: Int64 = 0, max_id: Int64 = 0, completion: @escaping (_ list: [[String: Any]]?, _ isSuccess: Bool) -> ()) {
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
+        // Swift中Int可以转换为Any, Int64不可以
+        let parameters = ["since_id": since_id, "max_id": max_id > 0 ? max_id - 1 : 0]
         
-        tokenRequest(method: .GET, URLString: urlString, parameters: nil) { (json, isSuccess) in
+        tokenRequest(method: .GET, URLString: urlString, parameters: parameters) { (json, isSuccess) in
 //            print("json: \(json.debugDescription)")
             
             // 从json中获取statuses字典数组
@@ -26,6 +31,25 @@ extension BWNetworkManager {
             let result = dict?["statuses"] as? [[String: Any]]
             
             completion(result, isSuccess)
+        }
+    }
+    
+    /// 返回微博未读数量
+    ///
+    /// - Parameter completion: 完成回调
+    func unreadCount(completion: @escaping (_ count: Int) -> ()) {
+        guard let uid = uid else {
+            return
+        }
+        let urlString = "https://rm.api.weibo.com/2/remind/unread_count.json"
+        let parameter = ["uid": uid]
+        
+        tokenRequest(method: .GET, URLString: urlString, parameters: parameter) { (json, isSuccess) in
+//            print("unread: \(json.debugDescription)")
+            
+            let dict = json as? [String: Any]
+            let count = dict?["status"] as? Int
+            completion(count ?? 0)
         }
     }
 }

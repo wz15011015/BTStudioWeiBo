@@ -30,7 +30,10 @@ class BWNetworkManager: AFHTTPSessionManager {
     /// 访问令牌,所有网络请求都基于此令牌(登录接口除外)
     ///
     /// 为了保护用户安全,token都是有时限的,默认是三天
-    var accessToken: String? = "2.00UfZikCTQtzcE9e3084d975yflGtC"
+    var accessToken: String? = "2.00UfZikCoUA7iDf2256d15920LHE8j"
+    
+    /// 用户ID
+    var uid: String? = "5365823342"
     
     
     /// 专门负责带token的网络请求

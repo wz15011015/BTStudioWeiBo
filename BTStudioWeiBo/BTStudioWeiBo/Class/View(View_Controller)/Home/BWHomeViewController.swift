@@ -16,12 +16,12 @@ class BWHomeViewController: BWBaseViewController {
     
     /// 微博数据数组
     private lazy var statusList: [String] = []
-
+    
+    private lazy var listViewModel = BWStatusListViewModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        setupTableView()
         
         loadData()
     }
@@ -44,20 +44,30 @@ class BWHomeViewController: BWBaseViewController {
 //            print("json: \(json.debugDescription)")
 //        }
         
-        BWNetworkManager.shared.statusList { (result, isSuccess) in
-            print(result?.description)
-        }
         
         // 模拟延时加载数据
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            for i in 0..<20 {
-                if self.isPullUp {
-                    self.statusList.append("上拉数据-\(i)")
-                } else {
-                    self.statusList.insert(i.description, at: 0)
-                }
-            }
-            
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            for i in 0..<20 {
+//                if self.isPullUp {
+//                    self.statusList.append("上拉数据-\(i)")
+//                } else {
+//                    self.statusList.insert(i.description, at: 0)
+//                }
+//            }
+//
+//            // 恢复上拉刷新标记
+//            self.isPullUp = false
+//
+//            // 刷新表格
+//            self.tableView?.reloadData()
+//
+//            // 结束刷新动画
+//            self.refreshControl?.endRefreshing()
+//        }
+        
+        print("最后一条微博: \(listViewModel.statusList.last?.text ?? "")")
+        // 加载数据
+        listViewModel.loadStatus(pullUp: isPullUp) { (isSuccess, shouldRefresh) in
             // 恢复上拉刷新标记
             self.isPullUp = false
             
@@ -65,7 +75,7 @@ class BWHomeViewController: BWBaseViewController {
             self.tableView?.reloadData()
             
             // 结束刷新动画
-            self.refreshControl?.endRefreshing()
+            shouldRefresh ? self.refreshControl?.endRefreshing() : ()
         }
     }
     
@@ -91,14 +101,14 @@ class BWHomeViewController: BWBaseViewController {
 // MARK: - 表格数据源方法
 extension BWHomeViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statusList.count
+        return listViewModel.statusList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         
-        let status = statusList[indexPath.row]
-        cell.textLabel?.text = status
+        let status = listViewModel.statusList[indexPath.row]
+        cell.textLabel?.text = status.text
         
         return cell
     }
@@ -111,7 +121,6 @@ extension BWHomeViewController {
         super.setupTableView()
         
         // 设置导航栏按钮
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
         navigationItemCustom.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
         
         // 注册cell

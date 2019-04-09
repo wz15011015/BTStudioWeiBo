@@ -15,13 +15,29 @@ class BWStatus: NSObject {
     /// 微博ID
     ///
     /// Int类型,在64位机器里是64位,32位机器里就是32位
-    var id: Int64 = 0
+    @objc var id: Int64 = 0
     
     /// 微博信息内容
-    var test: String?
+    @objc var text: String?
     
-    /// 重写description的计算型属性
+    /// 重写计算型属性 description
     override var description: String {
         return yy_modelDescription()
     }
+    
+    
+//    override init() {
+//        super.init()
+//    }
+//
+//    // 重载
+//    init(dictionary: [String: Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dictionary)
+//    }
+    
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+//
+//    }
 }

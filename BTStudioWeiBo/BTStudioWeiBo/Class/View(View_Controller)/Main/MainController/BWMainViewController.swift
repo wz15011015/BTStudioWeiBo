@@ -10,12 +10,21 @@ import UIKit
 
 /// 主控制器
 class BWMainViewController: UITabBarController {
+    
+    /// 定时器,用来定期检查新微博的数量
+    private var timer: Timer?
+    
+    
+    deinit {
+        timer?.invalidate()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupChildControllers()
         setupComposeButton()
+        setupTimer()
     }
     
     /// 使用代码控制设备的方向
@@ -52,6 +61,26 @@ class BWMainViewController: UITabBarController {
     }
     */
 
+}
+
+
+// MARK: - 定时器相关方法
+extension BWMainViewController {
+    private func setupTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    /// 定时器触发方法
+    @objc private func updateTimer() {
+        BWNetworkManager.shared.unreadCount { (count) in
+            print("有 \(count) 条未读微博!")
+            // 设置首页tabBarItem的badgeNumber
+            self.tabBar.items?.first?.badgeValue = count > 0 ? "\(count)" : nil
+            
+            // 设置App的badgeNumber (从iOS 8.0之后,要用户授权后才能显示)
+            UIApplication.shared.applicationIconBadgeNumber = count
+        }
+    }
 }
 
 

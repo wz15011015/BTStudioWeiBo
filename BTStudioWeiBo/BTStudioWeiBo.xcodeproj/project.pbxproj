@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DC676225B449900FF5CB4 /* BWNetworkManager.swift */; };
+		064897FF225C481A00DBC01D /* BWStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */; };
 		06914FF1224EF7A0002F3E1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06914FF0224EF7A0002F3E1C /* AppDelegate.swift */; };
 		06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF4224EF7A0002F3E1C /* Main.storyboard */; };
 		06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF7224EF7A2002F3E1C /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		063DC676225B449900FF5CB4 /* BWNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNetworkManager.swift; sourceTree = "<group>"; };
+		064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusListViewModel.swift; sourceTree = "<group>"; };
 		06914FED224EF7A0002F3E1C /* BTStudioWeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTStudioWeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06914FF0224EF7A0002F3E1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06914FF5224EF7A0002F3E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 		06E21CB6224F101600FFF5C3 /* ViewModel(View_Model) */ = {
 			isa = PBXGroup;
 			children = (
+				064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */,
 			);
 			path = "ViewModel(View_Model)";
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06E21CBC224F10CE00FFF5C3 /* BWBaseViewController.swift in Sources */,
+				064897FF225C481A00DBC01D /* BWStatusListViewModel.swift in Sources */,
 				06E21CE3224F139000FFF5C3 /* NSString+CZBase64.m in Sources */,
 				06E21CC4224F113100FFF5C3 /* BWProfileViewController.swift in Sources */,
 				06E21CE6224F139000FFF5C3 /* NSObject+CZRuntime.m in Sources */,
