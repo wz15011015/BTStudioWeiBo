@@ -28,6 +28,26 @@ class BWHomeViewController: BWBaseViewController {
     
     /// 加载数据
     override func loadData() {
+        // 用 网络工具 加载微博数据
+//        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
+//        let params = ["access_token": "2.00UfZikCTQtzcE9e3084d975yflGtC"]
+//        BWNetworkManager.shared.get(urlString, parameters: params, progress: { (progress) in
+//            print("请求进度: \(progress)")
+//        }, success: { (_, json) in
+//            print("json: \(json.debugDescription)")
+//        }) { (_, error) in
+//            print("网络请求失败, error: \(error)")
+//        }
+        
+//        BWNetworkManager.shared.request(method: .GET, URLString: urlString, parameters: params) { (json, isSuccess) in
+//            print("isSuccess: \(isSuccess)")
+//            print("json: \(json.debugDescription)")
+//        }
+        
+        BWNetworkManager.shared.statusList { (result, isSuccess) in
+            print(result?.description)
+        }
+        
         // 模拟延时加载数据
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             for i in 0..<20 {

@@ -20,5 +20,6 @@ target 'BTStudioWeiBo' do
     pod 'MJRefresh'
     pod 'SDWebImage'
     pod 'pop'
+    pod 'YYModel'
 
 end

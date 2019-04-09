@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DC676225B449900FF5CB4 /* BWNetworkManager.swift */; };
 		06914FF1224EF7A0002F3E1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06914FF0224EF7A0002F3E1C /* AppDelegate.swift */; };
 		06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF4224EF7A0002F3E1C /* Main.storyboard */; };
 		06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF7224EF7A2002F3E1C /* Assets.xcassets */; };
@@ -36,10 +37,13 @@
 		06E21CF0224F4EC200FFF5C3 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CEF224F4EC200FFF5C3 /* Common.swift */; };
 		06E21CF2224F4EF500FFF5C3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CF1224F4EF500FFF5C3 /* UIColorExtension.swift */; };
 		06E21CF4224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */; };
+		06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */; };
+		06EA4535225C458E005D91E1 /* BWStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4534225C458E005D91E1 /* BWStatus.swift */; };
 		DC44E33F6638BC197B67428C /* Pods_BTStudioWeiBo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65193EA2FA92A5BB4415B767 /* Pods_BTStudioWeiBo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		063DC676225B449900FF5CB4 /* BWNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNetworkManager.swift; sourceTree = "<group>"; };
 		06914FED224EF7A0002F3E1C /* BTStudioWeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTStudioWeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06914FF0224EF7A0002F3E1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06914FF5224EF7A0002F3E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 		06E21CEF224F4EC200FFF5C3 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		06E21CF1224F4EF500FFF5C3 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
+		06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWNetworkManager+Extension.swift"; sourceTree = "<group>"; };
+		06EA4534225C458E005D91E1 /* BWStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatus.swift; sourceTree = "<group>"; };
 		65193EA2FA92A5BB4415B767 /* Pods_BTStudioWeiBo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTStudioWeiBo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		811547D4813CD3A81C14F944 /* Pods-BTStudioWeiBo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTStudioWeiBo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTStudioWeiBo/Pods-BTStudioWeiBo.release.xcconfig"; sourceTree = "<group>"; };
 		C43A09C50F6F39DCBB1AC158 /* Pods-BTStudioWeiBo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTStudioWeiBo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BTStudioWeiBo/Pods-BTStudioWeiBo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +108,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		063DC675225B446600FF5CB4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				063DC676225B449900FF5CB4 /* BWNetworkManager.swift */,
+				06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		06914FE4224EF7A0002F3E1C = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +188,7 @@
 		06E21CAE224F101600FFF5C3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				063DC675225B446600FF5CB4 /* Network */,
 				06DC3F0E2251A971002044E1 /* BWNavigationBar */,
 				06E21CEC224F191700FFF5C3 /* Extensions */,
 				06E21CC5224F139000FFF5C3 /* Additions */,
@@ -183,6 +199,7 @@
 		06E21CAF224F101600FFF5C3 /* Model(Model) */ = {
 			isa = PBXGroup;
 			children = (
+				06EA4534225C458E005D91E1 /* BWStatus.swift */,
 			);
 			path = "Model(Model)";
 			sourceTree = "<group>";
@@ -416,6 +433,7 @@
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -429,6 +447,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +468,7 @@
 				06E21CE6224F139000FFF5C3 /* NSObject+CZRuntime.m in Sources */,
 				06E21CF2224F4EF500FFF5C3 /* UIColorExtension.swift in Sources */,
 				06E21CF0224F4EC200FFF5C3 /* Common.swift in Sources */,
+				06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */,
 				06DC3F102251A989002044E1 /* BWNavigationBar.swift in Sources */,
 				06E21CE9224F139000FFF5C3 /* NSAttributedString+CZAdditon.m in Sources */,
 				06E21CEA224F139000FFF5C3 /* NSArray+Log.m in Sources */,
@@ -462,12 +482,14 @@
 				06E21CE8224F139000FFF5C3 /* NSString+CZHash.m in Sources */,
 				06E21CF4224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift in Sources */,
 				06E21CE7224F139000FFF5C3 /* UIViewController+CZAddition.m in Sources */,
+				06EA4535225C458E005D91E1 /* BWStatus.swift in Sources */,
 				06E21CBA224F10AA00FFF5C3 /* BWNavigationController.swift in Sources */,
 				06C0757422545EDE00C12A16 /* BWVisitorView.swift in Sources */,
 				06914FF1224EF7A0002F3E1C /* AppDelegate.swift in Sources */,
 				06E21CE2224F139000FFF5C3 /* UILabel+CZAddition.m in Sources */,
 				06E21CE4224F139000FFF5C3 /* NSString+CZPath.m in Sources */,
 				06E21CDF224F139000FFF5C3 /* UIColor+CZAddition.m in Sources */,
+				063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */,
 				06E21CE0224F139000FFF5C3 /* UIView+CZAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
