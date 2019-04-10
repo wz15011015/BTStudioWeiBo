@@ -17,6 +17,9 @@ class BWMainViewController: UITabBarController {
     
     deinit {
         timer?.invalidate()
+        
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func viewDidLoad() {
@@ -27,6 +30,10 @@ class BWMainViewController: UITabBarController {
         setupTimer()
         
         delegate = self
+        
+        // 注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(userLogin(notification:)), name: NSNotification.Name(rawValue: BWUserShouldLoginNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userRegister(notification:)), name: NSNotification.Name(rawValue: BWUserShouldRegisterNotification), object: nil)
     }
     
     /// 使用代码控制设备的方向
@@ -40,9 +47,30 @@ class BWMainViewController: UITabBarController {
     
     
     // MARK: - 监听方法
+    
+    /// 用户登录
+    ///
+    /// - Parameter notification: 登录通知
+    @objc private func userLogin(notification: Notification) {
+//        print("用户登录通知: \(notification)")
+        let nav = UINavigationController(rootViewController: BWOAuthViewController())
+        present(nav, animated: true, completion: nil)
+    }
+    
+    /// 用户注册
+    ///
+    /// - Parameter notification: 注册通知
+    @objc private func userRegister(notification: Notification) {
+//        print("用户注册通知: \(notification)")
+        let nav = UINavigationController(rootViewController: BWRegisterViewController())
+        present(nav, animated: true, completion: nil)
+    }
+    
+    /// 点击了撰写按钮
+    ///
     /**
-     private 保证方法私有,仅在当前对象里能被访问
-     @objc 允许方法在'运行时'通过OC的消息机制被调用
+      private 保证方法私有,仅在当前对象里能被访问
+      @objc 允许方法在'运行时'通过OC的消息机制被调用
      */
     @objc private func composeStatus() {
         print("发微博...")
@@ -114,11 +142,15 @@ extension BWMainViewController: UITabBarControllerDelegate {
 // MARK: - 定时器相关方法
 extension BWMainViewController {
     private func setupTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     /// 定时器触发方法
     @objc private func updateTimer() {
+        if !BWNetworkManager.shared.userLogon {
+            return
+        }
+        
         BWNetworkManager.shared.unreadCount { (count) in
             print("有 \(count) 条未读微博!")
             // 设置首页tabBarItem的badgeNumber

@@ -38,7 +38,7 @@ extension BWNetworkManager {
     ///
     /// - Parameter completion: 完成回调
     func unreadCount(completion: @escaping (_ count: Int) -> ()) {
-        guard let uid = uid else {
+        guard let uid = userAccount.uid else {
             return
         }
         let urlString = "https://rm.api.weibo.com/2/remind/unread_count.json"
@@ -50,6 +50,23 @@ extension BWNetworkManager {
             let dict = json as? [String: Any]
             let count = dict?["status"] as? Int
             completion(count ?? 0)
+        }
+    }
+}
+
+
+// MARK: - OAuth相关
+extension BWNetworkManager {
+    func getAccessToken(authCode code: String) {
+        let urlString = "https://api.weibo.com/oauth2/access_token"
+        let parameter = ["client_id": BWWeiBoAppKey,
+                         "client_secret": BWWeiBoAppSecret,
+                         "grant_type": "authorization_code",
+                         "code": code,
+                         "redirect_uri": BWWeiBoRedirectURI]
+        
+        request(method: .POST, URLString: urlString, parameters: parameter) { (json, isSuccess) in
+            print("json: \(json)")
         }
     }
 }

@@ -19,7 +19,7 @@ import UIKit
 class BWBaseViewController: UIViewController {
     
     /// 用户是否登录标记
-    var userLogon = true
+//    var userLogon = true
     
     /// 访客视图信息字典
     var visitorInfoDictionary: [String: String]?
@@ -51,6 +51,8 @@ class BWBaseViewController: UIViewController {
         }
         
         setupUI()
+        
+        BWNetworkManager.shared.userLogon ? loadData() : ()
     }
     
     /// 重写UIViewController title 的 didSet 方法
@@ -84,11 +86,13 @@ class BWBaseViewController: UIViewController {
 // MARK: - 访客视图监听方法
 extension BWBaseViewController {
     @objc private func login() {
-        print("用户登录")
+        // 发送登录通知
+        NotificationCenter.default.post(name: NSNotification.Name(BWUserShouldLoginNotification), object: nil)
     }
     
     @objc private func register() {
-        print("用户注册")
+        // 发送注册通知
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: BWUserShouldRegisterNotification), object: nil)
     }
 }
 
@@ -102,7 +106,7 @@ extension BWBaseViewController {
         
         setupNavigationBar()
         
-        userLogon ? setupTableView() : setupVisitorView()
+        BWNetworkManager.shared.userLogon ? setupTableView() : setupVisitorView()
     }
     
     /// 设置自定义导航栏

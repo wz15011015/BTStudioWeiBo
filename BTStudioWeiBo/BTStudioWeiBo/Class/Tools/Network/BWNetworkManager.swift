@@ -26,15 +26,31 @@ class BWNetworkManager: AFHTTPSessionManager {
     
     /// 单例: 静态区 常量 闭包
     /// 在第一次访问时,执行闭包,并且将结果保存在 shared 常量中
-    static let shared = BWNetworkManager()
+//    static let shared = BWNetworkManager()
+    static let shared: BWNetworkManager = {
+        // 实例化对象
+        let instance = BWNetworkManager()
+        // 设置响应反序列化支持的数据类型
+        instance.responseSerializer.acceptableContentTypes?.insert("text/plain")
+        // 返回对象
+        return instance
+    }()
+    
+    /// 用户账户
+    lazy var userAccount = BWUserAccount()
     
     /// 访问令牌,所有网络请求都基于此令牌(登录接口除外)
     ///
     /// 为了保护用户安全,token都是有时限的,默认是三天
-    var accessToken: String? = "2.00UfZikCoUA7iDf2256d15920LHE8j"
+//    var accessToken: String? // 2.00UfZikCTQtzcE9e3084d975yflGtC  2.00UfZikCoUA7iDf2256d15920LHE8j
     
-    /// 用户ID
-    var uid: String? = "5365823342"
+    /// 用户微博ID
+//    var uid: String? = "5365823342"
+    
+    /// 用户登录标记 (计算型属性)
+    var userLogon: Bool {
+        return userAccount.access_token != nil
+    }
     
     
     /// 专门负责带token的网络请求
@@ -47,7 +63,7 @@ class BWNetworkManager: AFHTTPSessionManager {
     func tokenRequest(method: BWHTTPMethod = .GET, URLString: String, parameters:[String: Any]?, completion: @escaping (_ json: Any?, _ isSuccess: Bool) -> ()) {
         // 拼接token
         // 1. 判断token是否为空
-        guard let token = accessToken else {
+        guard let token = userAccount.access_token else {
             print("没有token,需要登录")
             // FIXME: 发送通知,提示用户去登录
             completion(nil, false)

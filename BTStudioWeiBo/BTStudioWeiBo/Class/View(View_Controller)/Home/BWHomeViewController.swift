@@ -23,7 +23,6 @@ class BWHomeViewController: BWBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadData()
     }
     
     /// 加载数据
