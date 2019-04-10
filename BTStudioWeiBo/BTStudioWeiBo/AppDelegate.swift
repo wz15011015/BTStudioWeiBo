@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound, .carPlay]) { (success, error) in
-                print("授权 " + (success ? "成功" : "失败") + " !")
+                print("App通知授权 " + (success ? "成功" : "失败") + " !")
             }
         } else {
             // 获得用户授权显示通知(弹窗/图标/声音)

@@ -10,7 +10,8 @@ import UIKit
 import AFNetworking
 
 
-/// Swift 枚举支持任意数据类型
+// Swift 枚举支持任意数据类型
+/// 请求方式
 ///
 /// - GET: GET请求
 /// - POST: POST请求

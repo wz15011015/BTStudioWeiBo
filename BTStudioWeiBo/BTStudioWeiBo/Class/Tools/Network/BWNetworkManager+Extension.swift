@@ -19,7 +19,7 @@ extension BWNetworkManager {
     ///   - completion: 完成回调 [list: 微博字典数据, isSuccess: 是否成功]
     func statusList(since_id: Int64 = 0, max_id: Int64 = 0, completion: @escaping (_ list: [[String: Any]]?, _ isSuccess: Bool) -> ()) {
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
-        // Swift中Int可以转换为Any, Int64不可以
+        
         let parameters = ["since_id": since_id, "max_id": max_id > 0 ? max_id - 1 : 0]
         
         tokenRequest(method: .GET, URLString: urlString, parameters: parameters) { (json, isSuccess) in

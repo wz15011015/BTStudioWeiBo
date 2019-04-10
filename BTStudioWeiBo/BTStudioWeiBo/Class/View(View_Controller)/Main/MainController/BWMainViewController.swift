@@ -25,6 +25,8 @@ class BWMainViewController: UITabBarController {
         setupChildControllers()
         setupComposeButton()
         setupTimer()
+        
+        delegate = self
     }
     
     /// 使用代码控制设备的方向
@@ -64,10 +66,55 @@ class BWMainViewController: UITabBarController {
 }
 
 
+// MARK: - UITabBarControllerDelegate
+extension BWMainViewController: UITabBarControllerDelegate {
+    
+    /// 将要选择 TabBarItem
+    ///
+    /// - Parameters:
+    ///   - tabBarController: tabBarController
+    ///   - viewController: 目标控制器
+    /// - Returns: 是否切换到目标控制器
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        print("将要切换到: \(viewController)")
+        
+        // 获取目标控制器在数组中的索引
+        let index = viewControllers?.firstIndex(of: viewController)
+        
+        // 判断当前索引是否为0,为0表示在首页,同时判断目标控制器索引是否为首页,
+        // 如果当前索引为首页,目标索引也为首页,则刷新
+        if selectedIndex == 0 && index == selectedIndex {
+            print("刷新首页..............")
+            // 刷新首页数据
+            let nav = viewController as! BWNavigationController
+            let vc = nav.viewControllers.first as! BWHomeViewController
+            
+            vc.tableView?.setContentOffset(CGPoint(x: 0, y: -NavBarHeight), animated: true)
+            // 增加延迟是为了保证表格先滚动到顶部,然后再刷新整个表格
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                vc.loadData()
+            }
+        }
+        
+        // 判断目标控制器是否为UIViewController,如果是,说明点击了撰写按钮,则不切换
+        return !viewController.isMember(of: UIViewController.self)
+    }
+    
+    /// 已选择 TabBarItem
+    ///
+    /// - Parameters:
+    ///   - tabBarController: tabBarController
+    ///   - viewController: 已选择的控制器
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+    }
+}
+
+
 // MARK: - 定时器相关方法
 extension BWMainViewController {
     private func setupTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     /// 定时器触发方法
