@@ -57,7 +57,13 @@ extension BWNetworkManager {
 
 // MARK: - OAuth相关
 extension BWNetworkManager {
-    func getAccessToken(authCode code: String) {
+    
+    /// 获取授权过的Access Token
+    ///
+    /// - Parameters:
+    ///   - code: 授权码
+    ///   - completion: 完成回调
+    func getAccessToken(authCode code: String, completion: @escaping (_ isSuccess: Bool) -> ()) {
         let urlString = "https://api.weibo.com/oauth2/access_token"
         let parameter = ["client_id": BWWeiBoAppKey,
                          "client_secret": BWWeiBoAppSecret,
@@ -66,7 +72,17 @@ extension BWNetworkManager {
                          "redirect_uri": BWWeiBoRedirectURI]
         
         request(method: .POST, URLString: urlString, parameters: parameter) { (json, isSuccess) in
-            print("json: \(json)")
+            print("json: \(json.debugDescription)")
+            // 直接用字典设置 userAccount 属性, [:] 表示空字典
+//            self.userAccount.yy_modelSet(with: json as? [String: Any] ?? [:])
+            
+            self.userAccount.setValuesForKeys(json as? [String: Any] ?? [:])
+            
+            // 保存到本地
+            self.userAccount.saveAccount()
+            
+            // 完成回调
+            completion(isSuccess)
         }
     }
 }

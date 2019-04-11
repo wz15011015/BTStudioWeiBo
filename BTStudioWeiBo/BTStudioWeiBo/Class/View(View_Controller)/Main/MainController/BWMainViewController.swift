@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 /// 主控制器
 class BWMainViewController: UITabBarController {
@@ -52,9 +53,25 @@ class BWMainViewController: UITabBarController {
     ///
     /// - Parameter notification: 登录通知
     @objc private func userLogin(notification: Notification) {
-//        print("用户登录通知: \(notification)")
-        let nav = UINavigationController(rootViewController: BWOAuthViewController())
-        present(nav, animated: true, completion: nil)
+        let object = notification.object as? String
+        
+        var when = DispatchTime.now()
+        
+        if object != nil {
+            // 设置指示器渐变方式
+            SVProgressHUD.setDefaultMaskType(.gradient)
+            SVProgressHUD.showInfo(withStatus: "用户登录已超时，请重新登录")
+            
+            // 调整延迟时间
+            when = DispatchTime.now() + 2
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            SVProgressHUD.setDefaultMaskType(.clear)
+            
+            let nav = UINavigationController(rootViewController: BWOAuthViewController())
+            self.present(nav, animated: true, completion: nil)
+        }
     }
     
     /// 用户注册

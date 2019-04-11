@@ -40,6 +40,11 @@ class BWBaseViewController: UIViewController {
     var isPullUp: Bool = false
 
     
+    deinit {
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +58,9 @@ class BWBaseViewController: UIViewController {
         setupUI()
         
         BWNetworkManager.shared.userLogon ? loadData() : ()
+        
+        // 注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess(notification:)), name: NSNotification.Name(rawValue: BWUserLoginSuccessNotification), object: nil)
     }
     
     /// 重写UIViewController title 的 didSet 方法
@@ -93,6 +101,21 @@ extension BWBaseViewController {
     @objc private func register() {
         // 发送注册通知
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: BWUserShouldRegisterNotification), object: nil)
+    }
+    
+    /// 登录成功
+    @objc private func loginSuccess(notification: Notification) {
+        // 更新界面
+        navigationItemCustom.leftBarButtonItem = nil
+        navigationItemCustom.rightBarButtonItem = nil
+        
+        /**
+         在访问view的getter方法时,如果view为nil,则会调用: loadView -> viewDidLoad
+         */
+        view = nil
+        
+        // 注销通知 (因为重新执行了viewDidLoad,避免通知被重复注册)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: BWUserLoginSuccessNotification), object: nil)
     }
 }
 
@@ -152,6 +175,9 @@ extension BWBaseViewController {
             // 若不取消自动缩进,则需要设置contentInset来调整
             //            tableView?.contentInset = UIEdgeInsets(top: CGFloat(NavBarHeight), left: 0, bottom: CGFloat(TabBarHeight), right: 0)
         }
+        
+        // 修改竖直指示器的缩进
+        tableView?.scrollIndicatorInsets = tableView!.contentInset
         
         // 设置刷新控件
         // 1. 实例化控件

@@ -28,3 +28,6 @@ let BWUserShouldLoginNotification = "UserShouldLoginNotification"
 
 /// 用户需要注册的通知
 let BWUserShouldRegisterNotification = "UserShouldRegisterNotification"
+
+/// 用户登录成功的通知
+let BWUserLoginSuccessNotification = "UserLoginSuccessNotification"

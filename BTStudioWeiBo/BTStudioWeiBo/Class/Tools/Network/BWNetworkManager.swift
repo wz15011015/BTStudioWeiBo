@@ -65,7 +65,9 @@ class BWNetworkManager: AFHTTPSessionManager {
         // 1. 判断token是否为空
         guard let token = userAccount.access_token else {
             print("没有token,需要登录")
-            // FIXME: 发送通知,提示用户去登录
+            // 发送通知,提示用户去登录
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: BWUserShouldLoginNotification), object: "none access_token")
+            
             completion(nil, false)
             return
         }
@@ -102,7 +104,8 @@ class BWNetworkManager: AFHTTPSessionManager {
             let statusCode = response?.statusCode ?? -1
             if statusCode == 403 {
                 print("token已过期!")
-                // FIXME: 发送通知,提示用户重新登录
+                // 发送通知,提示用户重新登录
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: BWUserShouldLoginNotification), object: "bad access_token")
             }
             completion(nil, false)
         }

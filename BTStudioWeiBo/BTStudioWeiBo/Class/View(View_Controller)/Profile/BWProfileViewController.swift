@@ -12,6 +12,8 @@ class BWProfileViewController: BWBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        BWNetworkManager.shared.userAccount.access_token = nil
     }
     
     

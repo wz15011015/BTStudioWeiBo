@@ -90,6 +90,8 @@ extension BWOAuthViewController: WKNavigationDelegate {
     ///   - navigationAction: 导航动作对象
     ///   - decisionHandler: 处理回调 (决定是否允许请求的发送)
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        SVProgressHUD.show()
+        
         // 1. 协议头 (http/https, 可以自定义协议头,可根据协议头判断是否要执行跳转)
         let scheme = navigationAction.request.url?.scheme ?? ""
         // 2. 主机名
@@ -126,7 +128,20 @@ extension BWOAuthViewController: WKNavigationDelegate {
         let authCode = queryString[subIndex]
         print("authCode: \(authCode)")
         
-        BWNetworkManager.shared.getAccessToken(authCode: String(authCode))
+        BWNetworkManager.shared.getAccessToken(authCode: String(authCode)) { (isSuccess) -> () in
+            if isSuccess {
+                SVProgressHUD.showInfo(withStatus: "登录成功! 🙂")
+                // 发送登录成功的通知
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: BWUserLoginSuccessNotification), object: nil)
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.2, execute: {
+                    // 关闭页面
+                    self.dismissVC()
+                })
+            } else {
+                SVProgressHUD.showInfo(withStatus: "网络请求失败! ☹️")
+            }
+        }
     }
     
     /// 每当接收到服务器返回的数据时会调用该方法,决定是否允许导航
@@ -147,7 +162,6 @@ extension BWOAuthViewController: WKNavigationDelegate {
     ///   - navigation: 导航对象
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("WKWebView_开始发送请求")
-        SVProgressHUD.show()
     }
     
     /// 在收到服务器重定向时调用

@@ -8,6 +8,8 @@
 
 import UIKit
 import UserNotifications
+import SVProgressHUD
+import AFNetworking
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,16 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound, .carPlay]) { (success, error) in
-                print("App通知授权 " + (success ? "成功" : "失败") + " !")
-            }
-        } else {
-            // 获得用户授权显示通知(弹窗/图标/声音)
-            let notifySettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(notifySettings)
-        }
-        
+        setupAdditions()
         
         window = UIWindow()
         window?.backgroundColor = UIColor.white
@@ -84,6 +77,30 @@ extension AppDelegate {
             
             // 直接保存在沙盒,等待下一次程序启动时使用
             data?.write(toFile: jsonPath, atomically: true)
+        }
+    }
+}
+
+// MARK: - 设置App的额外信息
+extension AppDelegate {
+    
+    private func setupAdditions() {
+        
+        /// 1. 设置 SVProgressHUD 最小解除时间
+        SVProgressHUD.setMinimumDismissTimeInterval(2)
+        
+        /// 2. 设置网络加载指示器
+        AFNetworkActivityIndicatorManager.shared().isEnabled = true
+        
+        /// 3. 设置用户授权显示通知
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound, .carPlay]) { (success, error) in
+                print("App通知授权 " + (success ? "成功" : "失败") + " !")
+            }
+        } else {
+            // 获得用户授权显示通知(弹窗/图标/声音)
+            let notifySettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(notifySettings)
         }
     }
 }
