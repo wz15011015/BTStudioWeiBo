@@ -11,7 +11,7 @@ import UIKit
 /// 用户账户信息沙盒文件的名称
 private let accountFile: NSString = "BWUserAccount.json"
 
-/// 用户账户模型
+/// 用户账户模型  @objcMembers
 class BWUserAccount: NSObject {
     
     /// 访问令牌
@@ -32,6 +32,13 @@ class BWUserAccount: NSObject {
     /// 过期日期
     @objc var expiresDate: Date?
     
+    /// 用户昵称
+    @objc var screen_name: String?
+    
+    /// 用户头像地址（大图），180×180像素
+    @objc var avatar_large: String?
+    
+    
     override var description: String {
         return yy_modelDescription()
     }
@@ -49,6 +56,7 @@ class BWUserAccount: NSObject {
         }
         
         // 使用字典设置属性值
+        // FIXME: 调试代码
         setValuesForKeys(dict)
         
         // FIXME: 测试代码
@@ -117,6 +125,6 @@ class BWUserAccount: NSObject {
     }
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
-        print("Undefined Key: \(key)")
+        print("BWUserAccount Undefined Key: \(key)")
     }
 }

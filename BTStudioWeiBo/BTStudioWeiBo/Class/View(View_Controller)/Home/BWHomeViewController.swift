@@ -122,7 +122,23 @@ extension BWHomeViewController {
         // 设置导航栏按钮
         navigationItemCustom.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
         
+        setupNavTitle()
+        
         // 注册cell
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+    }
+    
+    /// 设置导航栏标题 (自定义)
+    private func setupNavTitle() {
+        let title = BWNetworkManager.shared.userAccount.screen_name
+        let button = BWWeiBoTitleButton(title: title)
+        button.addTarget(self, action: #selector(clickTitleButton(sender:)), for: .touchUpInside)
+        
+        navigationItemCustom.titleView = button
+    }
+    
+    
+    @objc func clickTitleButton(sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
 }

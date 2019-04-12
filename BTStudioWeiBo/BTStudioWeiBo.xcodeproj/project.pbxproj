@@ -14,6 +14,11 @@
 		062478F8225DEA210013CDB5 /* BWUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478F7225DEA210013CDB5 /* BWUserAccount.swift */; };
 		063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DC676225B449900FF5CB4 /* BWNetworkManager.swift */; };
 		064897FF225C481A00DBC01D /* BWStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */; };
+		067017842260312C00A79A4D /* BWWeiBoTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067017832260312C00A79A4D /* BWWeiBoTitleButton.swift */; };
+		06701788226062D900A79A4D /* BWWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06701787226062D900A79A4D /* BWWelcomeView.swift */; };
+		0670178A2260636F00A79A4D /* BWNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067017892260636F00A79A4D /* BWNewFeatureView.swift */; };
+		0670178C22606C1900A79A4D /* BWWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0670178B22606C1900A79A4D /* BWWelcomeView.xib */; };
+		0670178E2260830400A79A4D /* BWNewFeatureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0670178D2260830400A79A4D /* BWNewFeatureView.xib */; };
 		06914FF1224EF7A0002F3E1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06914FF0224EF7A0002F3E1C /* AppDelegate.swift */; };
 		06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF4224EF7A0002F3E1C /* Main.storyboard */; };
 		06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF7224EF7A2002F3E1C /* Assets.xcassets */; };
@@ -55,6 +60,11 @@
 		062478F7225DEA210013CDB5 /* BWUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWUserAccount.swift; sourceTree = "<group>"; };
 		063DC676225B449900FF5CB4 /* BWNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNetworkManager.swift; sourceTree = "<group>"; };
 		064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusListViewModel.swift; sourceTree = "<group>"; };
+		067017832260312C00A79A4D /* BWWeiBoTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWWeiBoTitleButton.swift; sourceTree = "<group>"; };
+		06701787226062D900A79A4D /* BWWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWWelcomeView.swift; sourceTree = "<group>"; };
+		067017892260636F00A79A4D /* BWNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNewFeatureView.swift; sourceTree = "<group>"; };
+		0670178B22606C1900A79A4D /* BWWelcomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWWelcomeView.xib; sourceTree = "<group>"; };
+		0670178D2260830400A79A4D /* BWNewFeatureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWNewFeatureView.xib; sourceTree = "<group>"; };
 		06914FED224EF7A0002F3E1C /* BTStudioWeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTStudioWeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06914FF0224EF7A0002F3E1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06914FF5224EF7A0002F3E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -143,6 +153,25 @@
 				06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		06701782226030C500A79A4D /* TitleButton */ = {
+			isa = PBXGroup;
+			children = (
+				067017832260312C00A79A4D /* BWWeiBoTitleButton.swift */,
+			);
+			path = TitleButton;
+			sourceTree = "<group>";
+		};
+		067017862260615E00A79A4D /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				06701787226062D900A79A4D /* BWWelcomeView.swift */,
+				0670178B22606C1900A79A4D /* BWWelcomeView.xib */,
+				067017892260636F00A79A4D /* BWNewFeatureView.swift */,
+				0670178D2260830400A79A4D /* BWNewFeatureView.xib */,
+			);
+			path = NewFeature;
 			sourceTree = "<group>";
 		};
 		06914FE4224EF7A0002F3E1C = {
@@ -249,6 +278,7 @@
 		06E21CB1224F101600FFF5C3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				06701782226030C500A79A4D /* TitleButton */,
 				06E21CBD224F111100FFF5C3 /* BWHomeViewController.swift */,
 			);
 			path = Home;
@@ -281,6 +311,7 @@
 		06E21CB5224F101600FFF5C3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				067017862260615E00A79A4D /* NewFeature */,
 				062478F1225D96EF0013CDB5 /* OAuth */,
 				06DC3F11225212E9002044E1 /* MainController */,
 				06C0757222545ECC00C12A16 /* VisitorView */,
@@ -419,6 +450,8 @@
 			files = (
 				06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */,
 				0694DC73225593E000F7FB9F /* Main.json in Resources */,
+				0670178C22606C1900A79A4D /* BWWelcomeView.xib in Resources */,
+				0670178E2260830400A79A4D /* BWNewFeatureView.xib in Resources */,
 				06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,8 +544,10 @@
 				062478F3225D97100013CDB5 /* BWOAuthViewController.swift in Sources */,
 				06E21CBE224F111100FFF5C3 /* BWHomeViewController.swift in Sources */,
 				06E21CE5224F139000FFF5C3 /* UIButton+CZAddition.m in Sources */,
+				06701788226062D900A79A4D /* BWWelcomeView.swift in Sources */,
 				06E21CC2224F112700FFF5C3 /* BWDiscoveryViewController.swift in Sources */,
 				06E21CE8224F139000FFF5C3 /* NSString+CZHash.m in Sources */,
+				067017842260312C00A79A4D /* BWWeiBoTitleButton.swift in Sources */,
 				06E21CF4224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift in Sources */,
 				062478F8225DEA210013CDB5 /* BWUserAccount.swift in Sources */,
 				06E21CE7224F139000FFF5C3 /* UIViewController+CZAddition.m in Sources */,
@@ -526,6 +561,7 @@
 				06E21CE4224F139000FFF5C3 /* NSString+CZPath.m in Sources */,
 				06E21CDF224F139000FFF5C3 /* UIColor+CZAddition.m in Sources */,
 				063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */,
+				0670178A2260636F00A79A4D /* BWNewFeatureView.swift in Sources */,
 				06E21CE0224F139000FFF5C3 /* UIView+CZAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

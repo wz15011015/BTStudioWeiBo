@@ -78,11 +78,35 @@ extension BWNetworkManager {
             
             self.userAccount.setValuesForKeys(json as? [String: Any] ?? [:])
             
-            // 保存到本地
-            self.userAccount.saveAccount()
-            
-            // 完成回调
-            completion(isSuccess)
+            // 加载用户信息
+            self.loadUserInfo { (infoDict) -> () in
+                // 使用用户信息字典设置用户账户信息 (昵称和头像地址)
+                self.userAccount.setValuesForKeys(infoDict)
+                
+                // 保存用户信息到本地
+                self.userAccount.saveAccount()
+                
+                // 完成回调
+                completion(isSuccess)
+            }
+        }
+    }
+}
+
+
+// MARK: - 用户信息相关
+extension BWNetworkManager {
+    
+    /// 加载用户信息  用户登录后执行
+    func loadUserInfo(completion: @escaping (_ infoDict: [String: Any]) -> ()) {
+        guard let uid = userAccount.uid else {
+            return
+        }
+        let urlString = "https://api.weibo.com/2/users/show.json"
+        let parameter = ["uid": uid]
+        
+        tokenRequest(URLString: urlString, parameters: parameter) { (json, isSuccess) in
+            completion(json as? [String: Any] ?? [:])
         }
     }
 }

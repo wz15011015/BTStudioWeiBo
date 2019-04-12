@@ -14,4 +14,9 @@ extension Bundle {
     var namespace: String {
         return infoDictionary?["CFBundleName"] as? String ?? ""
     }
+    
+    /// App当前版本号
+    var appVersion: String {
+        return infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+    }
 }

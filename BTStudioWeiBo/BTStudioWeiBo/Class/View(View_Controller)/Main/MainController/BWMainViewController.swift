@@ -29,6 +29,7 @@ class BWMainViewController: UITabBarController {
         setupChildControllers()
         setupComposeButton()
         setupTimer()
+        setupNewFeatureViews()
         
         delegate = self
         
@@ -333,6 +334,42 @@ extension BWMainViewController {
         // 实例化导航控制器的时候,会调用push方法将rootVC压栈
         let nav = BWNavigationController(rootViewController: vc)
         return nav
+    }
+}
+
+
+// MARK: - 新特性相关
+extension BWMainViewController {
+    
+    /// 是否新版本
+    ///
+    /// extension中可以有计算型属性,它不会占用存储空间
+    private var isNewVersion: Bool {
+        // 1. 当前版本
+        let currentVersion = Bundle.main.appVersion
+        
+        // 2. 老版本
+        let path = ("AppVersion" as NSString).cz_appendDocumentDir() ?? ""
+        let oldVersion = try? String(contentsOfFile: path)
+        
+        // 3. 将当前版本号存储起来
+        try? currentVersion.write(to: URL(fileURLWithPath: path, isDirectory: true), atomically: true, encoding: .utf8)
+        
+        // 4. 版本比较
+        return currentVersion != oldVersion
+    }
+    
+    /// 设置新特性视图
+    private func setupNewFeatureViews() {
+        // 1. 判断是否登录
+        if !BWNetworkManager.shared.userLogon {
+            return
+        }
+        // 2. 检查版本是否更新 如果更新,显示新特性,否则显示欢迎视图
+        let view1 = isNewVersion ? BWNewFeatureView.newFeatureView() : BWWelcomeView.welcomeView()
+        view1.frame = view.bounds
+        // 3. 添加视图
+        view.addSubview(view1)
     }
 }
 
