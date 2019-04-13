@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 微博Cell
 class BWStatusCell: UITableViewCell {
     
     /// 微博视图模型
@@ -23,6 +24,9 @@ class BWStatusCell: UITableViewCell {
             vipIconImageView.image = viewModel?.vipIcon
             // 微博正文
             statusLabel.text = viewModel?.status.text
+            
+            // 底部工具栏(转发/评论/点赞 数量)
+            toolBar.viewModel = viewModel
         }
     }
     
@@ -46,6 +50,9 @@ class BWStatusCell: UITableViewCell {
     
     /// 微博正文
     @IBOutlet weak var statusLabel: UILabel!
+    
+    /// 底部工具栏
+    @IBOutlet weak var toolBar: BWStatusToolBar!
     
 
     override func awakeFromNib() {

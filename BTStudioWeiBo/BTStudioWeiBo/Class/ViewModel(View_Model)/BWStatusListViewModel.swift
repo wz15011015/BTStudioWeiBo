@@ -73,14 +73,11 @@ class BWStatusListViewModel {
                 // 微博模型
                 let status = BWStatus()
                 status.yy_modelSet(with: dict)
-//                guard let status = BWStatus().yy_modelSet(with: dict) else {
-//                    continue
-//                }
                 // 根据 微博模型 创建 微博视图模型
                 let viewModel = BWStatusViewModel(status: status)
                 // 添加到数组
                 array.append(viewModel)
-                print(viewModel)
+//                print(viewModel)
             }
             
             // 1. 字典转模型

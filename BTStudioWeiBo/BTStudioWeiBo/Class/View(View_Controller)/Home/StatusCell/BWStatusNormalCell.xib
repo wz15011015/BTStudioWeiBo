@@ -65,8 +65,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gu-LR-qyX" userLabel="View_底部工具栏">
-                        <rect key="frame" x="0.0" y="138.5" width="417" height="28"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gu-LR-qyX" userLabel="View_底部工具栏" customClass="BWStatusToolBar" customModule="BTStudioWeiBo" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="139" width="417" height="28"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRj-Og-5HE">
                                 <rect key="frame" x="0.0" y="0.0" width="139" height="28"/>
@@ -75,6 +75,7 @@
                                 <state key="normal" title="转发" image="timeline_icon_retweet" backgroundImage="timeline_card_bottom_background">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <state key="highlighted" backgroundImage="timeline_card_middle_background_highlighted"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V93-Hs-YWN">
                                 <rect key="frame" x="139" y="0.0" width="139" height="28"/>
@@ -83,6 +84,7 @@
                                 <state key="normal" title="评论" image="timeline_icon_comment" backgroundImage="timeline_card_bottom_background">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <state key="highlighted" backgroundImage="timeline_card_middle_background_highlighted"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ec7-sa-XKr">
                                 <rect key="frame" x="278" y="0.0" width="139" height="28"/>
@@ -91,6 +93,7 @@
                                 <state key="normal" title="赞" image="timeline_icon_unlike" backgroundImage="timeline_card_bottom_background">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <state key="highlighted" backgroundImage="timeline_card_middle_background_highlighted"/>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline_card_bottom_line" translatesAutoresizingMaskIntoConstraints="NO" id="Zn8-Si-4rE">
                                 <rect key="frame" x="138" y="0.0" width="1" height="28"/>
@@ -127,6 +130,11 @@
                             <constraint firstAttribute="height" constant="28" id="qQn-60-9tc"/>
                             <constraint firstItem="naW-B3-4DY" firstAttribute="top" secondItem="4gu-LR-qyX" secondAttribute="top" id="skT-5O-UD8"/>
                         </constraints>
+                        <connections>
+                            <outlet property="commentButton" destination="V93-Hs-YWN" id="tc8-HP-1oz"/>
+                            <outlet property="likeButton" destination="ec7-sa-XKr" id="5mc-M5-vEP"/>
+                            <outlet property="retweetedButton" destination="JRj-Og-5HE" id="bo6-QX-wXs"/>
+                        </connections>
                     </view>
                 </subviews>
                 <constraints>
@@ -141,7 +149,7 @@
                     <constraint firstItem="iqL-fa-AHR" firstAttribute="leading" secondItem="Vjz-d4-Y4Y" secondAttribute="leading" id="OSD-TB-oK3"/>
                     <constraint firstItem="CGh-US-QAy" firstAttribute="top" secondItem="PeN-K3-9bc" secondAttribute="top" id="Qbg-37-a1E"/>
                     <constraint firstItem="CGh-US-QAy" firstAttribute="height" secondItem="PeN-K3-9bc" secondAttribute="height" id="T3d-yI-aAB"/>
-                    <constraint firstAttribute="bottom" secondItem="4gu-LR-qyX" secondAttribute="bottom" id="XfY-Kj-Bgf"/>
+                    <constraint firstAttribute="bottom" secondItem="4gu-LR-qyX" secondAttribute="bottom" constant="-0.5" id="XfY-Kj-Bgf"/>
                     <constraint firstItem="E3f-Dx-RId" firstAttribute="leading" secondItem="dW8-ow-8CE" secondAttribute="leading" id="YZM-Mr-Y4w"/>
                     <constraint firstAttribute="trailing" secondItem="E3f-Dx-RId" secondAttribute="trailing" constant="11" id="aU1-YC-M7r"/>
                     <constraint firstItem="dW8-ow-8CE" firstAttribute="leading" secondItem="Vjz-d4-Y4Y" secondAttribute="leading" constant="11" id="itx-Bx-klW"/>
@@ -162,6 +170,7 @@
                 <outlet property="sourceLabel" destination="Ky6-KD-moC" id="WR4-0C-e4z"/>
                 <outlet property="statusLabel" destination="E3f-Dx-RId" id="o7z-4p-MZE"/>
                 <outlet property="timeLabel" destination="gaV-h5-9vY" id="KHB-fI-oeL"/>
+                <outlet property="toolBar" destination="4gu-LR-qyX" id="gCA-qc-zTv"/>
                 <outlet property="vipIconImageView" destination="KKz-A9-oHN" id="U2q-f3-UEG"/>
             </connections>
             <point key="canvasLocation" x="50.000000000000007" y="76.674107142857139"/>
@@ -172,6 +181,7 @@
         <image name="common_icon_membership" width="14" height="14"/>
         <image name="timeline_card_bottom_background" width="22" height="36"/>
         <image name="timeline_card_bottom_line" width="0.5" height="36"/>
+        <image name="timeline_card_middle_background_highlighted" width="13" height="13"/>
         <image name="timeline_icon_comment" width="18" height="18"/>
         <image name="timeline_icon_retweet" width="18" height="18"/>
         <image name="timeline_icon_unlike" width="18" height="18"/>

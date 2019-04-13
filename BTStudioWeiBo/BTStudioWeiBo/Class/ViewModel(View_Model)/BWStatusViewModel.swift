@@ -35,6 +35,20 @@ class BWStatusViewModel: CustomStringConvertible {
     /// 认证图标
     var vipIcon: UIImage?
     
+    /// 转发文字
+    var retweetedStr: String?
+    
+    /// 评论文字
+    var commentStr: String?
+    
+    /// 点赞文字
+    var liekStr: String?
+    
+    var description: String {
+        return status.description
+    }
+    
+    
     /// 构造函数
     ///
     /// - Parameter model: 微博模型
@@ -62,9 +76,26 @@ class BWStatusViewModel: CustomStringConvertible {
                 break
             }
         }
+        
+        // 设置转发/评论/赞数量
+        retweetedStr = countString(count: model.reposts_count, defaultString: "转发")
+        commentStr = countString(count: model.comments_count, defaultString: "评论")
+        liekStr = countString(count: model.attitudes_count, defaultString: "赞")
     }
     
-    var description: String {
-        return status.description
+    /// 给定一个数字,返回对应的描述结果
+    ///
+    /// - Parameters:
+    ///   - count: 数字
+    ///   - defaultString: 默认字符串 转发/评论/赞
+    /// - Returns: 描述结果
+    private func countString(count: Int, defaultString: String) -> String {
+        if count == 0 {
+            return defaultString
+        }
+        if count < 10000 {
+            return "\(count)"
+        }
+        return String(format: "%.1f 万", Double(count) / 10000)
     }
 }

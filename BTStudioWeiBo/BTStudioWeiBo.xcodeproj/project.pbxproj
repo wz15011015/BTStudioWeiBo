@@ -15,6 +15,7 @@
 		06002BC6226185A60063D525 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BC4226185A60063D525 /* Date+Extensions.swift */; };
 		06002BC82261A9210063D525 /* BWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BC72261A9210063D525 /* BWUser.swift */; };
 		06002BCA2261AE910063D525 /* BWStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BC92261AE910063D525 /* BWStatusViewModel.swift */; };
+		06002BCC2261CE0E0063D525 /* BWStatusToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BCB2261CE0E0063D525 /* BWStatusToolBar.swift */; };
 		062478EE225D91CF0013CDB5 /* WeiBoConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478ED225D91CF0013CDB5 /* WeiBoConstant.swift */; };
 		062478F0225D925A0013CDB5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478EF225D92590013CDB5 /* Common.swift */; };
 		062478F3225D97100013CDB5 /* BWOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478F2225D97100013CDB5 /* BWOAuthViewController.swift */; };
@@ -69,6 +70,7 @@
 		06002BC4226185A60063D525 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		06002BC72261A9210063D525 /* BWUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWUser.swift; sourceTree = "<group>"; };
 		06002BC92261AE910063D525 /* BWStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusViewModel.swift; sourceTree = "<group>"; };
+		06002BCB2261CE0E0063D525 /* BWStatusToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusToolBar.swift; sourceTree = "<group>"; };
 		062478ED225D91CF0013CDB5 /* WeiBoConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiBoConstant.swift; sourceTree = "<group>"; };
 		062478EF225D92590013CDB5 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Common.swift; path = BTStudioWeiBo/Class/Tools/Common.swift; sourceTree = SOURCE_ROOT; };
 		062478F2225D97100013CDB5 /* BWOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWOAuthViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				06002BBB226184370063D525 /* BWStatusCell.swift */,
+				06002BCB2261CE0E0063D525 /* BWStatusToolBar.swift */,
 				06002BBD226184510063D525 /* BWStatusNormalCell.xib */,
 			);
 			path = StatusCell;
@@ -599,6 +602,7 @@
 				062478F5225D9A6B0013CDB5 /* BWRegisterViewController.swift in Sources */,
 				06002BC82261A9210063D525 /* BWUser.swift in Sources */,
 				06E21CE4224F139000FFF5C3 /* NSString+CZPath.m in Sources */,
+				06002BCC2261CE0E0063D525 /* BWStatusToolBar.swift in Sources */,
 				06E21CDF224F139000FFF5C3 /* UIColor+CZAddition.m in Sources */,
 				063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */,
 				0670178A2260636F00A79A4D /* BWNewFeatureView.swift in Sources */,
