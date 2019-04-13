@@ -81,6 +81,7 @@ extension BWNetworkManager {
             // 加载用户信息
             self.loadUserInfo { (infoDict) -> () in
                 // 使用用户信息字典设置用户账户信息 (昵称和头像地址)
+//                self.userAccount.yy_modelSet(with: infoDict)
                 self.userAccount.setValuesForKeys(infoDict)
                 
                 // 保存用户信息到本地

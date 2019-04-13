@@ -25,7 +25,7 @@ private let maxPullUpTryTimes = 3
 class BWStatusListViewModel {
     
     /// 微博模型数组懒加载
-    lazy var statusList: [BWStatus] = []
+    lazy var statusList: [BWStatusViewModel] = []
     
     /// 上拉刷新错误次数
     private var pullupErrorTimes = 0
@@ -44,10 +44,10 @@ class BWStatusListViewModel {
         }
         
         // 取出第一条微博的id
-        let since_id = pullUp ? 0 : self.statusList.first?.id ?? 0
+        let since_id = pullUp ? 0 : self.statusList.first?.status.id ?? 0
         
         // 上拉刷新,取出数组的最后一条微博的id
-        let max_id = pullUp ? self.statusList.last?.id ?? 0 : 0
+        let max_id = pullUp ? self.statusList.last?.status.id ?? 0 : 0
         
         BWNetworkManager.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
             
@@ -62,11 +62,32 @@ class BWStatusListViewModel {
 //            }
             
             
-            // 1. 字典转模型
-            guard let array = NSArray.yy_modelArray(with: BWStatus.self, json: list ?? []) as? [BWStatus] else {
-                completion(isSuccess, false)
+            if !isSuccess {
+                completion(false, false)
                 return
             }
+            
+            // 微博视图模型 数组
+            var array: [BWStatusViewModel] = []
+            for dict in list ?? [] {
+                // 微博模型
+                let status = BWStatus()
+                status.yy_modelSet(with: dict)
+//                guard let status = BWStatus().yy_modelSet(with: dict) else {
+//                    continue
+//                }
+                // 根据 微博模型 创建 微博视图模型
+                let viewModel = BWStatusViewModel(status: status)
+                // 添加到数组
+                array.append(viewModel)
+                print(viewModel)
+            }
+            
+            // 1. 字典转模型
+//            guard let array = NSArray.yy_modelArray(with: BWStatus.self, json: list ?? []) as? [BWStatus] else {
+//                completion(isSuccess, false)
+//                return
+//            }
             print("刷新了 \(array.count) 条微博!")
             // 2. 拼接数据
             if pullUp {

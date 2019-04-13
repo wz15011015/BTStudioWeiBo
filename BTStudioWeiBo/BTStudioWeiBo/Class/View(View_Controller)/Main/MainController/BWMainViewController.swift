@@ -140,6 +140,10 @@ extension BWMainViewController: UITabBarControllerDelegate {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                 vc.loadData()
             }
+            
+            // 清除tabBarItem和App的badgeNumber
+            vc.tabBarItem.badgeValue = nil
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
         
         // 判断目标控制器是否为UIViewController,如果是,说明点击了撰写按钮,则不切换

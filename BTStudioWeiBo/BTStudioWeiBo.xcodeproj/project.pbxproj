@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06002BBC226184370063D525 /* BWStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BBB226184370063D525 /* BWStatusCell.swift */; };
+		06002BBE226184510063D525 /* BWStatusNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06002BBD226184510063D525 /* BWStatusNormalCell.xib */; };
+		06002BC12261859A0063D525 /* UIImageView+WebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BBF226185990063D525 /* UIImageView+WebImage.swift */; };
+		06002BC22261859A0063D525 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BC02261859A0063D525 /* UIImage+Extensions.swift */; };
+		06002BC5226185A60063D525 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BC3226185A60063D525 /* String+Extensions.swift */; };
+		06002BC6226185A60063D525 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BC4226185A60063D525 /* Date+Extensions.swift */; };
+		06002BC82261A9210063D525 /* BWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BC72261A9210063D525 /* BWUser.swift */; };
+		06002BCA2261AE910063D525 /* BWStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BC92261AE910063D525 /* BWStatusViewModel.swift */; };
 		062478EE225D91CF0013CDB5 /* WeiBoConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478ED225D91CF0013CDB5 /* WeiBoConstant.swift */; };
 		062478F0225D925A0013CDB5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478EF225D92590013CDB5 /* Common.swift */; };
 		062478F3225D97100013CDB5 /* BWOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478F2225D97100013CDB5 /* BWOAuthViewController.swift */; };
@@ -53,6 +61,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06002BBB226184370063D525 /* BWStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusCell.swift; sourceTree = "<group>"; };
+		06002BBD226184510063D525 /* BWStatusNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWStatusNormalCell.xib; sourceTree = "<group>"; };
+		06002BBF226185990063D525 /* UIImageView+WebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+WebImage.swift"; sourceTree = "<group>"; };
+		06002BC02261859A0063D525 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		06002BC3226185A60063D525 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		06002BC4226185A60063D525 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		06002BC72261A9210063D525 /* BWUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWUser.swift; sourceTree = "<group>"; };
+		06002BC92261AE910063D525 /* BWStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusViewModel.swift; sourceTree = "<group>"; };
 		062478ED225D91CF0013CDB5 /* WeiBoConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiBoConstant.swift; sourceTree = "<group>"; };
 		062478EF225D92590013CDB5 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Common.swift; path = BTStudioWeiBo/Class/Tools/Common.swift; sourceTree = SOURCE_ROOT; };
 		062478F2225D97100013CDB5 /* BWOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWOAuthViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +144,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06002BBA226184180063D525 /* StatusCell */ = {
+			isa = PBXGroup;
+			children = (
+				06002BBB226184370063D525 /* BWStatusCell.swift */,
+				06002BBD226184510063D525 /* BWStatusNormalCell.xib */,
+			);
+			path = StatusCell;
+			sourceTree = "<group>";
+		};
 		062478F1225D96EF0013CDB5 /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				06EA4534225C458E005D91E1 /* BWStatus.swift */,
+				06002BC72261A9210063D525 /* BWUser.swift */,
 			);
 			path = "Model(Model)";
 			sourceTree = "<group>";
@@ -278,6 +304,7 @@
 		06E21CB1224F101600FFF5C3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				06002BBA226184180063D525 /* StatusCell */,
 				06701782226030C500A79A4D /* TitleButton */,
 				06E21CBD224F111100FFF5C3 /* BWHomeViewController.swift */,
 			);
@@ -311,10 +338,10 @@
 		06E21CB5224F101600FFF5C3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				067017862260615E00A79A4D /* NewFeature */,
-				062478F1225D96EF0013CDB5 /* OAuth */,
 				06DC3F11225212E9002044E1 /* MainController */,
 				06C0757222545ECC00C12A16 /* VisitorView */,
+				067017862260615E00A79A4D /* NewFeature */,
+				062478F1225D96EF0013CDB5 /* OAuth */,
 				06E21CBB224F10CE00FFF5C3 /* BWBaseViewController.swift */,
 			);
 			path = Main;
@@ -324,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */,
+				06002BC92261AE910063D525 /* BWStatusViewModel.swift */,
 			);
 			path = "ViewModel(View_Model)";
 			sourceTree = "<group>";
@@ -363,6 +391,10 @@
 		06E21CEC224F191700FFF5C3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				06002BC4226185A60063D525 /* Date+Extensions.swift */,
+				06002BC3226185A60063D525 /* String+Extensions.swift */,
+				06002BC02261859A0063D525 /* UIImage+Extensions.swift */,
+				06002BBF226185990063D525 /* UIImageView+WebImage.swift */,
 				06E21CF1224F4EF500FFF5C3 /* UIColorExtension.swift */,
 				06E21CED224F191700FFF5C3 /* Bundle+Extensions.swift */,
 				06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */,
@@ -449,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */,
+				06002BBE226184510063D525 /* BWStatusNormalCell.xib in Resources */,
 				0694DC73225593E000F7FB9F /* Main.json in Resources */,
 				0670178C22606C1900A79A4D /* BWWelcomeView.xib in Resources */,
 				0670178E2260830400A79A4D /* BWNewFeatureView.xib in Resources */,
@@ -533,20 +566,26 @@
 				06E21CC4224F113100FFF5C3 /* BWProfileViewController.swift in Sources */,
 				06E21CE6224F139000FFF5C3 /* NSObject+CZRuntime.m in Sources */,
 				06E21CF2224F4EF500FFF5C3 /* UIColorExtension.swift in Sources */,
+				06002BC22261859A0063D525 /* UIImage+Extensions.swift in Sources */,
 				06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */,
 				06DC3F102251A989002044E1 /* BWNavigationBar.swift in Sources */,
 				06E21CE9224F139000FFF5C3 /* NSAttributedString+CZAdditon.m in Sources */,
+				06002BCA2261AE910063D525 /* BWStatusViewModel.swift in Sources */,
 				06E21CEA224F139000FFF5C3 /* NSArray+Log.m in Sources */,
 				06E21CEE224F191800FFF5C3 /* Bundle+Extensions.swift in Sources */,
 				06E21CE1224F139000FFF5C3 /* UIScreen+CZAddition.m in Sources */,
+				06002BC5226185A60063D525 /* String+Extensions.swift in Sources */,
 				06E21CC0224F111B00FFF5C3 /* BWMessageViewController.swift in Sources */,
+				06002BBC226184370063D525 /* BWStatusCell.swift in Sources */,
 				06E21CB8224F107900FFF5C3 /* BWMainViewController.swift in Sources */,
 				062478F3225D97100013CDB5 /* BWOAuthViewController.swift in Sources */,
 				06E21CBE224F111100FFF5C3 /* BWHomeViewController.swift in Sources */,
 				06E21CE5224F139000FFF5C3 /* UIButton+CZAddition.m in Sources */,
 				06701788226062D900A79A4D /* BWWelcomeView.swift in Sources */,
 				06E21CC2224F112700FFF5C3 /* BWDiscoveryViewController.swift in Sources */,
+				06002BC6226185A60063D525 /* Date+Extensions.swift in Sources */,
 				06E21CE8224F139000FFF5C3 /* NSString+CZHash.m in Sources */,
+				06002BC12261859A0063D525 /* UIImageView+WebImage.swift in Sources */,
 				067017842260312C00A79A4D /* BWWeiBoTitleButton.swift in Sources */,
 				06E21CF4224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift in Sources */,
 				062478F8225DEA210013CDB5 /* BWUserAccount.swift in Sources */,
@@ -558,6 +597,7 @@
 				06914FF1224EF7A0002F3E1C /* AppDelegate.swift in Sources */,
 				06E21CE2224F139000FFF5C3 /* UILabel+CZAddition.m in Sources */,
 				062478F5225D9A6B0013CDB5 /* BWRegisterViewController.swift in Sources */,
+				06002BC82261A9210063D525 /* BWUser.swift in Sources */,
 				06E21CE4224F139000FFF5C3 /* NSString+CZPath.m in Sources */,
 				06E21CDF224F139000FFF5C3 /* UIColor+CZAddition.m in Sources */,
 				063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */,

@@ -236,4 +236,46 @@ extension BWBaseViewController: UITableViewDataSource, UITableViewDelegate {
             loadData()
         }
     }
+    
+    func avatarImage(image: UIImage, size: CGSize, backColor: UIColor?) -> UIImage? {
+        /**
+         * 针对图像混合模式和拉伸的优化
+         * - 针对混合模式的优化: opaque为true,即为不透明,不透明可以减少计算
+         * - 针对图像拉伸的优化: 重新绘制指定大小的图像
+         */
+        let rect = CGRect(origin: CGPoint(), size: size)
+        
+        // 1. 图像的上下文 (内存中开辟一块空间,和屏幕无关!)
+        /**
+         * size: 绘图的尺寸
+         * opaque(不透明度): true 不透明 / false 透明
+         * scale(屏幕分辨率): 指定为0时,则默认使用当前设备的屏幕分辨率
+         */
+        UIGraphicsBeginImageContextWithOptions(size, true, 0)
+        
+        // 1.1 裁切前社长背景填充颜色
+        backColor?.setFill()
+        UIRectFill(rect)
+        // 1.2 实例化一个圆形路径
+        let path = UIBezierPath(ovalIn: rect)
+        // 1.3 进行路径裁切 - 后续的绘图都会在圆形路径内进行
+        path.addClip()
+        
+        // 2. 绘图 (就是在指定区域内拉伸)
+        image.draw(in: rect)
+        
+        // 2.1 绘制内切的圆形边框
+        UIColor.darkGray.setStroke()
+        path.lineWidth = 2 // 边框宽度
+        path.stroke()
+        
+        // 3. 取得结果
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        
+        // 4. 关闭上下文
+        UIGraphicsEndImageContext()
+        
+        // 5. 返回结果
+        return result
+    }
 }

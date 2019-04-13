@@ -64,7 +64,7 @@ class BWHomeViewController: BWBaseViewController {
 //            self.refreshControl?.endRefreshing()
 //        }
         
-        print("最后一条微博: \(listViewModel.statusList.last?.text ?? "")")
+//        print("最后一条微博: \(listViewModel.statusList.last?.text ?? "")")
         // 加载数据
         listViewModel.loadStatus(pullUp: isPullUp) { (isSuccess, shouldRefresh) in
             // 恢复上拉刷新标记
@@ -104,10 +104,10 @@ extension BWHomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! BWStatusCell
         
-        let status = listViewModel.statusList[indexPath.row]
-        cell.textLabel?.text = status.text
+        let viewModel = listViewModel.statusList[indexPath.row]
+        cell.viewModel = viewModel
         
         return cell
     }
@@ -125,7 +125,15 @@ extension BWHomeViewController {
         setupNavTitle()
         
         // 注册cell
-        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+//        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        tableView?.register(UINib(nibName: "BWStatusNormalCell", bundle: nil), forCellReuseIdentifier: cellID)
+        
+        // 设置行高
+        tableView?.rowHeight = UITableView.automaticDimension
+        tableView?.estimatedRowHeight = 300
+        
+        // 取消分割线
+        tableView?.separatorStyle = .none
     }
     
     /// 设置导航栏标题 (自定义)

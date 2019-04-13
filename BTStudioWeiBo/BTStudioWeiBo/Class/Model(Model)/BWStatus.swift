@@ -20,6 +20,9 @@ class BWStatus: NSObject {
     /// 微博信息内容
     @objc var text: String?
     
+    /// 微博的用户
+    @objc var user: BWUser?
+    
     /// 重写计算型属性 description
     override var description: String {
         return yy_modelDescription()
