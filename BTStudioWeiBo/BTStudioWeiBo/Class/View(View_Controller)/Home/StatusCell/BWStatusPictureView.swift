@@ -18,6 +18,7 @@ class BWStatusPictureView: UIView {
             for view in subviews {
                 view.isHidden = true
             }
+            
             // 2. 根据数据设置图片
 //            for (index, url) in urls?.enumerated() ?? [].enumerated() {
             

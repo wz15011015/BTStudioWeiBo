@@ -47,6 +47,16 @@ class BWStatusViewModel: CustomStringConvertible {
     /// 配图视图大小
     var pictureViewSize: CGSize = CGSize()
     
+    /// 如果是转发微博,则该微博一定没有图片
+    var picURLs: [BWStatusPicture]? {
+        // 如果是转发微博,则返回被转发微博的配图
+        // 如果不是转发微博,则返回原创微博的配图
+        return status.retweeted_status?.pic_urls ?? status.pic_urls
+    }
+    
+    /// 被转发微博的文字
+    var retweetedText: String?
+    
     
     var description: String {
         return status.description
@@ -87,7 +97,12 @@ class BWStatusViewModel: CustomStringConvertible {
         liekStr = countString(count: model.attitudes_count, defaultString: "赞")
         
         // 计算配图视图大小
-        pictureViewSize = calcPictureViewSize(picturesCount: model.pic_urls?.count)
+        // 有原创的就计算原创的,有转发的就计算转发的
+        pictureViewSize = calcPictureViewSize(picturesCount: picURLs?.count)
+        
+        // 被转发微博的文字
+        let userName = "@" + (model.retweeted_status?.user?.screen_name ?? "") + ": "
+        retweetedText = userName + (model.retweeted_status?.text ?? "")
     }
     
     

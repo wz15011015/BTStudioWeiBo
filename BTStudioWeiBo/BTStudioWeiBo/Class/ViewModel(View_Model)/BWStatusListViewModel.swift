@@ -78,7 +78,7 @@ class BWStatusListViewModel {
                 let viewModel = BWStatusViewModel(status: status)
                 // 添加到数组
                 array.append(viewModel)
-//                print("微博模型: \(viewModel)")
+                print("微博模型: \(viewModel)")
             }
             
             // 1. 字典转模型
@@ -99,8 +99,30 @@ class BWStatusListViewModel {
                 self.pullupErrorTimes += 1
                 completion(isSuccess, false)
             } else {
+                self.cacheSingleImage(list: array)
                 completion(isSuccess, true)
             }
+        }
+    }
+    
+    /// 缓存本次微博列表数据中的单张图像
+    ///
+    /// - Parameter list: 本次微博列表数据
+    private func cacheSingleImage(list: [BWStatusViewModel]) {
+        // 遍历数组,查找为单张图片的微博
+        for viewModel in list {
+            // 1. 判断图片数量
+            if viewModel.picURLs?.count != 1 {
+                continue
+            }
+            
+            // 2. 获取图片模型
+            guard let pic = viewModel.picURLs![0].thumbnail_pic,
+                let url = URL(string: pic) else {
+                    continue
+            }
+            print("要缓存的URL是:\(url.absoluteString)")
+            
         }
     }
 }

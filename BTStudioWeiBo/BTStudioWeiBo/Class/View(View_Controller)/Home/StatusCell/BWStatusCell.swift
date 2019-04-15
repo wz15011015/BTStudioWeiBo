@@ -31,17 +31,21 @@ class BWStatusCell: UITableViewCell {
             // 设置配图地址
 //            pictureView.urls = viewModel?.status.pic_urls
             // FIXME: 测试代码
-            if let count = viewModel?.status.pic_urls?.count {
-                if count > 4 {
-                    viewModel?.status.pic_urls?.removeSubrange(4..<count)
-                    pictureView.urls = viewModel?.status.pic_urls
-                } else {
-                    pictureView.urls = viewModel?.status.pic_urls
-                }
-            }
+//            if let count = viewModel?.status.pic_urls?.count {
+//                if count > 4 {
+//                    viewModel?.status.pic_urls?.removeSubrange(4..<count)
+//                    pictureView.urls = viewModel?.status.pic_urls
+//                } else {
+//                    pictureView.urls = viewModel?.status.pic_urls
+//                }
+//            }
+            pictureView.urls = viewModel?.picURLs
             
             // 设置配图视图的高度
             pictureView.heightConstraint.constant = viewModel?.pictureViewSize.height ?? 0
+            
+            // 设置被转发微博正文
+            retweetedLabel?.text = viewModel?.retweetedText
         }
     }
     
@@ -71,6 +75,9 @@ class BWStatusCell: UITableViewCell {
     
     /// 微博配图视图
     @IBOutlet weak var pictureView: BWStatusPictureView!
+    
+    /// 被转发微博的正文 (原创微博没有此控件)
+    @IBOutlet weak var retweetedLabel: UILabel?
     
 
     override func awakeFromNib() {

@@ -42,6 +42,9 @@ class BWStatus: NSObject {
      */
     @objc var pic_urls: [BWStatusPicture]?
     
+    /// 被转发的原创微博
+    @objc var retweeted_status: BWStatus?
+    
     /// 重写计算型属性 description
     override var description: String {
         return yy_modelDescription()

@@ -9,7 +9,8 @@
 import UIKit
 
 /// 定义全局常量,尽量使用 private 修饰,否则到处都可以访问
-private let cellID = "CellIdentifier"
+private let originalCellID = "OriginalCellIdentifier"
+private let retweetedCellID = "RetweetedCellIdentifier"
 
 
 class BWHomeViewController: BWBaseViewController {
@@ -104,9 +105,11 @@ extension BWHomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let viewModel = listViewModel.statusList[indexPath.row]
+        
+        let cellID = viewModel.status.retweeted_status == nil ? originalCellID : retweetedCellID
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! BWStatusCell
         
-        let viewModel = listViewModel.statusList[indexPath.row]
         cell.viewModel = viewModel
         
         return cell
@@ -126,7 +129,8 @@ extension BWHomeViewController {
         
         // 注册cell
 //        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
-        tableView?.register(UINib(nibName: "BWStatusNormalCell", bundle: nil), forCellReuseIdentifier: cellID)
+        tableView?.register(UINib(nibName: "BWStatusNormalCell", bundle: nil), forCellReuseIdentifier: originalCellID)
+        tableView?.register(UINib(nibName: "BWStatusRetweetedCell", bundle: nil), forCellReuseIdentifier: retweetedCellID)
         
         // 设置行高
         tableView?.rowHeight = UITableView.automaticDimension
