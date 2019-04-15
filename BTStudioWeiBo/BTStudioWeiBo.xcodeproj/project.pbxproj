@@ -23,6 +23,8 @@
 		062478F8225DEA210013CDB5 /* BWUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478F7225DEA210013CDB5 /* BWUserAccount.swift */; };
 		063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DC676225B449900FF5CB4 /* BWNetworkManager.swift */; };
 		064897FF225C481A00DBC01D /* BWStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */; };
+		065414132264192B00B3F388 /* BWStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065414122264192B00B3F388 /* BWStatusPictureView.swift */; };
+		0654141522641DA700B3F388 /* BWStatusPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654141422641DA700B3F388 /* BWStatusPicture.swift */; };
 		067017842260312C00A79A4D /* BWWeiBoTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067017832260312C00A79A4D /* BWWeiBoTitleButton.swift */; };
 		06701788226062D900A79A4D /* BWWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06701787226062D900A79A4D /* BWWelcomeView.swift */; };
 		0670178A2260636F00A79A4D /* BWNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067017892260636F00A79A4D /* BWNewFeatureView.swift */; };
@@ -78,6 +80,8 @@
 		062478F7225DEA210013CDB5 /* BWUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWUserAccount.swift; sourceTree = "<group>"; };
 		063DC676225B449900FF5CB4 /* BWNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNetworkManager.swift; sourceTree = "<group>"; };
 		064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusListViewModel.swift; sourceTree = "<group>"; };
+		065414122264192B00B3F388 /* BWStatusPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusPictureView.swift; sourceTree = "<group>"; };
+		0654141422641DA700B3F388 /* BWStatusPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusPicture.swift; sourceTree = "<group>"; };
 		067017832260312C00A79A4D /* BWWeiBoTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWWeiBoTitleButton.swift; sourceTree = "<group>"; };
 		06701787226062D900A79A4D /* BWWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWWelcomeView.swift; sourceTree = "<group>"; };
 		067017892260636F00A79A4D /* BWNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNewFeatureView.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 			children = (
 				06002BBB226184370063D525 /* BWStatusCell.swift */,
 				06002BCB2261CE0E0063D525 /* BWStatusToolBar.swift */,
+				065414122264192B00B3F388 /* BWStatusPictureView.swift */,
 				06002BBD226184510063D525 /* BWStatusNormalCell.xib */,
 			);
 			path = StatusCell;
@@ -288,6 +293,7 @@
 			children = (
 				06EA4534225C458E005D91E1 /* BWStatus.swift */,
 				06002BC72261A9210063D525 /* BWUser.swift */,
+				0654141422641DA700B3F388 /* BWStatusPicture.swift */,
 			);
 			path = "Model(Model)";
 			sourceTree = "<group>";
@@ -572,6 +578,7 @@
 				06002BC22261859A0063D525 /* UIImage+Extensions.swift in Sources */,
 				06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */,
 				06DC3F102251A989002044E1 /* BWNavigationBar.swift in Sources */,
+				065414132264192B00B3F388 /* BWStatusPictureView.swift in Sources */,
 				06E21CE9224F139000FFF5C3 /* NSAttributedString+CZAdditon.m in Sources */,
 				06002BCA2261AE910063D525 /* BWStatusViewModel.swift in Sources */,
 				06E21CEA224F139000FFF5C3 /* NSArray+Log.m in Sources */,
@@ -605,6 +612,7 @@
 				06002BCC2261CE0E0063D525 /* BWStatusToolBar.swift in Sources */,
 				06E21CDF224F139000FFF5C3 /* UIColor+CZAddition.m in Sources */,
 				063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */,
+				0654141522641DA700B3F388 /* BWStatusPicture.swift in Sources */,
 				0670178A2260636F00A79A4D /* BWNewFeatureView.swift in Sources */,
 				06E21CE0224F139000FFF5C3 /* UIView+CZAddition.m in Sources */,
 			);

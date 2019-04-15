@@ -31,3 +31,17 @@ let BWUserShouldRegisterNotification = "UserShouldRegisterNotification"
 
 /// 用户登录成功的通知
 let BWUserLoginSuccessNotification = "UserLoginSuccessNotification"
+
+
+// MARK: - 微博配图视图常量
+/// 配图视图外侧间距
+let WBStatusPictureViewOutterMargin = 12.0
+
+/// 配图视图内部图片之间的间距
+let WBStatusPictureViewInnerMargin = 3.0
+
+/// 配图视图的宽度
+let WBStatusPictureViewWidth = BW_Width - 2 * WBStatusPictureViewOutterMargin
+
+/// 每个图片的默认宽度
+let WBStatusPictureItemWidth = (WBStatusPictureViewWidth - 2 * WBStatusPictureViewInnerMargin) / 3

@@ -70,6 +70,7 @@ class BWStatusListViewModel {
             // 微博视图模型 数组
             var array: [BWStatusViewModel] = []
             for dict in list ?? [] {
+//                print("微博json: \(dict)")
                 // 微博模型
                 let status = BWStatus()
                 status.yy_modelSet(with: dict)
@@ -77,7 +78,7 @@ class BWStatusListViewModel {
                 let viewModel = BWStatusViewModel(status: status)
                 // 添加到数组
                 array.append(viewModel)
-//                print(viewModel)
+//                print("微博模型: \(viewModel)")
             }
             
             // 1. 字典转模型

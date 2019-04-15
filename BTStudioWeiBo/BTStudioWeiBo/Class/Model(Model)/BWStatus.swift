@@ -32,9 +32,33 @@ class BWStatus: NSObject {
     /// 微博的用户
     @objc var user: BWUser?
     
+    /// 微博配图地址数组 (容器类属性)
+    /**
+     * YYModel在字典转模型时,如果发现一个数组属性,则尝试调用类方法
+     * modelContainerPropertyGenericClass,如果实现了该类方法
+     * YYModel会尝试使用类来实例化数组中的对象
+     *
+     * 所有的第三方框架基本都是如此!
+     */
+    @objc var pic_urls: [BWStatusPicture]?
+    
     /// 重写计算型属性 description
     override var description: String {
         return yy_modelDescription()
+    }
+    
+    /// 容器类属性 (类方法)
+    ///
+    /// - Returns: 容器类中的所需要存放的数据类型 (以 Class 或 Class Name 的形式)。
+    /**
+     * 作用: 告诉第三方框架,如果遇到数组类型的属性,数组中存放的对象是什么类
+     *
+     * NSArray中保存的对象的类型通常是 id 类型
+     * OC中的泛型是 Swift 推出后,苹果为了兼容而给OC增加的
+     * 从运行时角度看,仍然不知道数组中应该存放什么类型的对象
+     */
+    @objc class func modelContainerPropertyGenericClass() -> [String: AnyClass] {
+        return ["pic_urls": BWStatusPicture.self]
     }
     
     

@@ -44,6 +44,10 @@ class BWStatusViewModel: CustomStringConvertible {
     /// 点赞文字
     var liekStr: String?
     
+    /// 配图视图大小
+    var pictureViewSize: CGSize = CGSize()
+    
+    
     var description: String {
         return status.description
     }
@@ -81,6 +85,36 @@ class BWStatusViewModel: CustomStringConvertible {
         retweetedStr = countString(count: model.reposts_count, defaultString: "转发")
         commentStr = countString(count: model.comments_count, defaultString: "评论")
         liekStr = countString(count: model.attitudes_count, defaultString: "赞")
+        
+        // 计算配图视图大小
+        pictureViewSize = calcPictureViewSize(picturesCount: model.pic_urls?.count)
+    }
+    
+    
+    /// 计算指定数量的图片对应的配图视图的大小
+    ///
+    /// - parameter count: 配图数量
+    ///
+    /// - Returns: 配图视图的大小
+    private func calcPictureViewSize(picturesCount count: Int?) -> CGSize {
+        guard let count = count else {
+            return CGSize()
+        }
+        if count == 0 {
+            return CGSize()
+        }
+        
+        // 1. 计算配图视图的宽度
+        
+        // 2. 计算高度
+        // 根据数量计算行数
+        let row = ((count - 1) / 3) + 1
+        
+        let picturesHeight = Double((row - 1)) * WBStatusPictureViewInnerMargin
+        let picturesMarginHeight = Double(row) * WBStatusPictureItemWidth
+        let height = WBStatusPictureViewOutterMargin + picturesMarginHeight + picturesHeight
+        
+        return CGSize(width: WBStatusPictureViewWidth, height: height)
     }
     
     /// 给定一个数字,返回对应的描述结果

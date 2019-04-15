@@ -27,6 +27,21 @@ class BWStatusCell: UITableViewCell {
             
             // 底部工具栏(转发/评论/点赞 数量)
             toolBar.viewModel = viewModel
+            
+            // 设置配图地址
+//            pictureView.urls = viewModel?.status.pic_urls
+            // FIXME: 测试代码
+            if let count = viewModel?.status.pic_urls?.count {
+                if count > 4 {
+                    viewModel?.status.pic_urls?.removeSubrange(4..<count)
+                    pictureView.urls = viewModel?.status.pic_urls
+                } else {
+                    pictureView.urls = viewModel?.status.pic_urls
+                }
+            }
+            
+            // 设置配图视图的高度
+            pictureView.heightConstraint.constant = viewModel?.pictureViewSize.height ?? 0
         }
     }
     
@@ -53,6 +68,9 @@ class BWStatusCell: UITableViewCell {
     
     /// 底部工具栏
     @IBOutlet weak var toolBar: BWStatusToolBar!
+    
+    /// 微博配图视图
+    @IBOutlet weak var pictureView: BWStatusPictureView!
     
 
     override func awakeFromNib() {
