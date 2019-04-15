@@ -30,7 +30,7 @@ class BWStatusCell: UITableViewCell {
             
             // 设置配图地址
 //            pictureView.urls = viewModel?.status.pic_urls
-            // FIXME: 测试代码
+            // 测试代码
 //            if let count = viewModel?.status.pic_urls?.count {
 //                if count > 4 {
 //                    viewModel?.status.pic_urls?.removeSubrange(4..<count)
@@ -40,6 +40,7 @@ class BWStatusCell: UITableViewCell {
 //                }
 //            }
             pictureView.urls = viewModel?.picURLs
+            pictureView.viewModel = viewModel
             
             // 设置配图视图的高度
             pictureView.heightConstraint.constant = viewModel?.pictureViewSize.height ?? 0

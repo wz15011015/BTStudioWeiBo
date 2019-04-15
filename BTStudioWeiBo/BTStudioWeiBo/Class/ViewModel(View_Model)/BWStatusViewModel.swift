@@ -106,6 +106,16 @@ class BWStatusViewModel: CustomStringConvertible {
     }
     
     
+    /// 使用单个图片,更新配图视图的大小
+    ///
+    /// - Parameter image: 单张图片
+    func updateSingleImageSize(image: UIImage) {
+        var size = image.size
+        size.height += CGFloat(WBStatusPictureViewOutterMargin)
+        
+        pictureViewSize = size
+    }
+    
     /// 计算指定数量的图片对应的配图视图的大小
     ///
     /// - parameter count: 配图数量

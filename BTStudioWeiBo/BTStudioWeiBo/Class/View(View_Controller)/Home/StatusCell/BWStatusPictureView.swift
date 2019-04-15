@@ -11,6 +11,12 @@ import UIKit
 /// 微博配图视图
 class BWStatusPictureView: UIView {
     
+    var viewModel: BWStatusViewModel? {
+        didSet {
+            calcViewSize()
+        }
+    }
+    
     /// 配图地址数组
     var urls: [BWStatusPicture]? {
         didSet {
@@ -45,6 +51,29 @@ class BWStatusPictureView: UIView {
         clipsToBounds = true // 超出边界的内容不显示
         
         setupUI()
+    }
+    
+    /// 根据视图模型中的配图视图大小,调整显示内容
+    private func calcViewSize() {
+        // 1. 第一张图片宽度的处理
+        // 1.1 单图
+        if viewModel?.picURLs?.count == 1 {
+            let viewSize = viewModel?.pictureViewSize ?? CGSize()
+            
+            // 获取第一张图片(单图)
+            let imageView = subviews[0]
+            imageView.frame = CGRect(x: 0.0, y: WBStatusPictureViewOutterMargin, width: Double(viewSize.width), height: Double(viewSize.height) - WBStatusPictureViewOutterMargin)
+            
+        // 1.2 多图
+        } else {
+            // 获取第一张图片,恢复其大小为九宫格格式的大小,以保证九宫格布局的正确显示
+            let imageView = subviews[0]
+            imageView.frame = CGRect(x: 0.0, y: WBStatusPictureViewOutterMargin, width: WBStatusPictureItemWidth, height: WBStatusPictureItemWidth)
+        }
+        
+        
+        // 2. 修改配图视图高度的约束值
+        heightConstraint.constant = viewModel?.pictureViewSize.height ?? 0
     }
 
     /*

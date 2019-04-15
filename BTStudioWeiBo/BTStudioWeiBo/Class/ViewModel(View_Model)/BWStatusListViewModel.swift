@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SDWebImage
 
 /// 上拉刷新的最大次数
 private let maxPullUpTryTimes = 3
@@ -99,8 +100,8 @@ class BWStatusListViewModel {
                 self.pullupErrorTimes += 1
                 completion(isSuccess, false)
             } else {
-                self.cacheSingleImage(list: array)
-                completion(isSuccess, true)
+//                completion(isSuccess, true)
+                self.cacheSingleImage(list: array, finished: completion)
             }
         }
     }
@@ -108,10 +109,20 @@ class BWStatusListViewModel {
     /// 缓存本次微博列表数据中的单张图像
     ///
     /// - Parameter list: 本次微博列表数据
-    private func cacheSingleImage(list: [BWStatusViewModel]) {
+    ///
+    /// 应该缓存完所有单张图片,并且修改过配图视图的大小之后,再回调,
+    /// 此时,才能保证Cell中等比例显示单张图片
+    private func cacheSingleImage(list: [BWStatusViewModel], finished: @escaping (_ isSuccess: Bool, _ shouldRefresh: Bool) -> ()) {
+        // 记录图片数据长度
+        var length = 0
+        
+        // 调度组_1: 创建调度组
+        let group = DispatchGroup()
+        
+        
         // 遍历数组,查找为单张图片的微博
         for viewModel in list {
-            // 1. 判断图片数量
+            // 1. 判断图片数量(数量不为1,则继续判断下一个)
             if viewModel.picURLs?.count != 1 {
                 continue
             }
@@ -121,8 +132,39 @@ class BWStatusListViewModel {
                 let url = URL(string: pic) else {
                     continue
             }
-            print("要缓存的URL是:\(url.absoluteString)")
             
+            // 3. 下载图片
+            /**
+             * 1. 方法downloadImage()是SDWebImage库的核心方法;
+             * 2. 图像下载完成之后,会自动保存在沙盒中,文件路径是url的MD5;
+             * 3. 如果沙盒中已经存在缓存图片,则后续使用SDWebImage通过URL加载图片时,
+             *    都会加载本地沙盒中的图片,不会再次发起网络请求,但回调方法依然会调用;
+             */
+            
+            // 调度组_2: 入组
+            group.enter()
+            
+            SDWebImageManager.shared().imageDownloader?.downloadImage(with: url, options: [], progress: { (_, _, _) in
+                
+            }, completed: { (image, data, error, _) in
+                if let image = image, let imageData = image.pngData() {
+                    // data的大小: 在OC中NSData为length属性
+                    length += imageData.count
+                    
+                    // 图片缓存成功,更新配图视图的大小
+                    viewModel.updateSingleImageSize(image: image)
+                }
+                
+                // 调度组_3: 出组
+                group.leave()
+            })
+        }
+        
+        // 调度组_4: 调度组监听方法
+        group.notify(queue: DispatchQueue.main) {
+            print("所有单张图片缓存完成,数据大小: \(length)")
+            // 执行闭包回调
+            finished(true, true)
         }
     }
 }
