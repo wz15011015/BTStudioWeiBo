@@ -34,7 +34,7 @@ class BWBaseViewController: UIViewController {
     var tableView: UITableView?
     
     /// 刷新控件
-    var refreshControl: UIRefreshControl?
+    var refreshControl: BWRefreshControl?
     
     /// 是否上拉刷新
     var isPullUp: Bool = false
@@ -181,7 +181,7 @@ extension BWBaseViewController {
         
         // 设置刷新控件
         // 1. 实例化控件
-        refreshControl = UIRefreshControl()
+        refreshControl = BWRefreshControl()
         // 2. 添加到视图
         tableView?.addSubview(refreshControl!)
         // 3. 添加监听方法

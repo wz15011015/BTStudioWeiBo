@@ -16,6 +16,7 @@
 		06002BC82261A9210063D525 /* BWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BC72261A9210063D525 /* BWUser.swift */; };
 		06002BCA2261AE910063D525 /* BWStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BC92261AE910063D525 /* BWStatusViewModel.swift */; };
 		06002BCC2261CE0E0063D525 /* BWStatusToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06002BCB2261CE0E0063D525 /* BWStatusToolBar.swift */; };
+		0609615D2265B770006BFA34 /* BWRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0609615C2265B770006BFA34 /* BWRefreshControl.swift */; };
 		062478EE225D91CF0013CDB5 /* WeiBoConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478ED225D91CF0013CDB5 /* WeiBoConstant.swift */; };
 		062478F0225D925A0013CDB5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478EF225D92590013CDB5 /* Common.swift */; };
 		062478F3225D97100013CDB5 /* BWOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478F2225D97100013CDB5 /* BWOAuthViewController.swift */; };
@@ -74,6 +75,7 @@
 		06002BC72261A9210063D525 /* BWUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWUser.swift; sourceTree = "<group>"; };
 		06002BC92261AE910063D525 /* BWStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusViewModel.swift; sourceTree = "<group>"; };
 		06002BCB2261CE0E0063D525 /* BWStatusToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusToolBar.swift; sourceTree = "<group>"; };
+		0609615C2265B770006BFA34 /* BWRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWRefreshControl.swift; sourceTree = "<group>"; };
 		062478ED225D91CF0013CDB5 /* WeiBoConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiBoConstant.swift; sourceTree = "<group>"; };
 		062478EF225D92590013CDB5 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Common.swift; path = BTStudioWeiBo/Class/Tools/Common.swift; sourceTree = SOURCE_ROOT; };
 		062478F2225D97100013CDB5 /* BWOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWOAuthViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,14 @@
 				0654141622646AD400B3F388 /* BWStatusRetweetedCell.xib */,
 			);
 			path = StatusCell;
+			sourceTree = "<group>";
+		};
+		0609615B2265B75F006BFA34 /* BWRefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				0609615C2265B770006BFA34 /* BWRefreshControl.swift */,
+			);
+			path = BWRefreshControl;
 			sourceTree = "<group>";
 		};
 		062478F1225D96EF0013CDB5 /* OAuth */ = {
@@ -281,6 +291,7 @@
 		06E21CAE224F101600FFF5C3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				0609615B2265B75F006BFA34 /* BWRefreshControl */,
 				063DC675225B446600FF5CB4 /* Network */,
 				06DC3F0E2251A971002044E1 /* BWNavigationBar */,
 				06E21CEC224F191700FFF5C3 /* Extensions */,
@@ -582,6 +593,7 @@
 				06002BC22261859A0063D525 /* UIImage+Extensions.swift in Sources */,
 				06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */,
 				06DC3F102251A989002044E1 /* BWNavigationBar.swift in Sources */,
+				0609615D2265B770006BFA34 /* BWRefreshControl.swift in Sources */,
 				065414132264192B00B3F388 /* BWStatusPictureView.swift in Sources */,
 				06E21CE9224F139000FFF5C3 /* NSAttributedString+CZAdditon.m in Sources */,
 				06002BCA2261AE910063D525 /* BWStatusViewModel.swift in Sources */,
