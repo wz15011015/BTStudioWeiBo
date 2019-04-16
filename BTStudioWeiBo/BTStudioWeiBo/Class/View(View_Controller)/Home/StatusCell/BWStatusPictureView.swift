@@ -14,11 +14,24 @@ class BWStatusPictureView: UIView {
     var viewModel: BWStatusViewModel? {
         didSet {
             calcViewSize()
+            
+            // 设置urls
+            // 设置配图地址
+            // 测试代码
+//            if let count = viewModel?.status.pic_urls?.count {
+//                if count > 4 {
+//                    viewModel?.status.pic_urls?.removeSubrange(4..<count)
+//                    urls = viewModel?.status.pic_urls
+//                } else {
+//                    urls = viewModel?.status.pic_urls
+//                }
+//            }
+            urls = viewModel?.picURLs
         }
     }
     
     /// 配图地址数组
-    var urls: [BWStatusPicture]? {
+    private var urls: [BWStatusPicture]? {
         didSet {
             // 1. 隐藏所有imageView
             for view in subviews {

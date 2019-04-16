@@ -61,23 +61,23 @@
                         <rect key="frame" x="39" y="51" width="14" height="14"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3f-Dx-RId" userLabel="Label_正文">
-                        <rect key="frame" x="12" y="76" width="393" height="22"/>
+                        <rect key="frame" x="12" y="76" width="393" height="34"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtZ-ga-8IU" userLabel="被转发微博的背景按钮">
-                        <rect key="frame" x="0.0" y="110" width="417" height="219.5"/>
+                        <rect key="frame" x="0.0" y="122" width="417" height="219.5"/>
                         <color key="backgroundColor" red="0.92941176470588238" green="0.93333333333333335" blue="0.93725490196078431" alpha="0.57586899999999996" colorSpace="calibratedRGB"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJf-Vl-gt9" userLabel="被转发微博正文">
-                        <rect key="frame" x="12" y="122" width="393" height="19.5"/>
+                        <rect key="frame" x="12" y="134" width="393" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wH-Ko-jDg" userLabel="View_配图视图" customClass="BWStatusPictureView" customModule="BTStudioWeiBo" customModuleProvider="target">
-                        <rect key="frame" x="12" y="141.5" width="393" height="176"/>
+                        <rect key="frame" x="12" y="153.5" width="393" height="176"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="176" id="AQT-wU-zpC"/>
@@ -170,7 +170,7 @@
                     <constraint firstItem="CGh-US-QAy" firstAttribute="leading" secondItem="PeN-K3-9bc" secondAttribute="trailing" constant="3" id="Dne-e7-Af2"/>
                     <constraint firstItem="dW8-ow-8CE" firstAttribute="top" secondItem="iqL-fa-AHR" secondAttribute="bottom" constant="12" id="GZy-ft-iCq"/>
                     <constraint firstAttribute="trailing" secondItem="iqL-fa-AHR" secondAttribute="trailing" id="LOk-XZ-3Mh"/>
-                    <constraint firstItem="4gu-LR-qyX" firstAttribute="top" secondItem="BtZ-ga-8IU" secondAttribute="bottom" constant="12" id="Ls6-0U-lK6"/>
+                    <constraint firstItem="4gu-LR-qyX" firstAttribute="top" secondItem="BtZ-ga-8IU" secondAttribute="bottom" id="Ls6-0U-lK6"/>
                     <constraint firstItem="KKz-A9-oHN" firstAttribute="centerY" secondItem="dW8-ow-8CE" secondAttribute="bottom" constant="-6" id="MHp-3m-IZ9"/>
                     <constraint firstItem="iqL-fa-AHR" firstAttribute="leading" secondItem="Vjz-d4-Y4Y" secondAttribute="leading" id="OSD-TB-oK3"/>
                     <constraint firstItem="CJf-Vl-gt9" firstAttribute="trailing" secondItem="BtZ-ga-8IU" secondAttribute="trailing" constant="-12" id="Uz3-uh-9jk"/>
@@ -205,7 +205,7 @@
                 <outlet property="toolBar" destination="4gu-LR-qyX" id="gCA-qc-zTv"/>
                 <outlet property="vipIconImageView" destination="KKz-A9-oHN" id="U2q-f3-UEG"/>
             </connections>
-            <point key="canvasLocation" x="50.000000000000007" y="146.65178571428569"/>
+            <point key="canvasLocation" x="50.000000000000007" y="145.98214285714286"/>
         </tableViewCell>
     </objects>
     <resources>

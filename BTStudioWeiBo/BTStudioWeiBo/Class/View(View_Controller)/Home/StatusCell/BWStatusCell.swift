@@ -28,18 +28,7 @@ class BWStatusCell: UITableViewCell {
             // 底部工具栏(转发/评论/点赞 数量)
             toolBar.viewModel = viewModel
             
-            // 设置配图地址
-//            pictureView.urls = viewModel?.status.pic_urls
-            // 测试代码
-//            if let count = viewModel?.status.pic_urls?.count {
-//                if count > 4 {
-//                    viewModel?.status.pic_urls?.removeSubrange(4..<count)
-//                    pictureView.urls = viewModel?.status.pic_urls
-//                } else {
-//                    pictureView.urls = viewModel?.status.pic_urls
-//                }
-//            }
-            pictureView.urls = viewModel?.picURLs
+            // 设置配图视图的视图模型
             pictureView.viewModel = viewModel
             
             // 设置配图视图的高度
@@ -84,6 +73,25 @@ class BWStatusCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        // 高级优化:
+        // 1. 离屏渲染 - 异步绘制
+//        self.layer.drawsAsynchronously = true
+        
+        // 2. 栅格化 - 异步绘制之后,会生成一张独立的图片,Cell在屏幕上滚动的时候,本质上滚动的是这张图片
+        // Cell的优化要尽量减少图层的数量,相当于只有一层!
+        // 停止滚动后,可以接收监听事件
+//        self.layer.shouldRasterize = true
+        
+        // 使用栅格化,必须注意指定分辨率
+//        self.layer.rasterizationScale = UIScreen.main.scale
+        
+        /**
+         * Tips:
+         * - 如果检测到Cell滚动时的性能已经很好了,就不需要离屏渲染了;
+         *   - 离屏渲染需要在GPU / CPU之间快速的切换;
+         *   - 耗电会厉害;
+         */
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

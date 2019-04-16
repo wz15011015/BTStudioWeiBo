@@ -237,6 +237,11 @@ extension BWBaseViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 0
+    }
+    
+    
     func avatarImage(image: UIImage, size: CGSize, backColor: UIColor?) -> UIImage? {
         /**
          * 针对图像混合模式和拉伸的优化

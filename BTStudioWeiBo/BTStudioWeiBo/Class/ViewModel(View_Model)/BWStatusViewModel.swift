@@ -21,6 +21,8 @@ import UIKit
  - 不要动态创建控件,所有控件都需要提前创建好,在显示的时候,只需要根据数据来隐藏/显示!
  - Cell 中控件的层次越少越好,数量越少越好!
  - 要测量,不要猜测!
+ 
+ - 缓存行高 是解决表格刷新性能的最佳途径!
  */
 
 /// 单条微博数据 视图模型
@@ -56,6 +58,9 @@ class BWStatusViewModel: CustomStringConvertible {
     
     /// 被转发微博的文字
     var retweetedText: String?
+    
+    /// 行高
+    var rowHeight: CGFloat = 0
     
     
     var description: String {
@@ -103,17 +108,80 @@ class BWStatusViewModel: CustomStringConvertible {
         // 被转发微博的文字
         let userName = "@" + (model.retweeted_status?.user?.screen_name ?? "") + ": "
         retweetedText = userName + (model.retweeted_status?.text ?? "")
+        
+        // 计算行高
+        updateRowHeight()
     }
     
+    
+    /// 根据当前视图模型内容计算行高
+    func updateRowHeight() {
+        let margin: CGFloat = 12
+        let iconHeight: CGFloat = 40
+        let toolbarHeight: CGFloat = 35
+        
+        let size = CGSize(width: CGFloat(BW_Width) - 2 * margin, height: CGFloat(MAXFLOAT))
+        let originalFont = UIFont.systemFont(ofSize: 17)
+        let retweetedFont = UIFont.systemFont(ofSize: 16)
+        
+        
+        var height: CGFloat = 0
+        
+        // 1. 顶部高度
+        height = 2 * margin + iconHeight + margin
+        
+        // 2. 正文高度 (原创微博)
+        if let text = status.text {
+            height += (text as NSString).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: originalFont], context: nil).height
+        }
+        // 判断是否为转发微博 (转发微博)
+        if status.retweeted_status != nil {
+            height += 2 * margin
+            if let text = retweetedText {
+                height += (text as NSString).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: retweetedFont], context: nil).height
+            }
+        }
+        
+        // 3. 配图高度
+        height += pictureViewSize.height
+        height += margin
+        
+        // 4. 底部工具栏
+        height += toolbarHeight
+        
+        // 5. 使用属性记录行高
+        rowHeight = height
+    }
     
     /// 使用单个图片,更新配图视图的大小
     ///
     /// - Parameter image: 单张图片
     func updateSingleImageSize(image: UIImage) {
         var size = image.size
+        
+        // 图片过宽的处理
+        let maxWidth: CGFloat = 300
+        if size.width > maxWidth {
+            // 等比例调整高度
+            size.width = maxWidth
+            size.height = size.width * (image.size.height / image.size.width)
+        }
+        
+        // 图片过窄的处理
+        let minWidth: CGFloat = 40
+        if size.width < minWidth {
+            size.width = minWidth
+            
+            // 要特殊处理,否则高度太大,会影响用户体验
+            size.height = size.width * (image.size.height / image.size.width) / 4
+        }
+        
         size.height += CGFloat(WBStatusPictureViewOutterMargin)
         
         pictureViewSize = size
+        
+        // 更新行高
+        updateRowHeight()
     }
     
     /// 计算指定数量的图片对应的配图视图的大小

@@ -108,11 +108,21 @@ extension BWHomeViewController {
         let viewModel = listViewModel.statusList[indexPath.row]
         
         let cellID = viewModel.status.retweeted_status == nil ? originalCellID : retweetedCellID
+        // 取Cell
+        // 如果没有,则找到Cell,按照自动布局的规则,从上到下计算,找到向下的约束,从而动态计算行高
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! BWStatusCell
         
         cell.viewModel = viewModel
         
         return cell
+    }
+    
+    // 父类必须实现代理方法,子类才能够重写
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // 1. 获取视图模型
+        let viewModel = listViewModel.statusList[indexPath.row]
+        // 2. 返回计算好的行高
+        return viewModel.rowHeight
     }
 }
 
@@ -133,7 +143,8 @@ extension BWHomeViewController {
         tableView?.register(UINib(nibName: "BWStatusRetweetedCell", bundle: nil), forCellReuseIdentifier: retweetedCellID)
         
         // 设置行高
-        tableView?.rowHeight = UITableView.automaticDimension
+        // 注释自动行高属性
+//        tableView?.rowHeight = UITableView.automaticDimension
         tableView?.estimatedRowHeight = 300
         
         // 取消分割线
