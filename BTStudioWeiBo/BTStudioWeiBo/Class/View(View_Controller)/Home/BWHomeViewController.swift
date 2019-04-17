@@ -66,8 +66,11 @@ class BWHomeViewController: BWBaseViewController {
 //        }
         
 //        print("最后一条微博: \(listViewModel.statusList.last?.text ?? "")")
+        
+        refreshControl?.beginRefreshing()
+        
         // 加载数据
-        listViewModel.loadStatus(pullUp: isPullUp) { (isSuccess, shouldRefresh) in
+        self.listViewModel.loadStatus(pullUp: self.isPullUp) { (isSuccess, shouldRefresh) in
             // 恢复上拉刷新标记
             self.isPullUp = false
             

@@ -27,6 +27,8 @@
 		065414132264192B00B3F388 /* BWStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065414122264192B00B3F388 /* BWStatusPictureView.swift */; };
 		0654141522641DA700B3F388 /* BWStatusPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0654141422641DA700B3F388 /* BWStatusPicture.swift */; };
 		0654141722646AD400B3F388 /* BWStatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0654141622646AD400B3F388 /* BWStatusRetweetedCell.xib */; };
+		0655A6882266BF3C006ED69E /* BWRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0655A6872266BF3C006ED69E /* BWRefreshView.xib */; };
+		0655A68A2266C12B006ED69E /* BWRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0655A6892266C12B006ED69E /* BWRefreshView.swift */; };
 		067017842260312C00A79A4D /* BWWeiBoTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067017832260312C00A79A4D /* BWWeiBoTitleButton.swift */; };
 		06701788226062D900A79A4D /* BWWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06701787226062D900A79A4D /* BWWelcomeView.swift */; };
 		0670178A2260636F00A79A4D /* BWNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067017892260636F00A79A4D /* BWNewFeatureView.swift */; };
@@ -37,6 +39,9 @@
 		06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF7224EF7A2002F3E1C /* Assets.xcassets */; };
 		0694DC73225593E000F7FB9F /* Main.json in Resources */ = {isa = PBXBuildFile; fileRef = 0694DC72225593E000F7FB9F /* Main.json */; };
 		06C0757422545EDE00C12A16 /* BWVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C0757322545EDE00C12A16 /* BWVisitorView.swift */; };
+		06D6024122672D15002760FF /* BWHumanRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06D6024022672D15002760FF /* BWHumanRefreshView.xib */; };
+		06D6024322672F5D002760FF /* BWMTRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06D6024222672F5D002760FF /* BWMTRefreshView.xib */; };
+		06D6024522673138002760FF /* BWMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D6024422673138002760FF /* BWMTRefreshView.swift */; };
 		06DC3F102251A989002044E1 /* BWNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC3F0F2251A989002044E1 /* BWNavigationBar.swift */; };
 		06E21CB8224F107900FFF5C3 /* BWMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CB7224F107900FFF5C3 /* BWMainViewController.swift */; };
 		06E21CBA224F10AA00FFF5C3 /* BWNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CB9224F10AA00FFF5C3 /* BWNavigationController.swift */; };
@@ -86,6 +91,8 @@
 		065414122264192B00B3F388 /* BWStatusPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusPictureView.swift; sourceTree = "<group>"; };
 		0654141422641DA700B3F388 /* BWStatusPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusPicture.swift; sourceTree = "<group>"; };
 		0654141622646AD400B3F388 /* BWStatusRetweetedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BWStatusRetweetedCell.xib; sourceTree = "<group>"; };
+		0655A6872266BF3C006ED69E /* BWRefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWRefreshView.xib; sourceTree = "<group>"; };
+		0655A6892266C12B006ED69E /* BWRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWRefreshView.swift; sourceTree = "<group>"; };
 		067017832260312C00A79A4D /* BWWeiBoTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWWeiBoTitleButton.swift; sourceTree = "<group>"; };
 		06701787226062D900A79A4D /* BWWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWWelcomeView.swift; sourceTree = "<group>"; };
 		067017892260636F00A79A4D /* BWNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNewFeatureView.swift; sourceTree = "<group>"; };
@@ -98,6 +105,9 @@
 		06914FFC224EF7A2002F3E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0694DC72225593E000F7FB9F /* Main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Main.json; sourceTree = "<group>"; };
 		06C0757322545EDE00C12A16 /* BWVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWVisitorView.swift; sourceTree = "<group>"; };
+		06D6024022672D15002760FF /* BWHumanRefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWHumanRefreshView.xib; sourceTree = "<group>"; };
+		06D6024222672F5D002760FF /* BWMTRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BWMTRefreshView.xib; sourceTree = "<group>"; };
+		06D6024422673138002760FF /* BWMTRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWMTRefreshView.swift; sourceTree = "<group>"; };
 		06DC3F0F2251A989002044E1 /* BWNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNavigationBar.swift; sourceTree = "<group>"; };
 		06E21CB7224F107900FFF5C3 /* BWMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWMainViewController.swift; sourceTree = "<group>"; };
 		06E21CB9224F10AA00FFF5C3 /* BWNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNavigationController.swift; sourceTree = "<group>"; };
@@ -170,6 +180,11 @@
 			isa = PBXGroup;
 			children = (
 				0609615C2265B770006BFA34 /* BWRefreshControl.swift */,
+				0655A6892266C12B006ED69E /* BWRefreshView.swift */,
+				06D6024422673138002760FF /* BWMTRefreshView.swift */,
+				0655A6872266BF3C006ED69E /* BWRefreshView.xib */,
+				06D6024022672D15002760FF /* BWHumanRefreshView.xib */,
+				06D6024222672F5D002760FF /* BWMTRefreshView.xib */,
 			);
 			path = BWRefreshControl;
 			sourceTree = "<group>";
@@ -504,10 +519,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0654141722646AD400B3F388 /* BWStatusRetweetedCell.xib in Resources */,
+				06D6024122672D15002760FF /* BWHumanRefreshView.xib in Resources */,
 				06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */,
 				06002BBE226184510063D525 /* BWStatusNormalCell.xib in Resources */,
 				0694DC73225593E000F7FB9F /* Main.json in Resources */,
 				0670178C22606C1900A79A4D /* BWWelcomeView.xib in Resources */,
+				06D6024322672F5D002760FF /* BWMTRefreshView.xib in Resources */,
+				0655A6882266BF3C006ED69E /* BWRefreshView.xib in Resources */,
 				0670178E2260830400A79A4D /* BWNewFeatureView.xib in Resources */,
 				06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */,
 			);
@@ -583,9 +601,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0655A68A2266C12B006ED69E /* BWRefreshView.swift in Sources */,
 				062478F0225D925A0013CDB5 /* Common.swift in Sources */,
 				06E21CBC224F10CE00FFF5C3 /* BWBaseViewController.swift in Sources */,
 				064897FF225C481A00DBC01D /* BWStatusListViewModel.swift in Sources */,
+				06D6024522673138002760FF /* BWMTRefreshView.swift in Sources */,
 				06E21CE3224F139000FFF5C3 /* NSString+CZBase64.m in Sources */,
 				06E21CC4224F113100FFF5C3 /* BWProfileViewController.swift in Sources */,
 				06E21CE6224F139000FFF5C3 /* NSObject+CZRuntime.m in Sources */,

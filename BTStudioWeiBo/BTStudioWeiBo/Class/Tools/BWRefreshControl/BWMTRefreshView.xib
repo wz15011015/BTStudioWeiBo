@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="Cd1-c4-sHB" customClass="BWMTRefreshView" customModule="BTStudioWeiBo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="212" height="126"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_building_loading_1" translatesAutoresizingMaskIntoConstraints="NO" id="dlc-Wn-5Sg">
+                    <rect key="frame" x="0.0" y="0.0" width="212" height="126"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_earth" translatesAutoresizingMaskIntoConstraints="NO" id="0Cn-WA-cly">
+                    <rect key="frame" x="0.0" y="88" width="212" height="212"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_small_kangaroo_loading_1" translatesAutoresizingMaskIntoConstraints="NO" id="OT2-S2-Of8">
+                    <rect key="frame" x="75" y="18" width="61" height="72"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="p8M-Sa-zIv"/>
+            <connections>
+                <outlet property="buildingIconImageView" destination="dlc-Wn-5Sg" id="ZIP-Te-y8j"/>
+                <outlet property="earthImageView" destination="0Cn-WA-cly" id="EVT-0M-NbL"/>
+                <outlet property="kangarooImageView" destination="OT2-S2-Of8" id="IIl-iO-ft0"/>
+            </connections>
+            <point key="canvasLocation" x="-15.942028985507248" y="22.098214285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_building_loading_1" width="197.5" height="133.5"/>
+        <image name="icon_earth" width="212.5" height="212"/>
+        <image name="icon_small_kangaroo_loading_1" width="61" height="71.5"/>
+    </resources>
+</document>
