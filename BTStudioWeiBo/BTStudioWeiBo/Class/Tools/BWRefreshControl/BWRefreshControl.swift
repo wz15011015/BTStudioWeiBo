@@ -111,6 +111,9 @@ class BWRefreshControl: UIControl {
         // 根据滚动视图的偏移量调整刷新控件的frame
         self.frame = CGRect(x: 0, y: -height, width: sv.bounds.width, height: height)
         
+        // 传递父视图高度
+        refreshView.parentViewHeight = height
+        
         // 是否在拖拽
         if sv.isDragging {
             if height > BWRefreshOffset && refreshView.refreshState == .normal {
@@ -153,6 +156,9 @@ class BWRefreshControl: UIControl {
         var inset = sv.contentInset
         inset.top += BWRefreshOffset
         sv.contentInset = inset
+        
+        // 设置刷新视图的父视图高度
+        refreshView.parentViewHeight = BWRefreshOffset
     }
     
     /// 结束刷新

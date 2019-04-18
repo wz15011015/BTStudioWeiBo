@@ -54,6 +54,9 @@ class BWRefreshView: UIView {
     /// 指示器
     @IBOutlet weak var indicator: UIActivityIndicatorView?
     
+    /// 父视图的高度
+    var parentViewHeight: CGFloat = 0
+    
     
     class func refreshView() -> BWRefreshView {
         let nib = UINib(nibName: "BWRefreshView", bundle: nil)

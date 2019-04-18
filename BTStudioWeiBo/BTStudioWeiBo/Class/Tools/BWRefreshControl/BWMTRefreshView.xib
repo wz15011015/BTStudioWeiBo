@@ -35,7 +35,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="p8M-Sa-zIv"/>
             <connections>
-                <outlet property="buildingIconImageView" destination="dlc-Wn-5Sg" id="ZIP-Te-y8j"/>
+                <outlet property="buildingImageView" destination="dlc-Wn-5Sg" id="DNG-IL-oOo"/>
                 <outlet property="earthImageView" destination="0Cn-WA-cly" id="EVT-0M-NbL"/>
                 <outlet property="kangarooImageView" destination="OT2-S2-Of8" id="IIl-iO-ft0"/>
             </connections>
