@@ -22,6 +22,7 @@
 		062478F3225D97100013CDB5 /* BWOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478F2225D97100013CDB5 /* BWOAuthViewController.swift */; };
 		062478F5225D9A6B0013CDB5 /* BWRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478F4225D9A6B0013CDB5 /* BWRegisterViewController.swift */; };
 		062478F8225DEA210013CDB5 /* BWUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478F7225DEA210013CDB5 /* BWUserAccount.swift */; };
+		062BDB2A2269AC5000322481 /* BWComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062BDB292269AC5000322481 /* BWComposeViewController.swift */; };
 		063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DC676225B449900FF5CB4 /* BWNetworkManager.swift */; };
 		064897FF225C481A00DBC01D /* BWStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */; };
 		065414132264192B00B3F388 /* BWStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065414122264192B00B3F388 /* BWStatusPictureView.swift */; };
@@ -39,6 +40,10 @@
 		06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF7224EF7A2002F3E1C /* Assets.xcassets */; };
 		0694DC73225593E000F7FB9F /* Main.json in Resources */ = {isa = PBXBuildFile; fileRef = 0694DC72225593E000F7FB9F /* Main.json */; };
 		06C0757422545EDE00C12A16 /* BWVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C0757322545EDE00C12A16 /* BWVisitorView.swift */; };
+		06C1E5EA2268115300669C2F /* BWComposeTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1E5E92268115300669C2F /* BWComposeTypeView.swift */; };
+		06C1E5EC2268137500669C2F /* BWComposeTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C1E5EB2268137500669C2F /* BWComposeTypeView.xib */; };
+		06C1E5EE22681A8200669C2F /* BWComposeTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1E5ED22681A8200669C2F /* BWComposeTypeButton.swift */; };
+		06C1E5F022681A9200669C2F /* BWComposeTypeButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C1E5EF22681A9200669C2F /* BWComposeTypeButton.xib */; };
 		06D6024122672D15002760FF /* BWHumanRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06D6024022672D15002760FF /* BWHumanRefreshView.xib */; };
 		06D6024322672F5D002760FF /* BWMTRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06D6024222672F5D002760FF /* BWMTRefreshView.xib */; };
 		06D6024522673138002760FF /* BWMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D6024422673138002760FF /* BWMTRefreshView.swift */; };
@@ -86,6 +91,7 @@
 		062478F2225D97100013CDB5 /* BWOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWOAuthViewController.swift; sourceTree = "<group>"; };
 		062478F4225D9A6B0013CDB5 /* BWRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWRegisterViewController.swift; sourceTree = "<group>"; };
 		062478F7225DEA210013CDB5 /* BWUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWUserAccount.swift; sourceTree = "<group>"; };
+		062BDB292269AC5000322481 /* BWComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWComposeViewController.swift; sourceTree = "<group>"; };
 		063DC676225B449900FF5CB4 /* BWNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNetworkManager.swift; sourceTree = "<group>"; };
 		064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusListViewModel.swift; sourceTree = "<group>"; };
 		065414122264192B00B3F388 /* BWStatusPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusPictureView.swift; sourceTree = "<group>"; };
@@ -105,6 +111,10 @@
 		06914FFC224EF7A2002F3E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0694DC72225593E000F7FB9F /* Main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Main.json; sourceTree = "<group>"; };
 		06C0757322545EDE00C12A16 /* BWVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWVisitorView.swift; sourceTree = "<group>"; };
+		06C1E5E92268115300669C2F /* BWComposeTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWComposeTypeView.swift; sourceTree = "<group>"; };
+		06C1E5EB2268137500669C2F /* BWComposeTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWComposeTypeView.xib; sourceTree = "<group>"; };
+		06C1E5ED22681A8200669C2F /* BWComposeTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWComposeTypeButton.swift; sourceTree = "<group>"; };
+		06C1E5EF22681A9200669C2F /* BWComposeTypeButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWComposeTypeButton.xib; sourceTree = "<group>"; };
 		06D6024022672D15002760FF /* BWHumanRefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWHumanRefreshView.xib; sourceTree = "<group>"; };
 		06D6024222672F5D002760FF /* BWMTRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BWMTRefreshView.xib; sourceTree = "<group>"; };
 		06D6024422673138002760FF /* BWMTRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWMTRefreshView.swift; sourceTree = "<group>"; };
@@ -274,6 +284,26 @@
 			path = VisitorView;
 			sourceTree = "<group>";
 		};
+		06C1E5E72268113900669C2F /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				06C1E5E82268113900669C2F /* ComposeType */,
+				062BDB292269AC5000322481 /* BWComposeViewController.swift */,
+			);
+			path = Compose;
+			sourceTree = "<group>";
+		};
+		06C1E5E82268113900669C2F /* ComposeType */ = {
+			isa = PBXGroup;
+			children = (
+				06C1E5E92268115300669C2F /* BWComposeTypeView.swift */,
+				06C1E5EB2268137500669C2F /* BWComposeTypeView.xib */,
+				06C1E5ED22681A8200669C2F /* BWComposeTypeButton.swift */,
+				06C1E5EF22681A9200669C2F /* BWComposeTypeButton.xib */,
+			);
+			path = ComposeType;
+			sourceTree = "<group>";
+		};
 		06DC3F0E2251A971002044E1 /* BWNavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +360,7 @@
 		06E21CB0224F101600FFF5C3 /* View(View_Controller) */ = {
 			isa = PBXGroup;
 			children = (
+				06C1E5E72268113900669C2F /* Compose */,
 				06E21CB5224F101600FFF5C3 /* Main */,
 				06E21CB1224F101600FFF5C3 /* Home */,
 				06E21CB3224F101600FFF5C3 /* Message */,
@@ -519,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0654141722646AD400B3F388 /* BWStatusRetweetedCell.xib in Resources */,
+				06C1E5F022681A9200669C2F /* BWComposeTypeButton.xib in Resources */,
 				06D6024122672D15002760FF /* BWHumanRefreshView.xib in Resources */,
 				06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */,
 				06002BBE226184510063D525 /* BWStatusNormalCell.xib in Resources */,
@@ -527,6 +559,7 @@
 				06D6024322672F5D002760FF /* BWMTRefreshView.xib in Resources */,
 				0655A6882266BF3C006ED69E /* BWRefreshView.xib in Resources */,
 				0670178E2260830400A79A4D /* BWNewFeatureView.xib in Resources */,
+				06C1E5EC2268137500669C2F /* BWComposeTypeView.xib in Resources */,
 				06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,6 +639,7 @@
 				06E21CBC224F10CE00FFF5C3 /* BWBaseViewController.swift in Sources */,
 				064897FF225C481A00DBC01D /* BWStatusListViewModel.swift in Sources */,
 				06D6024522673138002760FF /* BWMTRefreshView.swift in Sources */,
+				06C1E5EE22681A8200669C2F /* BWComposeTypeButton.swift in Sources */,
 				06E21CE3224F139000FFF5C3 /* NSString+CZBase64.m in Sources */,
 				06E21CC4224F113100FFF5C3 /* BWProfileViewController.swift in Sources */,
 				06E21CE6224F139000FFF5C3 /* NSObject+CZRuntime.m in Sources */,
@@ -614,6 +648,7 @@
 				06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */,
 				06DC3F102251A989002044E1 /* BWNavigationBar.swift in Sources */,
 				0609615D2265B770006BFA34 /* BWRefreshControl.swift in Sources */,
+				06C1E5EA2268115300669C2F /* BWComposeTypeView.swift in Sources */,
 				065414132264192B00B3F388 /* BWStatusPictureView.swift in Sources */,
 				06E21CE9224F139000FFF5C3 /* NSAttributedString+CZAdditon.m in Sources */,
 				06002BCA2261AE910063D525 /* BWStatusViewModel.swift in Sources */,
@@ -645,6 +680,7 @@
 				062478F5225D9A6B0013CDB5 /* BWRegisterViewController.swift in Sources */,
 				06002BC82261A9210063D525 /* BWUser.swift in Sources */,
 				06E21CE4224F139000FFF5C3 /* NSString+CZPath.m in Sources */,
+				062BDB2A2269AC5000322481 /* BWComposeViewController.swift in Sources */,
 				06002BCC2261CE0E0063D525 /* BWStatusToolBar.swift in Sources */,
 				06E21CDF224F139000FFF5C3 /* UIColor+CZAddition.m in Sources */,
 				063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */,

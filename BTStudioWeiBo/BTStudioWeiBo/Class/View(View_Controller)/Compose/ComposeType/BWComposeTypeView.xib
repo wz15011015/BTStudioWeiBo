@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BWComposeTypeView" customModule="BTStudioWeiBo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbX-UT-eMe">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7ml-W6-hfZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default_splashscreen_slogan_new" translatesAutoresizingMaskIntoConstraints="NO" id="Ei2-lB-rvh" userLabel="Slogan">
+                                <rect key="frame" x="87" y="130" width="240" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ei2-lB-rvh" secondAttribute="height" multiplier="318:101" id="Mml-qf-vyK"/>
+                                    <constraint firstAttribute="width" constant="240" id="n6L-zg-jBt"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjQ-il-ADS" userLabel="底部按钮View">
+                                <rect key="frame" x="0.0" y="836" width="414" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLe-dp-hnu" userLabel="关闭按钮">
+                                        <rect key="frame" x="147" y="0.0" width="120" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="qll-7B-e08"/>
+                                            <constraint firstAttribute="height" constant="60" id="s7d-OS-hO0"/>
+                                        </constraints>
+                                        <state key="normal" image="tabbar_compose_background_icon_close"/>
+                                        <connections>
+                                            <action selector="close" destination="iN0-l3-epB" eventType="touchUpInside" id="VlC-lJ-FxD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRX-n2-tkC" userLabel="返回上一页按钮">
+                                        <rect key="frame" x="147" y="0.0" width="120" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="foi-OD-MHj"/>
+                                            <constraint firstAttribute="width" constant="120" id="zpI-4G-X01"/>
+                                        </constraints>
+                                        <state key="normal" image="tabbar_compose_background_icon_return"/>
+                                        <connections>
+                                            <action selector="clickBackButton" destination="iN0-l3-epB" eventType="touchUpInside" id="edg-yI-2xV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="xLe-dp-hnu" firstAttribute="centerY" secondItem="yjQ-il-ADS" secondAttribute="centerY" id="XfT-EZ-RlO"/>
+                                    <constraint firstAttribute="height" constant="60" id="YM5-7r-6gC"/>
+                                    <constraint firstItem="hRX-n2-tkC" firstAttribute="centerY" secondItem="yjQ-il-ADS" secondAttribute="centerY" id="fWn-ey-cUt"/>
+                                    <constraint firstItem="hRX-n2-tkC" firstAttribute="centerX" secondItem="yjQ-il-ADS" secondAttribute="centerX" id="jDj-93-ffC"/>
+                                    <constraint firstItem="xLe-dp-hnu" firstAttribute="centerX" secondItem="yjQ-il-ADS" secondAttribute="centerX" id="leb-JV-hoc"/>
+                                </constraints>
+                            </view>
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kl0-3E-om2">
+                                <rect key="frame" x="0.0" y="563" width="414" height="223"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="224" id="1aa-sX-5vE"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kl0-3E-om2" secondAttribute="trailing" id="9Qr-gU-6l9"/>
+                            <constraint firstItem="yjQ-il-ADS" firstAttribute="top" secondItem="kl0-3E-om2" secondAttribute="bottom" constant="80" id="C4D-M0-Foe"/>
+                            <constraint firstItem="Ei2-lB-rvh" firstAttribute="centerX" secondItem="7ml-W6-hfZ" secondAttribute="centerX" id="QzM-aP-AdQ"/>
+                            <constraint firstItem="Ei2-lB-rvh" firstAttribute="top" secondItem="7ml-W6-hfZ" secondAttribute="top" constant="130" id="bRA-xV-zHH"/>
+                            <constraint firstAttribute="trailing" secondItem="yjQ-il-ADS" secondAttribute="trailing" id="jES-ln-ZCU"/>
+                            <constraint firstAttribute="bottom" secondItem="yjQ-il-ADS" secondAttribute="bottom" id="khO-WW-9DD"/>
+                            <constraint firstItem="yjQ-il-ADS" firstAttribute="leading" secondItem="7ml-W6-hfZ" secondAttribute="leading" id="pk6-Cq-Er2"/>
+                            <constraint firstItem="kl0-3E-om2" firstAttribute="leading" secondItem="7ml-W6-hfZ" secondAttribute="leading" id="ygq-rL-7tz"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="extraLight"/>
+                </visualEffectView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="QbX-UT-eMe" secondAttribute="bottom" id="35F-2F-q5T"/>
+                <constraint firstItem="QbX-UT-eMe" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="6B0-bo-WWA"/>
+                <constraint firstItem="QbX-UT-eMe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="6Ja-wC-1bk"/>
+                <constraint firstItem="QbX-UT-eMe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="r1U-yb-4gn"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="backButton" destination="hRX-n2-tkC" id="9lb-XB-P4x"/>
+                <outlet property="backButtonCenterX" destination="jDj-93-ffC" id="7ME-ra-9cj"/>
+                <outlet property="closeButton" destination="xLe-dp-hnu" id="SLF-EE-QZT"/>
+                <outlet property="closeButtonCenterX" destination="leb-JV-hoc" id="wyk-zm-cRD"/>
+                <outlet property="closeButtonHeight" destination="YM5-7r-6gC" id="FeU-0P-1f5"/>
+                <outlet property="scrollView" destination="kl0-3E-om2" id="rRk-uQ-zxy"/>
+            </connections>
+            <point key="canvasLocation" x="47.826086956521742" y="62.946428571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Default_splashscreen_slogan_new" width="318.33334350585938" height="101"/>
+        <image name="tabbar_compose_background_icon_close" width="25" height="25"/>
+        <image name="tabbar_compose_background_icon_return" width="25" height="25"/>
+    </resources>
+</document>

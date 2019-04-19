@@ -41,7 +41,7 @@ class BWWelcomeView: UIView {
         
         let v = nib.instantiate(withOwner: nil, options: nil)[0] as! BWWelcomeView
         
-        // 从xib加载的视图,默认为xib的大小
+        // 从xib加载的视图,默认为xib的大小,在此处需要调整一下
         v.frame = UIScreen.main.bounds
         
         return v

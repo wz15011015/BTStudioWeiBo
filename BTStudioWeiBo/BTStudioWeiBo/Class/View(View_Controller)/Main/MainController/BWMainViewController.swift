@@ -91,7 +91,30 @@ class BWMainViewController: UITabBarController {
       @objc 允许方法在'运行时'通过OC的消息机制被调用
      */
     @objc private func composeStatus() {
-        print("发微博...")
+        // 1. 判断是否已登录
+        
+        // 2.
+        // 2.1 实例化视图
+        let composeTypeView = BWComposeTypeView.composeTypeView()
+        
+        // 2.2 显示视图
+        // 需要解决循环引用问题
+        composeTypeView.show { [weak composeTypeView] (clsName) in
+            // 类名->类 的转换
+            guard let clsName = clsName,
+                let cls = NSClassFromString(Bundle.main.namespace + "." + clsName) as? BWComposeViewController.Type else {
+                // 移除视图
+                composeTypeView?.removeFromSuperview()
+                return
+            }
+            
+            let vc = cls.init()
+            let nav = BWNavigationController(rootViewController: vc)
+            self.present(nav, animated: true) {
+                // 移除视图
+                composeTypeView?.removeFromSuperview()
+            }
+        }
     }
     
     
