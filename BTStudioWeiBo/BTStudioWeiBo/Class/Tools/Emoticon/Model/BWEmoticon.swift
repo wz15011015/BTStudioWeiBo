@@ -55,4 +55,26 @@ import UIKit
     override var description: String {
         return yy_modelDescription()
     }
+    
+    
+    /// 将当前的图片转换成图片属性文本
+    ///
+    /// - Parameter font: 文本字体
+    /// - Returns: 图片属性文本
+    func imageText(font: UIFont) -> NSAttributedString {
+        // 1. 判断图片是否存在
+        guard let image = image else {
+            return NSAttributedString(string: "")
+        }
+        
+        // 2. 创建文本附件
+        let hight = font.lineHeight
+        let attachment = NSTextAttachment()
+        attachment.image = image
+        attachment.bounds = CGRect(x: 0, y: -4, width: hight, height: hight)
+        
+        // 3. 返回图片属性文本
+        let attributedString = NSAttributedString(attachment: attachment)
+        return attributedString
+    }
 }
