@@ -31,6 +31,9 @@ class BWStatusViewModel: CustomStringConvertible {
     /// 微博模型
     var status: BWStatus
     
+    /// 微博来源字符串
+//    var sourceStr: String?
+    
     /// 会员图标 - 存储型属性,用内存空间换CPU消耗
     var memberIcon: UIImage?
     
@@ -73,6 +76,9 @@ class BWStatusViewModel: CustomStringConvertible {
     /// - Parameter model: 微博模型
     init(status model: BWStatus) {
         self.status = model
+        
+        // 微博来源字符串
+//        sourceStr = "来自 " + (model.source?.cz_href()?.text ?? "")
         
         // 会员等级 0 - 6
         if let mbrank = model.user?.mbrank {

@@ -40,7 +40,7 @@ class BWWeiBoTitleButton: UIButton {
          需要调用一下titleLabel或者imageView才会创建
          */
         // 该行代码只为创建imageView
-        imageView?.backgroundColor = UIColor.clear
+//        imageView?.backgroundColor = UIColor.clear
 
         sizeToFit()
     }
@@ -60,10 +60,18 @@ class BWWeiBoTitleButton: UIButton {
         }
 
         // 调整子控件位置
+        // 因为layoutSubviews会被调用两次,写法一会使label向左多移动一倍距离,imageView向右多移动一倍距离
+        
+        // 写法一:
         // 1. 将lable向左移动imageView的宽度
-        titleLabel.frame = titleLabel.frame.offsetBy(dx: -imageView.bounds.width, dy: 0)
-        // 2. 将imageView向右移动label的宽度
-        imageView.frame = imageView.frame.offsetBy(dx: titleLabel.bounds.width, dy: 0)
+//        titleLabel.frame = titleLabel.frame.offsetBy(dx: -imageView.bounds.width, dy: 0)
+//        // 2. 将imageView向右移动label的宽度
+//        imageView.frame = imageView.frame.offsetBy(dx: titleLabel.bounds.width, dy: 0)
+        
+        // 写法二:
+        // OC中不允许直接修改结构体内部的值, 但Swift中可以直接修改
+        titleLabel.frame.origin.x = 0
+        imageView.frame.origin.x = titleLabel.bounds.width
     }
     
     

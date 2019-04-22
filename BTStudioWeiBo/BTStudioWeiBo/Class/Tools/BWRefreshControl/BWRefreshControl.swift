@@ -112,7 +112,10 @@ class BWRefreshControl: UIControl {
         self.frame = CGRect(x: 0, y: -height, width: sv.bounds.width, height: height)
         
         // 传递父视图高度
-        refreshView.parentViewHeight = height
+        // 如果正在刷新中,则不传递
+        if refreshView.refreshState != .willRefresh {
+            refreshView.parentViewHeight = height
+        }
         
         // 是否在拖拽
         if sv.isDragging {

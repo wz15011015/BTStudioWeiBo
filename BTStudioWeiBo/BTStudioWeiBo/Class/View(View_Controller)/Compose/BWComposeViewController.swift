@@ -18,6 +18,8 @@ class BWComposeViewController: BWBaseViewController {
         title = "微博"
         
         navigationItemCustom.leftBarButtonItem = UIBarButtonItem(title: "返回", target: self, action: #selector(dismissVC), isBack: true)
+        
+        let manager = BWEmoticonManager.shared
     }
     
     @objc func dismissVC() {

@@ -23,7 +23,7 @@ class BWMTRefreshView: BWRefreshView {
     /// 父视图高度
     override var parentViewHeight: CGFloat {
         didSet {
-            print("父视图高度: \(parentViewHeight)")
+//            print("父视图高度: \(parentViewHeight)")
             if parentViewHeight < 23 {
                 return
             }

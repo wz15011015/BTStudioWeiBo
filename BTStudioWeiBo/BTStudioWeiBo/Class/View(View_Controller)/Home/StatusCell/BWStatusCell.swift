@@ -24,6 +24,11 @@ class BWStatusCell: UITableViewCell {
             vipIconImageView.image = viewModel?.vipIcon
             // 微博正文
             statusLabel.text = viewModel?.status.text
+            // 时间
+            timeLabel.text = viewModel?.status.created_at
+            // 微博来源
+//            sourceLabel.text = viewModel?.sourceStr
+            sourceLabel.text = viewModel?.status.source
             
             // 底部工具栏(转发/评论/点赞 数量)
             toolBar.viewModel = viewModel

@@ -48,6 +48,10 @@
 		06D6024322672F5D002760FF /* BWMTRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06D6024222672F5D002760FF /* BWMTRefreshView.xib */; };
 		06D6024522673138002760FF /* BWMTRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D6024422673138002760FF /* BWMTRefreshView.swift */; };
 		06DC3F102251A989002044E1 /* BWNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DC3F0F2251A989002044E1 /* BWNavigationBar.swift */; };
+		06DF3E98226D8BC3007E28CD /* BWEmoticonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3E97226D8BC3007E28CD /* BWEmoticonManager.swift */; };
+		06DF3E9A226D8DD3007E28CD /* BWEmoticon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06DF3E99226D8DD3007E28CD /* BWEmoticon.bundle */; };
+		06DF3E9D226D9519007E28CD /* BWEmoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3E9C226D9519007E28CD /* BWEmoticon.swift */; };
+		06DF3E9F226D9662007E28CD /* BWEmoticonPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DF3E9E226D9662007E28CD /* BWEmoticonPackage.swift */; };
 		06E21CB8224F107900FFF5C3 /* BWMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CB7224F107900FFF5C3 /* BWMainViewController.swift */; };
 		06E21CBA224F10AA00FFF5C3 /* BWNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CB9224F10AA00FFF5C3 /* BWNavigationController.swift */; };
 		06E21CBC224F10CE00FFF5C3 /* BWBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CBB224F10CE00FFF5C3 /* BWBaseViewController.swift */; };
@@ -119,6 +123,10 @@
 		06D6024222672F5D002760FF /* BWMTRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BWMTRefreshView.xib; sourceTree = "<group>"; };
 		06D6024422673138002760FF /* BWMTRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWMTRefreshView.swift; sourceTree = "<group>"; };
 		06DC3F0F2251A989002044E1 /* BWNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNavigationBar.swift; sourceTree = "<group>"; };
+		06DF3E97226D8BC3007E28CD /* BWEmoticonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonManager.swift; sourceTree = "<group>"; };
+		06DF3E99226D8DD3007E28CD /* BWEmoticon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BWEmoticon.bundle; sourceTree = "<group>"; };
+		06DF3E9C226D9519007E28CD /* BWEmoticon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticon.swift; sourceTree = "<group>"; };
+		06DF3E9E226D9662007E28CD /* BWEmoticonPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonPackage.swift; sourceTree = "<group>"; };
 		06E21CB7224F107900FFF5C3 /* BWMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWMainViewController.swift; sourceTree = "<group>"; };
 		06E21CB9224F10AA00FFF5C3 /* BWNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNavigationController.swift; sourceTree = "<group>"; };
 		06E21CBB224F10CE00FFF5C3 /* BWBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWBaseViewController.swift; sourceTree = "<group>"; };
@@ -322,6 +330,25 @@
 			path = MainController;
 			sourceTree = "<group>";
 		};
+		06DF3E96226D8B9F007E28CD /* Emoticon */ = {
+			isa = PBXGroup;
+			children = (
+				06DF3E97226D8BC3007E28CD /* BWEmoticonManager.swift */,
+				06DF3E9B226D94F7007E28CD /* Model */,
+				06DF3E99226D8DD3007E28CD /* BWEmoticon.bundle */,
+			);
+			path = Emoticon;
+			sourceTree = "<group>";
+		};
+		06DF3E9B226D94F7007E28CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				06DF3E9C226D9519007E28CD /* BWEmoticon.swift */,
+				06DF3E9E226D9662007E28CD /* BWEmoticonPackage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		06E21CAD224F101600FFF5C3 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +363,7 @@
 		06E21CAE224F101600FFF5C3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				06DF3E96226D8B9F007E28CD /* Emoticon */,
 				0609615B2265B75F006BFA34 /* BWRefreshControl */,
 				063DC675225B446600FF5CB4 /* Network */,
 				06DC3F0E2251A971002044E1 /* BWNavigationBar */,
@@ -561,6 +589,7 @@
 				0670178E2260830400A79A4D /* BWNewFeatureView.xib in Resources */,
 				06C1E5EC2268137500669C2F /* BWComposeTypeView.xib in Resources */,
 				06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */,
+				06DF3E9A226D8DD3007E28CD /* BWEmoticon.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +684,7 @@
 				06E21CEA224F139000FFF5C3 /* NSArray+Log.m in Sources */,
 				06E21CEE224F191800FFF5C3 /* Bundle+Extensions.swift in Sources */,
 				06E21CE1224F139000FFF5C3 /* UIScreen+CZAddition.m in Sources */,
+				06DF3E9F226D9662007E28CD /* BWEmoticonPackage.swift in Sources */,
 				06002BC5226185A60063D525 /* String+Extensions.swift in Sources */,
 				06E21CC0224F111B00FFF5C3 /* BWMessageViewController.swift in Sources */,
 				06002BBC226184370063D525 /* BWStatusCell.swift in Sources */,
@@ -664,6 +694,7 @@
 				06E21CE5224F139000FFF5C3 /* UIButton+CZAddition.m in Sources */,
 				06701788226062D900A79A4D /* BWWelcomeView.swift in Sources */,
 				06E21CC2224F112700FFF5C3 /* BWDiscoveryViewController.swift in Sources */,
+				06DF3E98226D8BC3007E28CD /* BWEmoticonManager.swift in Sources */,
 				06002BC6226185A60063D525 /* Date+Extensions.swift in Sources */,
 				06E21CE8224F139000FFF5C3 /* NSString+CZHash.m in Sources */,
 				06002BC12261859A0063D525 /* UIImageView+WebImage.swift in Sources */,
@@ -687,6 +718,7 @@
 				0654141522641DA700B3F388 /* BWStatusPicture.swift in Sources */,
 				0670178A2260636F00A79A4D /* BWNewFeatureView.swift in Sources */,
 				06E21CE0224F139000FFF5C3 /* UIView+CZAddition.m in Sources */,
+				06DF3E9D226D9519007E28CD /* BWEmoticon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,17 @@ class BWStatus: NSObject {
     /// 微博信息内容
     @objc var text: String?
     
+    /// 创建时间
+    @objc var created_at: String?
+    
+    /// 微博来源 - 发布微博使用的客户端
+    @objc var source: String? {
+        didSet {
+            // 在didSet中,给source设置值,不会再调用didSet
+            source = "来自 " + (source?.cz_href()?.text ?? "")
+        }
+    }
+    
     /// 转发数
     @objc var reposts_count: Int = 0
     
