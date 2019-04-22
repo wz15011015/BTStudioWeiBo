@@ -26,6 +26,10 @@ import UIKit
                 let models = NSArray.yy_modelArray(with: BWEmoticon.self, json: array) as? [BWEmoticon] else {
                 return
             }
+            // 遍历models数组,设置每一个表情模型的图片目录
+            for emoticon in models {
+                emoticon.directory = directory
+            }
             
             emoticons += models
         }

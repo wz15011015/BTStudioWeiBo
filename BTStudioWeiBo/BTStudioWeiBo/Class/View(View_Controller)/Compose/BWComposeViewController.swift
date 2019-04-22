@@ -20,6 +20,8 @@ class BWComposeViewController: BWBaseViewController {
         navigationItemCustom.leftBarButtonItem = UIBarButtonItem(title: "返回", target: self, action: #selector(dismissVC), isBack: true)
         
         let manager = BWEmoticonManager.shared
+        let emoticon = manager.findEmoticon(chsString: "[偷乐]")
+        print(emoticon)
     }
     
     @objc func dismissVC() {

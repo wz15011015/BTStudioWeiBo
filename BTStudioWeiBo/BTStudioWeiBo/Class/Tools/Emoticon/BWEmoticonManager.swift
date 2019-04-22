@@ -29,6 +29,46 @@ class BWEmoticonManager {
 }
 
 
+// MARK: - 表情符号处理
+extension BWEmoticonManager {
+    
+    /// 根据表情字符串(例如: [爱你])在所有的表情符号中查找对应的表情模型
+    ///
+    /// - Parameter chs: 表情字符串
+    /// - Returns: 如果找到,返回表情模型,否则,返回nil
+    func findEmoticon(chsString chs: String) -> BWEmoticon? {
+        // 1. 遍历表情包
+        for package in packages {
+            // 2. 在表情数组中过滤 chs
+            // 方法一:
+//            let result = package.emoticons.filter { (emoticon) -> Bool in
+//                return emoticon.chs == chs
+//            }
+            
+            /**
+             如果闭包中只有一句代码,并且是返回语言,则:
+             - 闭包的定义格式可以省略
+             - 参数省略之后,使用 $0, $1, $2, ... 依次代替原有参数
+             - return 也可以省略
+             */
+            // 方法二:
+//            let result = package.emoticons.filter {
+//                return $0.chs == chs
+//            }
+            
+            // 方法三:
+            let result = package.emoticons.filter { $0.chs == chs }
+            
+            if result.count == 1 {
+                return result.first
+            }
+        }
+        
+        return nil
+    }
+}
+
+
 // MARK: - 表情包数据处理
 private extension BWEmoticonManager {
     // 读取 emoticons.plist
