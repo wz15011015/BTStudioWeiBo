@@ -66,6 +66,63 @@ extension BWEmoticonManager {
         
         return nil
     }
+    
+    /// 将给定的字符串转换成属性字符串
+    ///
+    /// - Parameter string: 字符串
+    /// - Returns: 属性字符串
+    func emoticonString(string: String, font: UIFont) -> NSAttributedString {
+        let attributedStr = NSMutableAttributedString(string: string)
+        
+        // 1. 使用正则表达式过滤所有表情文字
+        let pattern = "\\[.*?\\]"
+        guard let regEx = try? NSRegularExpression(pattern: pattern, options: []) else {
+            return attributedStr
+        }
+        
+        // 2. 匹配所有项
+        let results = regEx.matches(in: string, options: [], range: NSMakeRange(0, string.count))
+        
+        /**
+         注意点: 应该倒序遍历
+         
+         我[爱你]的心[笑哈哈]!
+         
+         查找到的范围:
+         - range1: {1, 4}
+         - range2: {6, 5}
+         
+         1. 正序
+         我◻︎的心[笑哈哈]!
+         - 正序替换时,当替换了"[爱你]"之后,后面"[笑哈哈]"的范围就发生了改变,其范围会失效
+         
+         2. 倒序 (一次循环可以把所有的图片全部替换)
+         我[爱你]的心◻︎!
+         - 倒序替换时,当替换了"[笑哈哈]"之后,前面"[爱你]"的范围不会改变
+         */
+        
+        // 3. 遍历所有匹配结果
+        for result in results.reversed() {
+            // a. 获取 表情字符 的范围
+            let range = result.range(at: 0)
+            
+            // b. 截取 表情字符
+            let chsStr = (attributedStr.string as NSString).substring(with: range)
+            
+            // c. 使用 表情字符 查找对应的表情模型
+            if let emoticon = findEmoticon(chsString: chsStr) {
+                
+                // d. 使用表情模型中的 图片属性文本 替换原有文本中的表情字符
+                attributedStr.replaceCharacters(in: range, with: emoticon.imageText(font: font))
+            }
+        }
+        
+        // 统一设置字符串的属性
+        // 统一字体
+        attributedStr.addAttributes([NSAttributedString.Key.font: font], range: NSMakeRange(0, attributedStr.string.count))
+        
+        return attributedStr
+    }
 }
 
 

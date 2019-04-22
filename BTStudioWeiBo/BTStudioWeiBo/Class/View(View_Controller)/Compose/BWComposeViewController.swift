@@ -19,9 +19,8 @@ class BWComposeViewController: BWBaseViewController {
         
         navigationItemCustom.leftBarButtonItem = UIBarButtonItem(title: "返回", target: self, action: #selector(dismissVC), isBack: true)
         
-        let manager = BWEmoticonManager.shared
-        let emoticon = manager.findEmoticon(chsString: "[偷乐]")
-        print(emoticon)
+        let attriStr = BWEmoticonManager.shared.emoticonString(string: "[爱你]哈哈哈[马上有对象][12412]", font: UIFont.systemFont(ofSize: 17))
+        print(attriStr)
     }
     
     @objc func dismissVC() {
