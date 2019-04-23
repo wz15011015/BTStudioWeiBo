@@ -13,14 +13,13 @@ class BWComposeViewController: BWBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.orange
-        
-        title = "微博"
+        title = "发微博"
         
         navigationItemCustom.leftBarButtonItem = UIBarButtonItem(title: "返回", target: self, action: #selector(dismissVC), isBack: true)
+    }
+    
+    override func setupTableView() {
         
-        let attriStr = BWEmoticonManager.shared.emoticonString(string: "[爱你]哈哈哈[马上有对象][12412]", font: UIFont.systemFont(ofSize: 17))
-        print(attriStr)
     }
     
     @objc func dismissVC() {

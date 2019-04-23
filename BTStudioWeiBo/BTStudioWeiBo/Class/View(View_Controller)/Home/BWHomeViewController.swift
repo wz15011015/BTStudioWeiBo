@@ -117,6 +117,17 @@ extension BWHomeViewController {
         
         cell.viewModel = viewModel
         
+        /**
+         * 1. 如果用 Block 实现,则需要在此处给每一个Cell设置Block
+         * cell.block = {
+         *     // Do something cool.
+         * }
+         *
+         * 2. 如果用 代理 实现的话,设置代理时只是传递了一个指针地址
+         */
+        // 设置代理
+        cell.delegate = self
+        
         return cell
     }
     
@@ -128,6 +139,18 @@ extension BWHomeViewController {
         return viewModel.rowHeight
     }
 }
+
+
+// MARK: - 微博Cell协议
+extension BWHomeViewController: BWStatusCellDelegagte {
+    
+    func statusCellDidSelectedURLString(cell: BWStatusCell, urlString: String) {
+        let vc = BWWebViewController()
+        vc.urlString = urlString
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
 
 // MARK: - 设置界面
 extension BWHomeViewController {

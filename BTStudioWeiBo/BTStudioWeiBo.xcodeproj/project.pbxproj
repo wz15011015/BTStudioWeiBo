@@ -23,6 +23,9 @@
 		062478F5225D9A6B0013CDB5 /* BWRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478F4225D9A6B0013CDB5 /* BWRegisterViewController.swift */; };
 		062478F8225DEA210013CDB5 /* BWUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062478F7225DEA210013CDB5 /* BWUserAccount.swift */; };
 		062BDB2A2269AC5000322481 /* BWComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062BDB292269AC5000322481 /* BWComposeViewController.swift */; };
+		063B85C8226EB03A00ECE018 /* BWLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063B85C7226EB03A00ECE018 /* BWLabel.swift */; };
+		063B85CB226F014F00ECE018 /* FFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063B85CA226F014F00ECE018 /* FFLabel.swift */; };
+		063B85CD226F0EE500ECE018 /* BWWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063B85CC226F0EE500ECE018 /* BWWebViewController.swift */; };
 		063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DC676225B449900FF5CB4 /* BWNetworkManager.swift */; };
 		064897FF225C481A00DBC01D /* BWStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */; };
 		065414132264192B00B3F388 /* BWStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065414122264192B00B3F388 /* BWStatusPictureView.swift */; };
@@ -96,6 +99,9 @@
 		062478F4225D9A6B0013CDB5 /* BWRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWRegisterViewController.swift; sourceTree = "<group>"; };
 		062478F7225DEA210013CDB5 /* BWUserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWUserAccount.swift; sourceTree = "<group>"; };
 		062BDB292269AC5000322481 /* BWComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWComposeViewController.swift; sourceTree = "<group>"; };
+		063B85C7226EB03A00ECE018 /* BWLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWLabel.swift; sourceTree = "<group>"; };
+		063B85CA226F014F00ECE018 /* FFLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFLabel.swift; sourceTree = "<group>"; };
+		063B85CC226F0EE500ECE018 /* BWWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWWebViewController.swift; sourceTree = "<group>"; };
 		063DC676225B449900FF5CB4 /* BWNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWNetworkManager.swift; sourceTree = "<group>"; };
 		064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusListViewModel.swift; sourceTree = "<group>"; };
 		065414122264192B00B3F388 /* BWStatusPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusPictureView.swift; sourceTree = "<group>"; };
@@ -222,6 +228,22 @@
 				062478F7225DEA210013CDB5 /* BWUserAccount.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		063B85C6226EB02900ECE018 /* BWLabel */ = {
+			isa = PBXGroup;
+			children = (
+				063B85C7226EB03A00ECE018 /* BWLabel.swift */,
+			);
+			path = BWLabel;
+			sourceTree = "<group>";
+		};
+		063B85C9226F014F00ECE018 /* FFLabel */ = {
+			isa = PBXGroup;
+			children = (
+				063B85CA226F014F00ECE018 /* FFLabel.swift */,
+			);
+			path = FFLabel;
 			sourceTree = "<group>";
 		};
 		063DC675225B446600FF5CB4 /* Network */ = {
@@ -363,6 +385,8 @@
 		06E21CAE224F101600FFF5C3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				063B85C9226F014F00ECE018 /* FFLabel */,
+				063B85C6226EB02900ECE018 /* BWLabel */,
 				06DF3E96226D8B9F007E28CD /* Emoticon */,
 				0609615B2265B75F006BFA34 /* BWRefreshControl */,
 				063DC675225B446600FF5CB4 /* Network */,
@@ -404,6 +428,7 @@
 				06002BBA226184180063D525 /* StatusCell */,
 				06701782226030C500A79A4D /* TitleButton */,
 				06E21CBD224F111100FFF5C3 /* BWHomeViewController.swift */,
+				063B85CC226F0EE500ECE018 /* BWWebViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -668,6 +693,7 @@
 				06E21CBC224F10CE00FFF5C3 /* BWBaseViewController.swift in Sources */,
 				064897FF225C481A00DBC01D /* BWStatusListViewModel.swift in Sources */,
 				06D6024522673138002760FF /* BWMTRefreshView.swift in Sources */,
+				063B85C8226EB03A00ECE018 /* BWLabel.swift in Sources */,
 				06C1E5EE22681A8200669C2F /* BWComposeTypeButton.swift in Sources */,
 				06E21CE3224F139000FFF5C3 /* NSString+CZBase64.m in Sources */,
 				06E21CC4224F113100FFF5C3 /* BWProfileViewController.swift in Sources */,
@@ -712,6 +738,8 @@
 				06002BC82261A9210063D525 /* BWUser.swift in Sources */,
 				06E21CE4224F139000FFF5C3 /* NSString+CZPath.m in Sources */,
 				062BDB2A2269AC5000322481 /* BWComposeViewController.swift in Sources */,
+				063B85CB226F014F00ECE018 /* FFLabel.swift in Sources */,
+				063B85CD226F0EE500ECE018 /* BWWebViewController.swift in Sources */,
 				06002BCC2261CE0E0063D525 /* BWStatusToolBar.swift in Sources */,
 				06E21CDF224F139000FFF5C3 /* UIColor+CZAddition.m in Sources */,
 				063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */,

@@ -40,6 +40,7 @@ class BWBaseViewController: UIViewController {
     var isPullUp: Bool = false
 
     
+    // MARK: - Life Cycle
     deinit {
         // 注销通知
         NotificationCenter.default.removeObserver(self)

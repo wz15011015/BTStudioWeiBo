@@ -8,8 +8,29 @@
 
 import UIKit
 
+/// 微博Cell协议
+/**
+ 协议方法如果需要设置成可选的,则:
+ - 需要遵守 NSObjectProtocol 协议
+ - 协议需要是 @objc
+ - 方法需要 @objc optional
+ */
+@objc protocol BWStatusCellDelegagte: NSObjectProtocol {
+    
+    /// 选中URL的代理方法
+    ///
+    /// - Parameters:
+    ///   - cell: 微博Cell
+    ///   - urlString: URL字符串
+    @objc optional func statusCellDidSelectedURLString(cell: BWStatusCell, urlString: String)
+}
+
+
 /// 微博Cell
 class BWStatusCell: UITableViewCell {
+    
+    /// 代理
+    weak var delegate: BWStatusCellDelegagte?
     
     /// 微博视图模型
     var viewModel: BWStatusViewModel? {
@@ -23,7 +44,8 @@ class BWStatusCell: UITableViewCell {
             // 认证图标
             vipIconImageView.image = viewModel?.vipIcon
             // 微博正文
-            statusLabel.text = viewModel?.status.text
+//            statusLabel.text = viewModel?.status.text
+            statusLabel.attributedText = viewModel?.statusAttrText
             // 时间
             timeLabel.text = viewModel?.status.created_at
             // 微博来源
@@ -40,7 +62,8 @@ class BWStatusCell: UITableViewCell {
             pictureView.heightConstraint.constant = viewModel?.pictureViewSize.height ?? 0
             
             // 设置被转发微博正文
-            retweetedLabel?.text = viewModel?.retweetedText
+//            retweetedLabel?.text = viewModel?.retweetedText
+            retweetedLabel?.attributedText = viewModel?.retweetedAttrText
         }
     }
     
@@ -63,7 +86,7 @@ class BWStatusCell: UITableViewCell {
     @IBOutlet weak var vipIconImageView: UIImageView!
     
     /// 微博正文
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusLabel: BWLabel!
     
     /// 底部工具栏
     @IBOutlet weak var toolBar: BWStatusToolBar!
@@ -72,7 +95,7 @@ class BWStatusCell: UITableViewCell {
     @IBOutlet weak var pictureView: BWStatusPictureView!
     
     /// 被转发微博的正文 (原创微博没有此控件)
-    @IBOutlet weak var retweetedLabel: UILabel?
+    @IBOutlet weak var retweetedLabel: BWLabel?
     
 
     override func awakeFromNib() {
@@ -97,6 +120,11 @@ class BWStatusCell: UITableViewCell {
          *   - 离屏渲染需要在GPU / CPU之间快速的切换;
          *   - 耗电会厉害;
          */
+        
+        
+        // 设置微博正文label(BWLabel)的代理
+        statusLabel.delegate = self
+        retweetedLabel?.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -105,4 +133,22 @@ class BWStatusCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+
+// MARK: - BWLabel协议方法
+extension BWStatusCell: BWLabelDelegate {
+    
+    func labelDidSelectedLinkText(label: BWLabel, text: String) {
+        // 判断是否为URL
+        if text.hasPrefix("http") {
+            /**
+             statusCellDidSelectedURLString后面插入 ? 表示:
+             - 如果代理没有实现协议方法,就什么都不做
+             
+             假如插入 ! ,当代理方法没有实现时,仍会强行执行方法,导致崩溃!
+             */
+            delegate?.statusCellDidSelectedURLString?(cell: self, urlString: text)
+        }
+    }
 }

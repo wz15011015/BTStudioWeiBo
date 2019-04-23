@@ -75,7 +75,8 @@ extension BWEmoticonManager {
         let attributedStr = NSMutableAttributedString(string: string)
         
         // 1. 使用正则表达式过滤所有表情文字
-        let pattern = "\\[.*?\\]"
+        // [^ \\n\\f\\r\\t\\v\\[\\]] 匹配任何非空白字符和 [ 、]  其中空白符即空格、换行符、换页符、回车符、水平制表符、垂直制表符
+        let pattern = "\\[[^ \\f\\n\\r\\t\\v\\[\\]]*?\\]"
         guard let regEx = try? NSRegularExpression(pattern: pattern, options: []) else {
             return attributedStr
         }
@@ -107,11 +108,12 @@ extension BWEmoticonManager {
             let range = result.range(at: 0)
             
             // b. 截取 表情字符
-            let chsStr = (attributedStr.string as NSString).substring(with: range)
+            let chsStr = (string as NSString).substring(with: range)
+//            print("表情字符: \(chsStr)")
             
             // c. 使用 表情字符 查找对应的表情模型
             if let emoticon = findEmoticon(chsString: chsStr) {
-                
+//                print("表情模型: \(emoticon)")
                 // d. 使用表情模型中的 图片属性文本 替换原有文本中的表情字符
                 attributedStr.replaceCharacters(in: range, with: emoticon.imageText(font: font))
             }
@@ -119,7 +121,7 @@ extension BWEmoticonManager {
         
         // 统一设置字符串的属性
         // 统一字体
-        attributedStr.addAttributes([NSAttributedString.Key.font: font], range: NSMakeRange(0, attributedStr.string.count))
+        attributedStr.addAttributes([NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.darkGray], range: NSMakeRange(0, attributedStr.string.count))
         
         return attributedStr
     }
