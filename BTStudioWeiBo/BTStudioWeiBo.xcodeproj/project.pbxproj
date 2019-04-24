@@ -80,6 +80,7 @@
 		06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */; };
 		06EA4535225C458E005D91E1 /* BWStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4534225C458E005D91E1 /* BWStatus.swift */; };
 		06FB1CD222700BB8009B5752 /* BWComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06FB1CD122700BB8009B5752 /* BWComposeViewController.xib */; };
+		06FB1CD522705C25009B5752 /* BWComposeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FB1CD422705C25009B5752 /* BWComposeTextView.swift */; };
 		DC44E33F6638BC197B67428C /* Pods_BTStudioWeiBo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65193EA2FA92A5BB4415B767 /* Pods_BTStudioWeiBo.framework */; };
 /* End PBXBuildFile section */
 
@@ -173,6 +174,7 @@
 		06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		06EA4534225C458E005D91E1 /* BWStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatus.swift; sourceTree = "<group>"; };
 		06FB1CD122700BB8009B5752 /* BWComposeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWComposeViewController.xib; sourceTree = "<group>"; };
+		06FB1CD422705C25009B5752 /* BWComposeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWComposeTextView.swift; sourceTree = "<group>"; };
 		65193EA2FA92A5BB4415B767 /* Pods_BTStudioWeiBo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTStudioWeiBo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		811547D4813CD3A81C14F944 /* Pods-BTStudioWeiBo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTStudioWeiBo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTStudioWeiBo/Pods-BTStudioWeiBo.release.xcconfig"; sourceTree = "<group>"; };
 		C43A09C50F6F39DCBB1AC158 /* Pods-BTStudioWeiBo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTStudioWeiBo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BTStudioWeiBo/Pods-BTStudioWeiBo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 		06C1E5E72268113900669C2F /* Compose */ = {
 			isa = PBXGroup;
 			children = (
+				06FB1CD322705C09009B5752 /* View */,
 				06C1E5E82268113900669C2F /* ComposeType */,
 				062BDB292269AC5000322481 /* BWComposeViewController.swift */,
 				06FB1CD122700BB8009B5752 /* BWComposeViewController.xib */,
@@ -527,6 +530,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		06FB1CD322705C09009B5752 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06FB1CD422705C25009B5752 /* BWComposeTextView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C2B6102703EC9E4B3AFEBD71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -733,6 +744,7 @@
 				062478F8225DEA210013CDB5 /* BWUserAccount.swift in Sources */,
 				06E21CE7224F139000FFF5C3 /* UIViewController+CZAddition.m in Sources */,
 				06EA4535225C458E005D91E1 /* BWStatus.swift in Sources */,
+				06FB1CD522705C25009B5752 /* BWComposeTextView.swift in Sources */,
 				06E21CBA224F10AA00FFF5C3 /* BWNavigationController.swift in Sources */,
 				062478EE225D91CF0013CDB5 /* WeiBoConstant.swift in Sources */,
 				06C0757422545EDE00C12A16 /* BWVisitorView.swift in Sources */,

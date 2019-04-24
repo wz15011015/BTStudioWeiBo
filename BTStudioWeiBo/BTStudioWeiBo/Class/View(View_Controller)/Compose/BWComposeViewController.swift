@@ -16,7 +16,7 @@ import UIKit
 class BWComposeViewController: UIViewController {
     
     /// 文本视图
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: BWComposeTextView!
     
     /// 底部工具栏
     @IBOutlet weak var toolBar: UIToolbar!
@@ -105,6 +105,17 @@ class BWComposeViewController: UIViewController {
 }
 
 
+// MARK: - UITextViewDelegate
+
+extension BWComposeViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        // 根据是否有文本输入,来确定发布按钮的禁用状态
+        sendButton.isEnabled = textView.hasText
+    }
+}
+
+
 // MARK: - 设置界面
 extension BWComposeViewController {
     
@@ -122,9 +133,13 @@ extension BWComposeViewController {
     /// 设置导航栏
     func setupNavigationBar() {
         navigationController?.navigationBar.isHidden = false
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendButton)
         navigationItem.titleView = titleLabel
+        
+        // 初始时,禁用发布按钮
+        sendButton.isEnabled = false
     }
     
     /// 设置工具栏
@@ -138,13 +153,12 @@ extension BWComposeViewController {
         var toolbarButtons: [UIBarButtonItem] = []
         for info in toolbarItemsInfo {
             guard let imageName = info["imageName"] else {
-                    continue
+                continue
             }
             let image = UIImage(named: imageName)
             let imageHighlighted = UIImage(named: imageName + "_highlighted")
             
             let button = UIButton()
-//            button.setTitle("1231", for: .normal)
             button.setImage(image, for: .normal)
             button.setImage(imageHighlighted, for: .highlighted)
             button.sizeToFit()
