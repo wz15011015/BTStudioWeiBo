@@ -118,6 +118,7 @@ extension BWHomeViewController {
         cell.viewModel = viewModel
         
         /**
+         * [⚠️- 谨记知识点 -⚠️]
          * 1. 如果用 Block 实现,则需要在此处给每一个Cell设置Block
          * cell.block = {
          *     // Do something cool.

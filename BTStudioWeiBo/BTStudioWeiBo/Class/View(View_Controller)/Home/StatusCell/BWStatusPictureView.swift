@@ -101,6 +101,7 @@ class BWStatusPictureView: UIView {
 
 // MARK: - 设置界面
 extension BWStatusPictureView {
+    // [⚠️- 谨记知识点 -⚠️]
     // 1. Cell中所有的控件都是提前准备好
     // 2. 设置的时候,根据数据决定是否显示
     // 3. 不要动态创建控件

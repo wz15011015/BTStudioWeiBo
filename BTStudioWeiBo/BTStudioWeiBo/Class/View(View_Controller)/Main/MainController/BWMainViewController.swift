@@ -243,6 +243,7 @@ extension BWMainViewController {
             jsonData = NSData(contentsOfFile: path!)
         }
         
+        // [⚠️- 谨记知识点 -⚠️]
         /**
          * try的含义:
          * throws 表示会抛出异常

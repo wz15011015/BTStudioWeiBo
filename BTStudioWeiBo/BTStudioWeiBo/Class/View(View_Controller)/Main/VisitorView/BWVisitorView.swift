@@ -101,6 +101,7 @@ class BWVisitorView: UIView {
 extension BWVisitorView {
     
     private func setupUI() {
+        // [⚠️- 谨记知识点 -⚠️]
         // 在开发的时候,如果能够使用颜色,就不要使用图片,使用颜色效率会更高!
         backgroundColor = UIColor.cz_color(withRed: 237, green: 237, blue: 237)
         

@@ -181,6 +181,7 @@ class BWLabel: UILabel {
                 }
             }
         } else {
+            // 移出URL范围时,取消URL背景高亮
             modifySelectedAttribute(false)
         }
     }
@@ -194,7 +195,7 @@ class BWLabel: UILabel {
         let text = (textStorage.string as NSString).substring(with: selectedRange)
         delegate?.labelDidSelectedLinkText?(label: self, text: text)
         
-        // 恢复URL的显示
+        // 恢复URL的正常显示(背景不高亮)
         let when = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: when) {
             self.modifySelectedAttribute(false)
@@ -291,7 +292,7 @@ private extension BWLabel {
     
     /// 修改点击URL的属性
     ///
-    /// - Parameter isSet: 是否重置背景颜色
+    /// - Parameter isSet: URL背景是否高亮
     func modifySelectedAttribute(_ isSet: Bool) {
         guard let selectedRange = selectedRange else {
             return
@@ -342,6 +343,35 @@ private extension BWLabel {
             return mutableAttributedString
         }
         
+        /**
+         * 方法 func attributes(at:, effectiveRange: ) -> [NSAttributedString.Key : Any] 的解释:
+         *
+         * 1. 一个属性字符串: 1234--ABCD
+         *  其中:
+         *    - 字符"1234"通过方法addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)], range: NSMakeRange(0, 4))设置了字体大小为:12
+         *    - 字符"ABCD"通过方法addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], range: NSMakeRange(6, 4))设置了字体大小为:14
+         *
+         *
+         * 2. 则方法attributes(at: , effectiveRange:)的使用方式及结果:
+         *  - attributes(at: 0, effectiveRange: &range)
+         *  结果:
+         *     - 属性字典为:[NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]
+         *     - 有效范围range为{0, 4}
+         *
+         *  - attributes(at: 4, effectiveRange: &range)
+         *  结果:
+         *     - 属性字典为: [: ] 空字典
+         *     - 有效范围range为{4, 2}
+         *
+         *  - attributes(at: 7, effectiveRange: &range)
+         *  结果:
+         *     - 属性字典为: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
+         *     - 有效范围range为{6, 4}
+         *
+         *
+         * 3. 因此attributes(at:, effectiveRange: )的作用是:
+         *     返回指定索引位置字符的属性,同时返回该属性起作用的范围
+         */
         var range = NSMakeRange(0, 0)
         var attributes = attributedString.attributes(at: 0, effectiveRange: &range)
         
@@ -366,12 +396,12 @@ private extension BWLabel {
 // MARK: - 正则表达式相关
 private extension BWLabel {
     
-    /// 匹配方案数组 (URL / #xxx# / @xxx)
+    /// 匹配方案数组 (匹配方案包括: 链接--URL / 话题--#xxx# / @某人--@xxx)
     var patterns: [String] {
         return ["[a-zA-Z]*://[a-zA-Z0-9/\\.]*", "#.*?#", "@[\\u4e00-\\u9fa5a-zA-Z0-9_-]*"]
     }
     
-    /// 匹配处理,以获取匹配结果
+    /// 进行匹配处理,以获取匹配结果
     ///
     /// - Parameter attributedString: 属性字符串
     func matchLinkRange(attributedString: NSAttributedString) {
@@ -387,9 +417,9 @@ private extension BWLabel {
             // 3. 遍历results,获取匹配结果
             for result in results ?? [] {
                 // 匹配结果
-                let r = result.range(at: 0)
+                let matchRange = result.range(at: 0)
                 // 添加 range
-                linkRanges.append(r)
+                linkRanges.append(matchRange)
             }
         }
     }
