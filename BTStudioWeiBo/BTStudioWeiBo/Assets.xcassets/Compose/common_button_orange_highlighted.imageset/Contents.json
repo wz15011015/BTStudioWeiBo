@@ -9,10 +9,10 @@
         "mode" : "3-part-horizontal",
         "center" : {
           "mode" : "tile",
-          "width" : 1
+          "width" : 3
         },
         "cap-insets" : {
-          "right" : 11,
+          "right" : 7,
           "left" : 10
         }
       },

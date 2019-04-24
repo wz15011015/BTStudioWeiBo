@@ -79,6 +79,7 @@
 		06E21CF4224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */; };
 		06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */; };
 		06EA4535225C458E005D91E1 /* BWStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4534225C458E005D91E1 /* BWStatus.swift */; };
+		06FB1CD222700BB8009B5752 /* BWComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06FB1CD122700BB8009B5752 /* BWComposeViewController.xib */; };
 		DC44E33F6638BC197B67428C /* Pods_BTStudioWeiBo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65193EA2FA92A5BB4415B767 /* Pods_BTStudioWeiBo.framework */; };
 /* End PBXBuildFile section */
 
@@ -171,6 +172,7 @@
 		06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		06EA4534225C458E005D91E1 /* BWStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatus.swift; sourceTree = "<group>"; };
+		06FB1CD122700BB8009B5752 /* BWComposeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWComposeViewController.xib; sourceTree = "<group>"; };
 		65193EA2FA92A5BB4415B767 /* Pods_BTStudioWeiBo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTStudioWeiBo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		811547D4813CD3A81C14F944 /* Pods-BTStudioWeiBo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTStudioWeiBo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTStudioWeiBo/Pods-BTStudioWeiBo.release.xcconfig"; sourceTree = "<group>"; };
 		C43A09C50F6F39DCBB1AC158 /* Pods-BTStudioWeiBo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTStudioWeiBo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BTStudioWeiBo/Pods-BTStudioWeiBo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 			children = (
 				06C1E5E82268113900669C2F /* ComposeType */,
 				062BDB292269AC5000322481 /* BWComposeViewController.swift */,
+				06FB1CD122700BB8009B5752 /* BWComposeViewController.xib */,
 			);
 			path = Compose;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				0670178E2260830400A79A4D /* BWNewFeatureView.xib in Resources */,
 				06C1E5EC2268137500669C2F /* BWComposeTypeView.xib in Resources */,
 				06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */,
+				06FB1CD222700BB8009B5752 /* BWComposeViewController.xib in Resources */,
 				06DF3E9A226D8DD3007E28CD /* BWEmoticon.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
