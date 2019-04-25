@@ -19,6 +19,12 @@ class BWComposeViewController: UIViewController {
     /// 文本视图
     @IBOutlet weak var textView: BWComposeTextView!
     
+    /// 键盘高度
+    private var keyboardHeight: CGFloat = 216.0
+    
+    /// 键盘的输入视图
+    private lazy var emoticonInputView = BWEmoticonInputView.inputView()
+    
     /// 底部工具栏
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var toolBarBottom: NSLayoutConstraint!
@@ -93,6 +99,29 @@ class BWComposeViewController: UIViewController {
                 })
             }
         }
+    }
+    
+    /// 切换表情键盘
+    @objc func emoticonKeyboard() {
+        /**
+         textView.inputView就是文本框的输入视图
+         如果使用系统默认的键盘,输入视图为nil
+         */
+//        let keyboard = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 346))
+//        keyboard.backgroundColor = UIColor.orange
+        
+        // 设置输入视图
+        /**
+         * - 如果为空,表示当前为系统键盘,则设置为自定义键盘;
+         * - 如果不为空,表示当前为自定义键盘,则设置为nil,切换至系统键盘;
+         */
+        textView.inputView = (textView.inputView == nil) ? emoticonInputView : nil
+        
+        // 设置输入助理视图 (键盘消失,助理视图随之消失!)
+//        textView.inputAccessoryView = toolBar
+        
+        // 刷新输入视图 (切换键盘注意必须刷新输入视图)
+        textView.reloadInputViews()
     }
     
     // MARK: - 键盘通知
@@ -176,7 +205,7 @@ extension BWComposeViewController {
         let toolbarItemsInfo = [["imageName": "compose_toolbar_picture"],
                                 ["imageName": "compose_mentionbutton_background"],
                                 ["imageName": "compose_trendbutton_background"],
-                                ["imageName": "compose_emoticonbutton_background"],
+                                ["imageName": "compose_emoticonbutton_background", "actionName": "emoticonKeyboard"],
                                 ["imageName": "compose_add_background"]]
         
         var toolbarButtons: [UIBarButtonItem] = []
@@ -191,6 +220,11 @@ extension BWComposeViewController {
             button.setImage(image, for: .normal)
             button.setImage(imageHighlighted, for: .highlighted)
             button.sizeToFit()
+            
+            // 添加监听事件
+            if let actionName = info["actionName"] {
+                button.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+            }
             
             toolbarButtons.append(UIBarButtonItem(customView: button))
             // 追加弹簧

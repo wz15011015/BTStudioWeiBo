@@ -27,7 +27,26 @@ import UIKit
     var gif: String?
     
     /// emoji的十六进制编码
-    var code: String?
+    var code: String? {
+        didSet {
+            guard let code = code else { return }
+            
+            // 1. 创建字符扫描器,并从code字符串中扫描出十六进制数
+            let scanner = Scanner(string: code)
+            var result: UInt32 = 0
+            scanner.scanHexInt32(&result)
+            
+            // 2. 使用UInt32数值生成一个UTF8字符
+            guard let unicode = UnicodeScalar(result) else { return }
+            let c: Character = Character(unicode)
+            
+            // 3. UTF8字符 转 字符串
+            emoji = String(c)
+        }
+    }
+    
+    /// emoji字符串
+    var emoji: String?
     
     /// 表情图片所在的目录
     var directory: String?

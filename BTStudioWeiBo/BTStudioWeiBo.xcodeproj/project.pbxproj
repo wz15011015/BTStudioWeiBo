@@ -42,6 +42,12 @@
 		06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF4224EF7A0002F3E1C /* Main.storyboard */; };
 		06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06914FF7224EF7A2002F3E1C /* Assets.xcassets */; };
 		0694DC73225593E000F7FB9F /* Main.json in Resources */ = {isa = PBXBuildFile; fileRef = 0694DC72225593E000F7FB9F /* Main.json */; };
+		06B5560122715E9100768745 /* BWEmoticonInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5560022715E9100768745 /* BWEmoticonInputView.swift */; };
+		06B5560322715EC700768745 /* BWEmoticonInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B5560222715EC700768745 /* BWEmoticonInputView.xib */; };
+		06B5560522717EE800768745 /* BWEmoticonToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5560422717EE800768745 /* BWEmoticonToolbar.swift */; };
+		06B5560822718A2800768745 /* BWEmoticonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5560622718A2800768745 /* BWEmoticonCell.swift */; };
+		06B5560922718A2800768745 /* BWEmoticonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B5560722718A2800768745 /* BWEmoticonCell.xib */; };
+		06B5560B22718CB200768745 /* BWEmoticonLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5560A22718CB200768745 /* BWEmoticonLayout.swift */; };
 		06C0757422545EDE00C12A16 /* BWVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C0757322545EDE00C12A16 /* BWVisitorView.swift */; };
 		06C1E5EA2268115300669C2F /* BWComposeTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1E5E92268115300669C2F /* BWComposeTypeView.swift */; };
 		06C1E5EC2268137500669C2F /* BWComposeTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C1E5EB2268137500669C2F /* BWComposeTypeView.xib */; };
@@ -122,6 +128,12 @@
 		06914FF7224EF7A2002F3E1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06914FFC224EF7A2002F3E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0694DC72225593E000F7FB9F /* Main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Main.json; sourceTree = "<group>"; };
+		06B5560022715E9100768745 /* BWEmoticonInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonInputView.swift; sourceTree = "<group>"; };
+		06B5560222715EC700768745 /* BWEmoticonInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWEmoticonInputView.xib; sourceTree = "<group>"; };
+		06B5560422717EE800768745 /* BWEmoticonToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonToolbar.swift; sourceTree = "<group>"; };
+		06B5560622718A2800768745 /* BWEmoticonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonCell.swift; sourceTree = "<group>"; };
+		06B5560722718A2800768745 /* BWEmoticonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWEmoticonCell.xib; sourceTree = "<group>"; };
+		06B5560A22718CB200768745 /* BWEmoticonLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonLayout.swift; sourceTree = "<group>"; };
 		06C0757322545EDE00C12A16 /* BWVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWVisitorView.swift; sourceTree = "<group>"; };
 		06C1E5E92268115300669C2F /* BWComposeTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWComposeTypeView.swift; sourceTree = "<group>"; };
 		06C1E5EB2268137500669C2F /* BWComposeTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWComposeTypeView.xib; sourceTree = "<group>"; };
@@ -310,6 +322,19 @@
 			path = BTStudioWeiBo;
 			sourceTree = "<group>";
 		};
+		06B555FF22715E7600768745 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06B5560022715E9100768745 /* BWEmoticonInputView.swift */,
+				06B5560422717EE800768745 /* BWEmoticonToolbar.swift */,
+				06B5560622718A2800768745 /* BWEmoticonCell.swift */,
+				06B5560722718A2800768745 /* BWEmoticonCell.xib */,
+				06B5560A22718CB200768745 /* BWEmoticonLayout.swift */,
+				06B5560222715EC700768745 /* BWEmoticonInputView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		06C0757222545ECC00C12A16 /* VisitorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				06DF3E97226D8BC3007E28CD /* BWEmoticonManager.swift */,
+				06B555FF22715E7600768745 /* View */,
 				06DF3E9B226D94F7007E28CD /* Model */,
 				06DF3E99226D8DD3007E28CD /* BWEmoticon.bundle */,
 			);
@@ -618,6 +644,7 @@
 			files = (
 				0654141722646AD400B3F388 /* BWStatusRetweetedCell.xib in Resources */,
 				06C1E5F022681A9200669C2F /* BWComposeTypeButton.xib in Resources */,
+				06B5560322715EC700768745 /* BWEmoticonInputView.xib in Resources */,
 				06D6024122672D15002760FF /* BWHumanRefreshView.xib in Resources */,
 				06914FF8224EF7A2002F3E1C /* Assets.xcassets in Resources */,
 				06002BBE226184510063D525 /* BWStatusNormalCell.xib in Resources */,
@@ -625,6 +652,7 @@
 				0670178C22606C1900A79A4D /* BWWelcomeView.xib in Resources */,
 				06D6024322672F5D002760FF /* BWMTRefreshView.xib in Resources */,
 				0655A6882266BF3C006ED69E /* BWRefreshView.xib in Resources */,
+				06B5560922718A2800768745 /* BWEmoticonCell.xib in Resources */,
 				0670178E2260830400A79A4D /* BWNewFeatureView.xib in Resources */,
 				06C1E5EC2268137500669C2F /* BWComposeTypeView.xib in Resources */,
 				06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */,
@@ -703,16 +731,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06B5560522717EE800768745 /* BWEmoticonToolbar.swift in Sources */,
 				0655A68A2266C12B006ED69E /* BWRefreshView.swift in Sources */,
 				062478F0225D925A0013CDB5 /* Common.swift in Sources */,
 				06E21CBC224F10CE00FFF5C3 /* BWBaseViewController.swift in Sources */,
 				064897FF225C481A00DBC01D /* BWStatusListViewModel.swift in Sources */,
 				06D6024522673138002760FF /* BWMTRefreshView.swift in Sources */,
+				06B5560B22718CB200768745 /* BWEmoticonLayout.swift in Sources */,
 				063B85C8226EB03A00ECE018 /* BWLabel.swift in Sources */,
 				06C1E5EE22681A8200669C2F /* BWComposeTypeButton.swift in Sources */,
+				06B5560122715E9100768745 /* BWEmoticonInputView.swift in Sources */,
 				06E21CE3224F139000FFF5C3 /* NSString+CZBase64.m in Sources */,
 				06E21CC4224F113100FFF5C3 /* BWProfileViewController.swift in Sources */,
 				06E21CE6224F139000FFF5C3 /* NSObject+CZRuntime.m in Sources */,
+				06B5560822718A2800768745 /* BWEmoticonCell.swift in Sources */,
 				06E21CF2224F4EF500FFF5C3 /* UIColorExtension.swift in Sources */,
 				06002BC22261859A0063D525 /* UIImage+Extensions.swift in Sources */,
 				06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */,

@@ -18,6 +18,13 @@ class BWEmoticonManager {
     /// 表情包数组
     lazy var packages: [BWEmoticonPackage] = []
     
+    /// 表情素材Bundle
+    lazy var bundle: Bundle = {
+        let path = Bundle.main.path(forResource: "BWEmoticon", ofType: "bundle")
+        let bundle = Bundle(path: path!)
+        return bundle!
+    }()
+    
     
     /// 构造函数
     ///
