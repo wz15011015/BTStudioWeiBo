@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 /**
  加载控制器的时候,如果 xib 和 控制器 同名,默认的构造函数会优先加载xib
@@ -62,8 +63,36 @@ class BWComposeViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    /// 发布微博
+    ///
+    /// - Parameter sender: 发布按钮
     @IBAction func sendStatus(_ sender: UIButton) {
-        print("发布微博")
+        // 1. 获取微博内容文本
+        guard let text = textView.text else {
+            return
+        }
+        let image = UIImage(named: "icon_earth")
+        // 2. 发布微博
+        BWNetworkManager.shared.postStatus(text: text, image: image) { (result, isSuccess) in
+            print("发布微博: \(result)")
+            // FIXME: 调试
+//            let success = isSuccess
+            let success = true
+            
+            let message = success ? "发布成功" : "网络不给力"
+            // 修改指示器样式
+            SVProgressHUD.setDefaultStyle(.dark)
+            
+            SVProgressHUD.showInfo(withStatus: message)
+            if success {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                    // 恢复指示器样式
+                    SVProgressHUD.setDefaultStyle(.light)
+                    
+                    self.dismissVC()
+                })
+            }
+        }
     }
     
     // MARK: - 键盘通知
