@@ -86,6 +86,8 @@
 		06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */; };
 		06EA4535225C458E005D91E1 /* BWStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4534225C458E005D91E1 /* BWStatus.swift */; };
 		06F207C52272DBB700F7428E /* BWEmoticonAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F207C42272DBB700F7428E /* BWEmoticonAttachment.swift */; };
+		06F207C82272EF0600F7428E /* BWSQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F207C72272EF0600F7428E /* BWSQLite.swift */; };
+		06F207CA2272FB0300F7428E /* status.sql in Resources */ = {isa = PBXBuildFile; fileRef = 06F207C92272FB0300F7428E /* status.sql */; };
 		06FB1CD222700BB8009B5752 /* BWComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06FB1CD122700BB8009B5752 /* BWComposeViewController.xib */; };
 		06FB1CD522705C25009B5752 /* BWComposeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FB1CD422705C25009B5752 /* BWComposeTextView.swift */; };
 		DC44E33F6638BC197B67428C /* Pods_BTStudioWeiBo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65193EA2FA92A5BB4415B767 /* Pods_BTStudioWeiBo.framework */; };
@@ -187,6 +189,8 @@
 		06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		06EA4534225C458E005D91E1 /* BWStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatus.swift; sourceTree = "<group>"; };
 		06F207C42272DBB700F7428E /* BWEmoticonAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonAttachment.swift; sourceTree = "<group>"; };
+		06F207C72272EF0600F7428E /* BWSQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWSQLite.swift; sourceTree = "<group>"; };
+		06F207C92272FB0300F7428E /* status.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = status.sql; sourceTree = "<group>"; };
 		06FB1CD122700BB8009B5752 /* BWComposeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWComposeViewController.xib; sourceTree = "<group>"; };
 		06FB1CD422705C25009B5752 /* BWComposeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWComposeTextView.swift; sourceTree = "<group>"; };
 		65193EA2FA92A5BB4415B767 /* Pods_BTStudioWeiBo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTStudioWeiBo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -420,6 +424,7 @@
 		06E21CAE224F101600FFF5C3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				06F207C62272EEEF00F7428E /* SQLite */,
 				063B85C9226F014F00ECE018 /* FFLabel */,
 				063B85C6226EB02900ECE018 /* BWLabel */,
 				06DF3E96226D8B9F007E28CD /* Emoticon */,
@@ -559,6 +564,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		06F207C62272EEEF00F7428E /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				06F207C72272EF0600F7428E /* BWSQLite.swift */,
+				06F207C92272FB0300F7428E /* status.sql */,
+			);
+			path = SQLite;
+			sourceTree = "<group>";
+		};
 		06FB1CD322705C09009B5752 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,6 +672,7 @@
 				06B5560922718A2800768745 /* BWEmoticonCell.xib in Resources */,
 				0670178E2260830400A79A4D /* BWNewFeatureView.xib in Resources */,
 				06C1E5EC2268137500669C2F /* BWComposeTypeView.xib in Resources */,
+				06F207CA2272FB0300F7428E /* status.sql in Resources */,
 				06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */,
 				06FB1CD222700BB8009B5752 /* BWComposeViewController.xib in Resources */,
 				06DF3E9A226D8DD3007E28CD /* BWEmoticon.bundle in Resources */,
@@ -780,6 +795,7 @@
 				06E21CE7224F139000FFF5C3 /* UIViewController+CZAddition.m in Sources */,
 				06EA4535225C458E005D91E1 /* BWStatus.swift in Sources */,
 				06FB1CD522705C25009B5752 /* BWComposeTextView.swift in Sources */,
+				06F207C82272EF0600F7428E /* BWSQLite.swift in Sources */,
 				06E21CBA224F10AA00FFF5C3 /* BWNavigationController.swift in Sources */,
 				062478EE225D91CF0013CDB5 /* WeiBoConstant.swift in Sources */,
 				06C0757422545EDE00C12A16 /* BWVisitorView.swift in Sources */,

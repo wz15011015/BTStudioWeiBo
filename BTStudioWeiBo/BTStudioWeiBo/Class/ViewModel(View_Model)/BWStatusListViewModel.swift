@@ -79,7 +79,7 @@ class BWStatusListViewModel {
                 let viewModel = BWStatusViewModel(status: status)
                 // 添加到数组
                 array.append(viewModel)
-                print("微博模型: \(viewModel)")
+//                print("微博模型: \(viewModel)")
             }
             
             // 1. 字典转模型

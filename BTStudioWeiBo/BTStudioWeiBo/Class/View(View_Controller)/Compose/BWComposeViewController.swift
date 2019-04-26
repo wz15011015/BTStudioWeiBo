@@ -127,6 +127,11 @@ class BWComposeViewController: UIViewController {
         textView.reloadInputViews()
     }
     
+    @objc func addOther() {
+        textView.inputView = nil
+        textView.reloadInputViews()
+    }
+    
     
     // MARK: - 键盘通知
     @objc func keyboardWillChangeFrame(notification: Notification) {
@@ -206,11 +211,11 @@ private extension BWComposeViewController {
     
     /// 设置工具栏
     func setupToolBar() {
-        let toolbarItemsInfo = [["imageName": "compose_toolbar_picture"],
-                                ["imageName": "compose_mentionbutton_background"],
-                                ["imageName": "compose_trendbutton_background"],
+        let toolbarItemsInfo = [["imageName": "compose_toolbar_picture", "actionName": "addOther"],
+                                ["imageName": "compose_mentionbutton_background", "actionName": "addOther"],
+                                ["imageName": "compose_trendbutton_background", "actionName": "addOther"],
                                 ["imageName": "compose_emoticonbutton_background", "actionName": "emoticonKeyboard"],
-                                ["imageName": "compose_add_background"]]
+                                ["imageName": "compose_add_background", "actionName": "addOther"]]
         
         var toolbarButtons: [UIBarButtonItem] = []
         for info in toolbarItemsInfo {
