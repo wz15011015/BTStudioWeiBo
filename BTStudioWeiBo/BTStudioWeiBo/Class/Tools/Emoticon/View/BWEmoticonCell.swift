@@ -18,7 +18,7 @@ import UIKit
 /// 表情Cell代理
 @objc protocol BWEmoticonCellDelegate: NSObjectProtocol {
     
-    /// 表情 Cell 选中表情模型
+    /// 表情Cell选中事件
     ///
     /// - Parameters:
     ///   - cell: 表情Cell
@@ -95,7 +95,7 @@ class BWEmoticonCell: UICollectionViewCell {
             emoticon = emoticons[tag]
         }
         
-        // 3. emoticon要么是选中的按钮,要么为nil,为nil时是删除按钮
+        // 3. emoticon 要么是选中按钮对应的表情模型; 要么为nil,为nil时是删除按钮
         // 通知代理调用协议方法
         delegate?.emoticonCellDidSelectedEmoticon?(cell: self, emoticon: emoticon)
     }

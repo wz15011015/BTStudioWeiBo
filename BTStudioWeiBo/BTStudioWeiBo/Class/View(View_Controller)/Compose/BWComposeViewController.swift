@@ -19,11 +19,10 @@ class BWComposeViewController: UIViewController {
     /// 文本视图
     @IBOutlet weak var textView: BWComposeTextView!
     
-    /// 键盘高度
-    private var keyboardHeight: CGFloat = 216.0
-    
     /// 键盘的输入视图
-    private lazy var emoticonInputView = BWEmoticonInputView.inputView()
+    private lazy var emoticonInputView = BWEmoticonInputView.inputView { [weak self] (emoticon) in
+        self?.textView.insertEmoticon(emoticon: emoticon)
+    }
     
     /// 底部工具栏
     @IBOutlet weak var toolBar: UIToolbar!
@@ -73,8 +72,12 @@ class BWComposeViewController: UIViewController {
     ///
     /// - Parameter sender: 发布按钮
     @IBAction func sendStatus(_ sender: UIButton) {
+        print("发布微博的内容: \(textView.emoticonText)")
+        return
+        
         // 1. 获取微博内容文本
-        guard let text = textView.text else {
+        let text = textView.emoticonText
+        if text.count == 0 {
             return
         }
         let image = UIImage(named: "icon_earth")
@@ -123,6 +126,7 @@ class BWComposeViewController: UIViewController {
         // 刷新输入视图 (切换键盘注意必须刷新输入视图)
         textView.reloadInputViews()
     }
+    
     
     // MARK: - 键盘通知
     @objc func keyboardWillChangeFrame(notification: Notification) {
@@ -175,7 +179,7 @@ extension BWComposeViewController: UITextViewDelegate {
 
 
 // MARK: - 设置界面
-extension BWComposeViewController {
+private extension BWComposeViewController {
     
     func setupUI() {
         title = "发微博"

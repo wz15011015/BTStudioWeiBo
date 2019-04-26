@@ -88,12 +88,20 @@ import UIKit
         
         // 2. 创建文本附件
         let hight = font.lineHeight
-        let attachment = NSTextAttachment()
+        let attachment = BWEmoticonAttachment()
         attachment.image = image
         attachment.bounds = CGRect(x: 0, y: -4, width: hight, height: hight)
+        // 记录图片对应的文本
+        attachment.chs = chs
         
         // 3. 返回图片属性文本
         let attributedString = NSAttributedString(attachment: attachment)
-        return attributedString
+        
+        // 4. 设置图片属性文本的字体属性
+        let attributedStringM = NSMutableAttributedString(attributedString: attributedString)
+        attributedStringM.addAttributes([NSAttributedString.Key.font: font], range: NSMakeRange(0, 1))
+        
+        // 5. 返回图片属性文本
+        return attributedStringM
     }
 }

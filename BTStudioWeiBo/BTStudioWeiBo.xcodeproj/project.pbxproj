@@ -85,6 +85,7 @@
 		06E21CF4224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */; };
 		06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */; };
 		06EA4535225C458E005D91E1 /* BWStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4534225C458E005D91E1 /* BWStatus.swift */; };
+		06F207C52272DBB700F7428E /* BWEmoticonAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F207C42272DBB700F7428E /* BWEmoticonAttachment.swift */; };
 		06FB1CD222700BB8009B5752 /* BWComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06FB1CD122700BB8009B5752 /* BWComposeViewController.xib */; };
 		06FB1CD522705C25009B5752 /* BWComposeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FB1CD422705C25009B5752 /* BWComposeTextView.swift */; };
 		DC44E33F6638BC197B67428C /* Pods_BTStudioWeiBo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65193EA2FA92A5BB4415B767 /* Pods_BTStudioWeiBo.framework */; };
@@ -185,6 +186,7 @@
 		06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		06EA4534225C458E005D91E1 /* BWStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatus.swift; sourceTree = "<group>"; };
+		06F207C42272DBB700F7428E /* BWEmoticonAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonAttachment.swift; sourceTree = "<group>"; };
 		06FB1CD122700BB8009B5752 /* BWComposeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWComposeViewController.xib; sourceTree = "<group>"; };
 		06FB1CD422705C25009B5752 /* BWComposeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWComposeTextView.swift; sourceTree = "<group>"; };
 		65193EA2FA92A5BB4415B767 /* Pods_BTStudioWeiBo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTStudioWeiBo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -399,6 +401,7 @@
 			children = (
 				06DF3E9C226D9519007E28CD /* BWEmoticon.swift */,
 				06DF3E9E226D9662007E28CD /* BWEmoticonPackage.swift */,
+				06F207C42272DBB700F7428E /* BWEmoticonAttachment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				06002BCC2261CE0E0063D525 /* BWStatusToolBar.swift in Sources */,
 				06E21CDF224F139000FFF5C3 /* UIColor+CZAddition.m in Sources */,
 				063DC677225B449900FF5CB4 /* BWNetworkManager.swift in Sources */,
+				06F207C52272DBB700F7428E /* BWEmoticonAttachment.swift in Sources */,
 				0654141522641DA700B3F388 /* BWStatusPicture.swift in Sources */,
 				0670178A2260636F00A79A4D /* BWNewFeatureView.swift in Sources */,
 				06E21CE0224F139000FFF5C3 /* UIView+CZAddition.m in Sources */,
