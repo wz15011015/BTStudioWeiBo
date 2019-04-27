@@ -66,6 +66,9 @@ class BWEmoticonCell: UICollectionViewCell {
         }
     }
     
+    /// 选中表情按钮的提示视图
+    private lazy var tipView = BWEmoticonTipView()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,6 +78,22 @@ class BWEmoticonCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        
+        guard let newWindow = newWindow else {
+            return
+        }
+        /**
+         将提示视图添加到窗口上
+         - 提示:
+         - 在iOS 6.0之前,很多程序员都喜欢把控件往窗口上添加
+         - 在现在的开发中,如果有地方,尽量不要添加到窗口上.
+         */
+        newWindow.addSubview(tipView)
+        tipView.isHidden = true
     }
     
     
@@ -98,6 +117,65 @@ class BWEmoticonCell: UICollectionViewCell {
         // 3. emoticon 要么是选中按钮对应的表情模型; 要么为nil,为nil时是删除按钮
         // 通知代理调用协议方法
         delegate?.emoticonCellDidSelectedEmoticon?(cell: self, emoticon: emoticon)
+    }
+    
+    /// 长按手势的事件
+    ///
+    /// - Parameter gesture: 手势
+    @objc private func longGesture(gesture: UILongPressGestureRecognizer) {
+        // 1. 获取触摸位置
+        let location = gesture.location(in: self)
+        
+        // 2. 获取表情按钮
+        guard let button = emoticonButton(at: location) else {
+            // 获取表情按钮失败时(为删除按钮或其他情况),需要隐藏提示视图
+            tipView.isHidden = true
+            
+            return
+        }
+        
+        // 3. 处理手势状态
+        switch gesture.state {
+        case .began, .changed:
+            tipView.isHidden = false
+            
+            // 坐标系的转换 - 将按钮参照cell的坐标系转换到 window 的坐标位置
+            let center = self.convert(button.center, to: window)
+            
+            // 设置提示按钮的位置
+            tipView.center = center
+            
+            // 设置表情模型
+            if let count = emoticons?.count, button.tag < count {
+                let emoticon = emoticons?[button.tag]
+                tipView.emoticon = emoticon
+            }
+            
+        case .ended:
+            tipView.isHidden = true
+            // 执行选中按钮方法
+            selectedEmoticonButton(sender: button)
+            
+        case .cancelled, .failed:
+            tipView.isHidden = true
+            
+        default:
+            break
+        }
+    }
+    
+    /// 获取触摸位置的表情按钮
+    ///
+    /// - Parameter location: 触摸位置
+    /// - Returns: 表情按钮,为删除按钮或其他情况时为nil
+    private func emoticonButton(at location: CGPoint) -> UIButton? {
+        // 遍历 contentView 的所有子视图,如果可见,同时在location,且不为删除按钮,则是表情按钮
+        for subView in contentView.subviews {
+            if !subView.isHidden && subView.frame.contains(location) && subView != contentView.subviews.last {
+                return (subView as! UIButton)
+            }
+        }
+        return nil
     }
     
 
@@ -140,6 +218,11 @@ private extension BWEmoticonCell {
             button.tag = i
             // 添加监听事件
             button.addTarget(self, action: #selector(selectedEmoticonButton(sender:)), for: .touchUpInside)
+            
+            // 添加长按手势,用于显示提示视图
+            let longGR = UILongPressGestureRecognizer(target: self, action: #selector(longGesture(gesture:)))
+            longGR.minimumPressDuration = 0.2
+            button.addGestureRecognizer(longGR)
             
             contentView.addSubview(button)
         }
