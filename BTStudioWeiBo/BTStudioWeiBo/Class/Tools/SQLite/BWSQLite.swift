@@ -9,6 +9,9 @@
 import Foundation
 import FMDB
 
+/// 最大的数据库缓存时间(单位: s, 5天前的数据)
+private let maxDatabaseCacheTime: Double = -60 // -5 * 24 * 60 * 60
+
 /**
  * 1. 数据库本质上是保存在沙盒中的一个文件,首先需要创建并且打开数据库;
  *    FMDB - 队列
@@ -29,6 +32,11 @@ class BWSQLiteManager {
     let queue: FMDatabaseQueue
     
     
+    deinit {
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     /// 构造函数 - private保证使用者只能通过shared获取单例对象,不能使用init构造函数创建实例对象
     private init() {
         // 数据库的全路径
@@ -41,6 +49,37 @@ class BWSQLiteManager {
         queue = FMDatabaseQueue(path: databasePath)!
         
         createTable()
+        
+        // 注册通知 - 监听应用程序进入后台
+        // 模仿SDWebImage
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
+    
+    /// 应用程序进入后台
+    @objc private func didEnterBackground() {
+        /**
+         注意细节:
+         - 随着SQLite的数据不断增加,数据库文件的大小也会不断的增加;
+         - 但是如果删除了数据,数据库文件的大小不会变小!
+         - 如果要变小:
+         -- 1. 将数据库文件复制一个新的副本, status.db.old ;
+         -- 2. 新建一个空的数据库文件;
+         -- 3. 自己编写SQL,从 old 中将所有数据读出,然后写入新的数据库!
+         */
+        // 清理缓存
+        let dateString = Date.cz_dateString(delta: maxDatabaseCacheTime)
+        print(dateString)
+        
+        // 准备SQL
+        let sql = "DELETE FROM T_Status WHERE createTime < ?;"
+        
+        // 执行SQL
+        queue.inDatabase { (database) in
+            let isSuccess = database.executeUpdate(sql, withArgumentsIn: [dateString])
+            if isSuccess {
+                print("删除了 \(database.changes) 条记录")
+            }
+        }
     }
 }
 
