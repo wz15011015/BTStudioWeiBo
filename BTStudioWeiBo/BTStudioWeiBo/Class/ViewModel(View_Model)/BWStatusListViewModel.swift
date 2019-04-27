@@ -50,7 +50,11 @@ class BWStatusListViewModel {
         // 上拉刷新,取出数组的最后一条微博的id
         let max_id = pullUp ? self.statusList.last?.status.id ?? 0 : 0
         
-        BWNetworkManager.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
+        // 通过数据访问层加载微博数据
+        BWStatusListDAL.loadStatus(since_id: since_id, max_id: max_id) { (list, isSuccess) in
+        
+        // 通过网络加载微博数据
+//        BWNetworkManager.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
             
 //            guard let array = list else {
 //                completion(isSuccess)

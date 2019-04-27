@@ -46,7 +46,6 @@
 		06B5560322715EC700768745 /* BWEmoticonInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B5560222715EC700768745 /* BWEmoticonInputView.xib */; };
 		06B5560522717EE800768745 /* BWEmoticonToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5560422717EE800768745 /* BWEmoticonToolbar.swift */; };
 		06B5560822718A2800768745 /* BWEmoticonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5560622718A2800768745 /* BWEmoticonCell.swift */; };
-		06B5560922718A2800768745 /* BWEmoticonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B5560722718A2800768745 /* BWEmoticonCell.xib */; };
 		06B5560B22718CB200768745 /* BWEmoticonLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5560A22718CB200768745 /* BWEmoticonLayout.swift */; };
 		06C0757422545EDE00C12A16 /* BWVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C0757322545EDE00C12A16 /* BWVisitorView.swift */; };
 		06C1E5EA2268115300669C2F /* BWComposeTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C1E5E92268115300669C2F /* BWComposeTypeView.swift */; };
@@ -83,6 +82,7 @@
 		06E21CEE224F191800FFF5C3 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CED224F191700FFF5C3 /* Bundle+Extensions.swift */; };
 		06E21CF2224F4EF500FFF5C3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CF1224F4EF500FFF5C3 /* UIColorExtension.swift */; };
 		06E21CF4224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */; };
+		06E667E222742A740034C3B0 /* BWStatusListDAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E667E122742A740034C3B0 /* BWStatusListDAL.swift */; };
 		06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */; };
 		06EA4535225C458E005D91E1 /* BWStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4534225C458E005D91E1 /* BWStatus.swift */; };
 		06F207C52272DBB700F7428E /* BWEmoticonAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F207C42272DBB700F7428E /* BWEmoticonAttachment.swift */; };
@@ -135,7 +135,6 @@
 		06B5560222715EC700768745 /* BWEmoticonInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWEmoticonInputView.xib; sourceTree = "<group>"; };
 		06B5560422717EE800768745 /* BWEmoticonToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonToolbar.swift; sourceTree = "<group>"; };
 		06B5560622718A2800768745 /* BWEmoticonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonCell.swift; sourceTree = "<group>"; };
-		06B5560722718A2800768745 /* BWEmoticonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWEmoticonCell.xib; sourceTree = "<group>"; };
 		06B5560A22718CB200768745 /* BWEmoticonLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonLayout.swift; sourceTree = "<group>"; };
 		06C0757322545EDE00C12A16 /* BWVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWVisitorView.swift; sourceTree = "<group>"; };
 		06C1E5E92268115300669C2F /* BWComposeTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWComposeTypeView.swift; sourceTree = "<group>"; };
@@ -186,6 +185,7 @@
 		06E21CED224F191700FFF5C3 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		06E21CF1224F4EF500FFF5C3 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
+		06E667E122742A740034C3B0 /* BWStatusListDAL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusListDAL.swift; sourceTree = "<group>"; };
 		06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		06EA4534225C458E005D91E1 /* BWStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatus.swift; sourceTree = "<group>"; };
 		06F207C42272DBB700F7428E /* BWEmoticonAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonAttachment.swift; sourceTree = "<group>"; };
@@ -334,7 +334,6 @@
 				06B5560022715E9100768745 /* BWEmoticonInputView.swift */,
 				06B5560422717EE800768745 /* BWEmoticonToolbar.swift */,
 				06B5560622718A2800768745 /* BWEmoticonCell.swift */,
-				06B5560722718A2800768745 /* BWEmoticonCell.xib */,
 				06B5560A22718CB200768745 /* BWEmoticonLayout.swift */,
 				06B5560222715EC700768745 /* BWEmoticonInputView.xib */,
 			);
@@ -512,6 +511,7 @@
 		06E21CB6224F101600FFF5C3 /* ViewModel(View_Model) */ = {
 			isa = PBXGroup;
 			children = (
+				06E667E122742A740034C3B0 /* BWStatusListDAL.swift */,
 				064897FE225C481A00DBC01D /* BWStatusListViewModel.swift */,
 				06002BC92261AE910063D525 /* BWStatusViewModel.swift */,
 			);
@@ -669,7 +669,6 @@
 				0670178C22606C1900A79A4D /* BWWelcomeView.xib in Resources */,
 				06D6024322672F5D002760FF /* BWMTRefreshView.xib in Resources */,
 				0655A6882266BF3C006ED69E /* BWRefreshView.xib in Resources */,
-				06B5560922718A2800768745 /* BWEmoticonCell.xib in Resources */,
 				0670178E2260830400A79A4D /* BWNewFeatureView.xib in Resources */,
 				06C1E5EC2268137500669C2F /* BWComposeTypeView.xib in Resources */,
 				06F207CA2272FB0300F7428E /* status.sql in Resources */,
@@ -785,6 +784,7 @@
 				06E21CE5224F139000FFF5C3 /* UIButton+CZAddition.m in Sources */,
 				06701788226062D900A79A4D /* BWWelcomeView.swift in Sources */,
 				06E21CC2224F112700FFF5C3 /* BWDiscoveryViewController.swift in Sources */,
+				06E667E222742A740034C3B0 /* BWStatusListDAL.swift in Sources */,
 				06DF3E98226D8BC3007E28CD /* BWEmoticonManager.swift in Sources */,
 				06002BC6226185A60063D525 /* Date+Extensions.swift in Sources */,
 				06E21CE8224F139000FFF5C3 /* NSString+CZHash.m in Sources */,

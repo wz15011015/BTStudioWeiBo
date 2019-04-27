@@ -76,32 +76,32 @@ class BWComposeViewController: UIViewController {
         return
         
         // 1. 获取微博内容文本
-        let text = textView.emoticonText
-        if text.count == 0 {
-            return
-        }
-        let image = UIImage(named: "icon_earth")
-        // 2. 发布微博
-        BWNetworkManager.shared.postStatus(text: text, image: image) { (result, isSuccess) in
-            print("发布微博: \(result)")
-            // FIXME: 调试
-//            let success = isSuccess
-            let success = true
-            
-            let message = success ? "发布成功" : "网络不给力"
-            // 修改指示器样式
-            SVProgressHUD.setDefaultStyle(.dark)
-            
-            SVProgressHUD.showInfo(withStatus: message)
-            if success {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
-                    // 恢复指示器样式
-                    SVProgressHUD.setDefaultStyle(.light)
-                    
-                    self.dismissVC()
-                })
-            }
-        }
+//        let text = textView.emoticonText
+//        if text.count == 0 {
+//            return
+//        }
+//        let image = UIImage(named: "icon_earth")
+//        // 2. 发布微博
+//        BWNetworkManager.shared.postStatus(text: text, image: image) { (result, isSuccess) in
+//            print("发布微博: \(result)")
+//            // FIXME: 调试
+////            let success = isSuccess
+//            let success = true
+//
+//            let message = success ? "发布成功" : "网络不给力"
+//            // 修改指示器样式
+//            SVProgressHUD.setDefaultStyle(.dark)
+//
+//            SVProgressHUD.showInfo(withStatus: message)
+//            if success {
+//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+//                    // 恢复指示器样式
+//                    SVProgressHUD.setDefaultStyle(.light)
+//
+//                    self.dismissVC()
+//                })
+//            }
+//        }
     }
     
     /// 切换表情键盘

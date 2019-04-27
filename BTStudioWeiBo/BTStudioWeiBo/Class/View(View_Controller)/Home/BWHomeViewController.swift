@@ -23,7 +23,16 @@ class BWHomeViewController: BWBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let array: [[String: Any]] = [["idStr": "001", "text": "哈哈哈哈哈000"],
+//                                      ["idStr": "002", "text": "哈哈哈哈哈11111"]]
+//        let array: [[String: Any]] = [["idStr": "004", "text": "哈哈哈哈哈4444"]]
+//        BWSQLiteManager.shared.updateStatus(userId: "007", array: array)
     
+//        let dictArr = BWSQLiteManager.shared.executeRecordSet(sql: "select statusId, userId, status from T_Status;")
+        
+        let status = BWSQLiteManager.shared.loadStatus(userId: "7")
+        print(status)
     }
     
     /// 加载数据

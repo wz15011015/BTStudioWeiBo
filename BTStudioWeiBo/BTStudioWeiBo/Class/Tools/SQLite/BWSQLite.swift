@@ -64,9 +64,9 @@ private extension BWSQLiteManager {
             // 在执行 增/删/改 的时候,一定不要使用 statements 方法,否则有可能会被注入!
             
             if database.executeStatements(sql) == true {
-                print("创建表 成功")
+                print("创建表 成功 !")
             } else {
-                print("创建表 失败")
+                print("创建表 失败 !")
             }
         }
         print("执行顺序...")
@@ -96,8 +96,104 @@ extension BWSQLiteManager {
         let sql = "INSERT OR REPLACE INTO T_Status (statusId, userId, status) VALUES (?, ?, ?);"
         
         // 2. 执行SQL
-        queue.inDatabase { (database) in
-            
+        // rollback: 布尔的指针 UnsafeMutablePointer<ObjCBool> --> *stop
+        queue.inTransaction { (database, rollback) in
+            // 遍历数组,逐条插入微博数据
+            for dict in array {
+                // 获取微博ID
+                guard let statusId = dict["idstr"] as? String,
+                    // 将字典序列化成 二进制 数据
+                    let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: []) else {
+                        continue
+                }
+                
+                // 执行SQL
+                let isSuccess = database.executeUpdate(sql, withArgumentsIn: [statusId, userId, jsonData])
+                if isSuccess {
+//                    print("插入微博数据 成功 !")
+                } else {
+                    print("插入微博数据 失败 !")
+                    
+                    // 需要回滚  *rollback = YES;
+                    // Swift 1.x & 2.x 写法:  rollback.memory = true
+                    // Swift现在的写法:
+                    rollback.pointee = true
+                    break
+                }
+            }
         }
+    }
+    
+    /// 执行一个SQL,返回字典的数组
+    ///
+    /// - Parameter sql: SQL语句
+    /// - Returns: 字典的数组
+    func executeRecordSet(sql: String) -> [[String: Any]] {
+        
+        var array: [[String: Any]] = []
+        
+        // 执行SQL - 查询数据,不会修改数据,所以不需要开启事务
+        // 事务的目的是为了保证数据的有效性,一旦失败,回滚到初始状态
+        queue.inDatabase { (database) in
+            guard let results = database.executeQuery(sql, withArgumentsIn: []) else {
+                return
+            }
+            // 遍历结果集合 - 逐行
+            while results.next() {
+                // 1. 列数
+                let columnCount = results.columnCount
+                
+                // 2. 遍历所有列
+                for column in 0..<columnCount {
+                    // 列名(Key) 列值(Value)
+                    guard let name = results.columnName(for: column),
+                        let value = results.object(forColumnIndex: column) else {
+                            continue
+                    }
+                    // 追加数据
+//                    print("key: \(name), value: \(value)")
+                    array.append([name: value])
+                }
+            }
+        }
+        
+        return array
+    }
+    
+    /// 从数据库加载微博数据
+    ///
+    /// - Parameters:
+    ///   - userId: 当前登录用户的ID
+    ///   - since_id: 返回ID比since_id大的微博
+    ///   - max_id: 返回ID比max_id小的微博
+    /// - Returns: 微博字典数组
+    func loadStatus(userId: String, since_id: Int64 = 0, max_id: Int64 = 0) -> [[String: Any]] {
+        // 1. 准备SQL
+        var sql = "SELECT statusId, userId, status FROM T_Status \n"
+        sql += "WHERE userId = \(userId) \n"
+        
+        if since_id > 0 {
+            sql += "AND statusId > \(since_id) \n"
+        } else if max_id > 0 {
+            sql += "AND statusId < \(max_id) \n"
+        }
+        
+        sql += "ORDER BY statusId DESC LIMIT 20;"
+        
+        // 2. 执行SQL
+        let array = executeRecordSet(sql: sql)
+        
+        // 3. 遍历数组,将数组中的 status 反序列化
+        var status: [[String: Any]] = []
+        for dict in array {
+            guard let jsonData = dict["status"] as? Data,
+                let json = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] else {
+                continue
+            }
+            // 追加到数组
+            status.append(json)
+        }
+        
+        return status
     }
 }
