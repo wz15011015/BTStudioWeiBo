@@ -91,5 +91,21 @@ extension BWEmoticonInputView: BWEmoticonCellDelegate {
     func emoticonCellDidSelectedEmoticon(cell: BWEmoticonCell, emoticon: BWEmoticon?) {
         // 执行闭包,回传选中的表情模型
         selectedEmoticonCallBack?(emoticon)
+        
+        // 如果当前分组就是最近分组,则不添加最近使用的表情
+        let index = collectionView.indexPathsForVisibleItems[0]
+        if index.section == 0 {
+            return
+        }
+        
+        // 添加最近使用的表情
+        if let emoticon = emoticon {
+            BWEmoticonManager.shared.addRecentEmoticon(emoticon: emoticon)
+            
+            // 刷新CollectionView
+            // 刷新第0组
+            let sections = IndexSet(integer: 0)
+            collectionView.reloadSections(sections)
+        }
     }
 }

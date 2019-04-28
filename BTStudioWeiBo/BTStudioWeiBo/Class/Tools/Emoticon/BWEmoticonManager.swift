@@ -15,7 +15,7 @@ class BWEmoticonManager {
     /// 表情管理器单例
     static let shared = BWEmoticonManager()
     
-    /// 表情包数组
+    /// 表情包数组 - 第一个数组是最近表情
     lazy var packages: [BWEmoticonPackage] = []
     
     /// 表情素材Bundle
@@ -32,6 +32,38 @@ class BWEmoticonManager {
     /// 在 OC 中需要重写 allocWithZone 方法
     private init() {
         loadPackages()
+    }
+    
+    /// 添加最近使用的表情
+    ///
+    /// - Parameter emoticon: 表情模型
+    func addRecentEmoticon(emoticon: BWEmoticon) {
+        // 1. 增加表情的使用次数
+        emoticon.times += 1
+        
+        // 2. 判断是否已经记录了该表情,如果没有记录,则添加该表情
+        let recentPackage = packages[0]
+        if !recentPackage.emoticons.contains(emoticon) {
+            recentPackage.emoticons.insert(emoticon, at: 0)
+        }
+        
+        // 3. 根据使用次数排序(次数越高,越靠前)
+        // 方法一:
+//        recentPackage.emoticons.sort { (emoticon1, emoticon2) -> Bool in
+//            return emoticon1.times > emoticon2.times
+//        }
+        // 方法二:
+//        recentPackage.emoticons.sort {
+//            return $0.times > $1.times
+//        }
+        // 方法三:
+        recentPackage.emoticons.sort { $0.times > $1.times }
+        
+        // 4. 判断表情数组是否超出20个元素,如果超出,则删除末尾表情模型
+        let count = recentPackage.emoticons.count
+        if count > 20 {
+            recentPackage.emoticons.removeSubrange(20..<count)
+        }
     }
 }
 

@@ -36,10 +36,10 @@ class BWEmoticonTipView: UIImageView {
             
             // 添加表情动画 - 弹力动画的结束时间是根据速度自动计算的,不需要也不能指定动画的duration
             let animation: POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
-            animation.fromValue = 30
+            animation.fromValue = 17
             animation.toValue = 8
-            animation.springBounciness = 20
-            animation.springSpeed = 20
+            animation.springBounciness = 16
+            animation.springSpeed = 16
             
             tipButton.layer.pop_add(animation, forKey: nil)
         }

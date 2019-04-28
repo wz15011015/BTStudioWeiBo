@@ -71,6 +71,9 @@ import UIKit
         return image
     }
     
+    /// 表情的使用次数
+    var times: Int = 0
+    
     override var description: String {
         return yy_modelDescription()
     }
