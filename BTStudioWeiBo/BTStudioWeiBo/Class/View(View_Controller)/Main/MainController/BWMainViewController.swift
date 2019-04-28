@@ -110,6 +110,13 @@ class BWMainViewController: UITabBarController {
             
             let vc = cls.init()
             let nav = BWNavigationController(rootViewController: vc)
+            
+            // 强行更新约束 - 会直接更新所有子视图的约束!
+            nav.view.layoutIfNeeded()
+            /**
+             * 提示: 开发中如果发现不希望的布局约束和动画混在一起,应该向前寻找,强制更新约束!
+             */
+            
             self.present(nav, animated: true) {
                 // 移除视图
                 composeTypeView?.removeFromSuperview()

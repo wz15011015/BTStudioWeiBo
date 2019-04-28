@@ -88,6 +88,42 @@ class BWStatusPictureView: UIView {
         // 2. 修改配图视图高度的约束值
         heightConstraint.constant = viewModel?.pictureViewSize.height ?? 0
     }
+    
+    
+    // MARK: - 监听方法
+    
+    /// 点击了图片
+    @objc private func tapImageView(gesture: UITapGestureRecognizer) {
+        guard let imageView = gesture.view as? UIImageView,
+            let picURLs = viewModel?.picURLs else {
+            return
+        }
+        // 选中的索引
+        var selectedIndex = imageView.tag
+        
+        // 针对四张图进行处理
+        if picURLs.count == 4 && selectedIndex > 1 {
+            selectedIndex -= 1
+        }
+        
+        // 图片URL字符串数组
+        let urls = (picURLs as NSArray).value(forKey: "large_pic") as! [String]
+        
+        // 图片视图数组
+        var imageViews: [UIImageView] = []
+        for iv in subviews as! [UIImageView] {
+            if !iv.isHidden {
+                imageViews.append(iv)
+            }
+        }
+        
+        // 发送浏览图片的通知
+        NotificationCenter.default.post(name: Notification.Name.init(rawValue: BWStatusCellBrowserPhotoNotification), object: nil, userInfo:
+            [BWStatusCellBrowserPhotoSelectedIndexKey: selectedIndex,
+             BWStatusCellBrowserPhotoURLsKey: urls,
+             BWStatusCellBrowserPhotoImageViewsKey: imageViews
+            ])
+    }
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -122,7 +158,17 @@ extension BWStatusPictureView {
             let offsetY = CGFloat(row * (WBStatusPictureItemWidth + WBStatusPictureViewInnerMargin))
             imageView.frame = rect.offsetBy(dx: offsetX, dy: offsetY)
             
+            // 设置tag
+            imageView.tag = i
+            
             addSubview(imageView)
+            
+            // 让imageView能够接收用户交互
+            imageView.isUserInteractionEnabled = true
+            
+            // 添加手势
+            let tapGR = UITapGestureRecognizer(target: self, action: #selector(tapImageView(gesture:)))
+            imageView.addGestureRecognizer(tapGR)
         }
     }
 }

@@ -35,6 +35,15 @@ let BWUserShouldRegisterNotification = "UserShouldRegisterNotification"
 /// 用户登录成功的通知
 let BWUserLoginSuccessNotification = "UserLoginSuccessNotification"
 
+/// 微博Cell浏览照片通知
+let BWStatusCellBrowserPhotoNotification = "StatusCellBrowserPhotoNotification"
+/// 选中索引 key
+let BWStatusCellBrowserPhotoSelectedIndexKey = "StatusCellBrowserPhotoSelectedIndexKey"
+/// 浏览照片URL字符串 key
+let BWStatusCellBrowserPhotoURLsKey = "StatusCellBrowserPhotoURLsKey"
+/// 父视图的图片视图数组 key
+let BWStatusCellBrowserPhotoImageViewsKey = "StatusCellBrowserPhotoImageViewsKey"
+
 
 // MARK: - 微博配图视图常量
 /// 配图视图外侧间距

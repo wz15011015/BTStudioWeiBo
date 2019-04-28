@@ -10,5 +10,6 @@
 #define WeiBo_Bridge_h
 
 #import "CZAdditions.h"
+#import "HMPhotoBrowserController.h"
 
 #endif /* WeiBo_Bridge_h */

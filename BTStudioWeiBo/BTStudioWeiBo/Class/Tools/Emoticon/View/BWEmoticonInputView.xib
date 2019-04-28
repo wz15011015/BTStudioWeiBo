@@ -26,8 +26,8 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                     <connections>
-                        <outlet property="dataSource" destination="pfw-2a-LUa" id="PHU-LB-HAa"/>
-                        <outlet property="delegate" destination="pfw-2a-LUa" id="ZD1-vl-DF7"/>
+                        <outlet property="dataSource" destination="pfw-2a-LUa" id="OCw-QP-aDD"/>
+                        <outlet property="delegate" destination="pfw-2a-LUa" id="gu7-hA-n8w"/>
                     </connections>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KeY-Mg-1c3" userLabel="底部工具栏" customClass="BWEmoticonToolbar" customModule="BTStudioWeiBo" customModuleProvider="target">
@@ -40,15 +40,22 @@
                         <outlet property="bottom" destination="IVs-Ds-Qgv" id="I61-89-ODv"/>
                     </connections>
                 </view>
+                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="IoW-aQ-Gow">
+                    <rect key="frame" x="207" y="317" width="0.0" height="0.0"/>
+                    <color key="pageIndicatorTintColor" red="0.37722636009999999" green="0.37722636009999999" blue="0.37722636009999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="0.98823529409999999" green="0.24313725489999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </pageControl>
             </subviews>
             <constraints>
                 <constraint firstItem="fqC-rY-JVO" firstAttribute="trailing" secondItem="CBq-6C-dI5" secondAttribute="trailing" id="EJE-DM-YrE"/>
+                <constraint firstItem="KeY-Mg-1c3" firstAttribute="top" secondItem="IoW-aQ-Gow" secondAttribute="bottom" constant="-8" id="Ebe-kd-2Ck"/>
                 <constraint firstAttribute="bottom" secondItem="KeY-Mg-1c3" secondAttribute="bottom" id="IVs-Ds-Qgv"/>
                 <constraint firstItem="fqC-rY-JVO" firstAttribute="leading" secondItem="CBq-6C-dI5" secondAttribute="leading" id="TYx-nw-Edg"/>
                 <constraint firstItem="KeY-Mg-1c3" firstAttribute="leading" secondItem="CBq-6C-dI5" secondAttribute="leading" id="YJQ-cR-wdn"/>
                 <constraint firstItem="fqC-rY-JVO" firstAttribute="top" secondItem="pfw-2a-LUa" secondAttribute="top" id="ZF3-qS-X9L"/>
                 <constraint firstItem="KeY-Mg-1c3" firstAttribute="top" secondItem="fqC-rY-JVO" secondAttribute="bottom" id="k2O-LS-hwn"/>
                 <constraint firstItem="KeY-Mg-1c3" firstAttribute="trailing" secondItem="CBq-6C-dI5" secondAttribute="trailing" id="mA2-NL-Huk"/>
+                <constraint firstItem="IoW-aQ-Gow" firstAttribute="centerX" secondItem="pfw-2a-LUa" secondAttribute="centerX" id="wy3-D2-BJL"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -56,6 +63,7 @@
             <viewLayoutGuide key="safeArea" id="CBq-6C-dI5"/>
             <connections>
                 <outlet property="collectionView" destination="fqC-rY-JVO" id="A8f-qe-PZW"/>
+                <outlet property="pageControl" destination="IoW-aQ-Gow" id="bR3-J4-e89"/>
                 <outlet property="toolbarView" destination="KeY-Mg-1c3" id="PNn-j9-pdU"/>
             </connections>
             <point key="canvasLocation" x="-55.072463768115945" y="102.45535714285714"/>

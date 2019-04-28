@@ -12,7 +12,18 @@ import UIKit
 class BWStatusPicture: NSObject {
     
     /// 缩略图地址
-    @objc var thumbnail_pic: String?
+    @objc var thumbnail_pic: String? {
+        didSet {
+            // 设置大尺寸图片
+            large_pic = thumbnail_pic?.replacingOccurrences(of: "/thumbnail/", with: "/large/")
+            
+            // 更改缩略图地址
+            thumbnail_pic = thumbnail_pic?.replacingOccurrences(of: "/thumbnail/", with: "/wap360/")
+        }
+    }
+    
+    /// 大尺寸图片地址
+    @objc var large_pic: String?
     
     override var description: String {
         return yy_modelDescription()

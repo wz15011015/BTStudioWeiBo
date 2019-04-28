@@ -20,9 +20,16 @@ class BWHomeViewController: BWBaseViewController {
     
     private lazy var listViewModel = BWStatusListViewModel()
     
+    deinit {
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(browserPhotos(notification:)), name: Notification.Name.init(rawValue: BWStatusCellBrowserPhotoNotification), object: nil)
     }
     
     /// 加载数据
@@ -86,6 +93,22 @@ class BWHomeViewController: BWBaseViewController {
         let vc = BWProfileViewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    /// 浏览微博照片
+    ///
+    /// - Parameter notification: 通知
+    @objc private func browserPhotos(notification: Notification) {
+        // 1. 从通知的userInfo提取参数
+        guard let userInfo = notification.userInfo,
+            let selectedIndex = userInfo[BWStatusCellBrowserPhotoSelectedIndexKey] as? Int,
+            let urls = userInfo[BWStatusCellBrowserPhotoURLsKey] as? [String],
+            let imageViews = userInfo[BWStatusCellBrowserPhotoImageViewsKey] as? [UIImageView] else {
+            return
+        }
+        // 2. 展现照片浏览控制器
+        let vc = HMPhotoBrowserController.photoBrowser(withSelectedIndex: selectedIndex, urls: urls, parentImageViews: imageViews)
+        present(vc, animated: true, completion: nil)
     }
     
 

@@ -17,8 +17,11 @@ class BWEmoticonInputView: UIView {
     /// 表情集合视图
     @IBOutlet weak var collectionView: UICollectionView!
     
+    /// 分页控制器
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     /// 底部工具栏View
-    @IBOutlet weak var toolbarView: UIView!
+    @IBOutlet weak var toolbarView: BWEmoticonToolbar!
     
     /// 选中表情的回调闭包
     private var selectedEmoticonCallBack: ((_ emoticon: BWEmoticon?) -> ())?
@@ -41,7 +44,21 @@ class BWEmoticonInputView: UIView {
         // 注册可重用Cell
         collectionView.register(BWEmoticonCell.self, forCellWithReuseIdentifier: CellIdentifier)
         
-//        collectionView.register(UINib(nibName: "BWEmoticonCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier)
+        // 设置工具栏代理
+        toolbarView.delegate = self
+        
+        // 设置分页控件
+        let bundle = BWEmoticonManager.shared.bundle
+        if let imageNormal = UIImage(named: "compose_keyboard_dot_normal", in: bundle, compatibleWith: nil),
+            let imageSelected = UIImage(named: "compose_keyboard_dot_selected", in: bundle, compatibleWith: nil) {
+            // 使用填充图片设置颜色 (该方式设置的图片显示不完整)
+//            pageControl.pageIndicatorTintColor = UIColor(patternImage: imageNormal)
+//            pageControl.currentPageIndicatorTintColor = UIColor(patternImage: imageSelected)
+            
+            // 使用KVC设置私有成员属性
+            pageControl.setValue(imageNormal, forKey: "_pageImage")
+            pageControl.setValue(imageSelected, forKey: "_currentPageImage")
+        }
     }
     
     /*
@@ -85,6 +102,44 @@ extension BWEmoticonInputView: UICollectionViewDataSource {
 }
 
 
+// MARK: - UIScrollViewDelegate
+extension BWEmoticonInputView: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 1. 获取中心点
+        var center = scrollView.center
+        center.x += scrollView.contentOffset.x
+        
+        // 2. 获取当前显示cell的indexPath
+        let indexPaths = collectionView.indexPathsForVisibleItems
+        
+        // 3. 判断中心点在哪一个indexPath上,则就在哪一个页面上
+        var targetIndexPath: IndexPath?
+        for indexPath in indexPaths {
+            // 根据indexPath获取Cell
+            let cell = collectionView.cellForItem(at: indexPath)
+            // 判断中心点是否在该Cell位置,若在,则记录该indexPath
+            if cell?.frame.contains(center) == true {
+                targetIndexPath = indexPath
+            }
+        }
+        
+        // 4. 根据找到的indexPath设置选中分组按钮的索引
+        // targetIndexPath.section 就是对应的分组索引
+        guard let indexPath = targetIndexPath else {
+            return
+        }
+        toolbarView.selectedIndex = indexPath.section
+        
+        // 5. 设置分页控件
+        // 总页数
+        pageControl.numberOfPages = collectionView.numberOfItems(inSection: indexPath.section)
+        // 当前页码
+        pageControl.currentPage = indexPath.row
+    }
+}
+
+
 // MARK: - BWEmoticonCellDelegate
 extension BWEmoticonInputView: BWEmoticonCellDelegate {
     
@@ -107,5 +162,16 @@ extension BWEmoticonInputView: BWEmoticonCellDelegate {
             let sections = IndexSet(integer: 0)
             collectionView.reloadSections(sections)
         }
+    }
+}
+
+
+// MARK: - BWEmoticonToolbarDelegate
+extension BWEmoticonInputView: BWEmoticonToolbarDelegate {
+    
+    func emoticonToolbarDidSelectedItemIndex(toolbar: BWEmoticonToolbar, index: Int) {
+        // 让collectionView滚动
+        let indexPath = IndexPath(item: 0, section: index)
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
     }
 }

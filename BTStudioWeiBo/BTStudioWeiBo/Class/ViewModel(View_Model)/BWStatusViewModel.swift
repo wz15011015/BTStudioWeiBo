@@ -188,7 +188,7 @@ class BWStatusViewModel: CustomStringConvertible {
         var size = image.size
         
         // 图片过宽的处理
-        let maxWidth: CGFloat = 300
+        let maxWidth: CGFloat = 260
         if size.width > maxWidth {
             // 等比例调整高度
             size.width = maxWidth
@@ -202,6 +202,11 @@ class BWStatusViewModel: CustomStringConvertible {
             
             // 要特殊处理,否则高度太大,会影响用户体验
             size.height = size.width * (image.size.height / image.size.width) / 4
+        }
+        
+        // 图片过高的处理,图片模式就是 scaleToFill,高度减少,会自动裁切
+        if size.height > 200 {
+            size.height = 200
         }
         
         size.height += CGFloat(WBStatusPictureViewOutterMargin)
