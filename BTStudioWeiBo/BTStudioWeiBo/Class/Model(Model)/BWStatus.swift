@@ -21,7 +21,14 @@ class BWStatus: NSObject {
     @objc var text: String?
     
     /// 创建时间
-    @objc var created_at: String?
+    @objc var created_at: String? {
+        didSet {
+            createDate = Date.cz_sinaDate(string: created_at ?? "")
+        }
+    }
+    
+    /// 创建时间日期(Date)
+    @objc var createDate: Date?
     
     /// 微博来源 - 发布微博使用的客户端
     @objc var source: String? {

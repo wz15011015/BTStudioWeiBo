@@ -53,6 +53,9 @@ class BWStatusPictureView: UIView {
                 } else {
                     index += 1
                 }
+                
+                // 判断是否为Gif (根据扩展名判断是否为Gif,若为Gif则显示Gif提示图标;否则,隐藏Gif提示图标)
+                imageView.subviews[0].isHidden = ((url.thumbnail_pic ?? "") as NSString).pathExtension.lowercased() != "gif"
             }
         }
     }
@@ -169,6 +172,23 @@ extension BWStatusPictureView {
             // 添加手势
             let tapGR = UITapGestureRecognizer(target: self, action: #selector(tapImageView(gesture:)))
             imageView.addGestureRecognizer(tapGR)
+            
+            // 设置imageView的Gif提示图标
+            addGifTip(imageView: imageView)
         }
+    }
+    
+    /// 向图片视图添加Gif提示图标
+    ///
+    /// - Parameter imageView: 图片视图
+    private func addGifTip(imageView: UIImageView) {
+        let gifTipImageView = UIImageView(image: UIImage(named: "timeline_image_gif"))
+        imageView.addSubview(gifTipImageView)
+        
+        // 自动布局
+        gifTipImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        imageView.addConstraint(NSLayoutConstraint(item: gifTipImageView, attribute: .right, relatedBy: .equal, toItem: imageView, attribute: .right, multiplier: 1.0, constant: 0))
+        imageView.addConstraint(NSLayoutConstraint(item: gifTipImageView, attribute: .bottom, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1.0, constant: 0))
     }
 }

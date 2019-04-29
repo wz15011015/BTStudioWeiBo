@@ -47,7 +47,8 @@ class BWStatusCell: UITableViewCell {
 //            statusLabel.text = viewModel?.status.text
             statusLabel.attributedText = viewModel?.statusAttrText
             // 时间
-            timeLabel.text = viewModel?.status.created_at
+//            timeLabel.text = viewModel?.status.created_at
+            timeLabel.text = viewModel?.status.createDate?.cz_dateDescription
             // 微博来源
 //            sourceLabel.text = viewModel?.sourceStr
             sourceLabel.text = viewModel?.status.source
