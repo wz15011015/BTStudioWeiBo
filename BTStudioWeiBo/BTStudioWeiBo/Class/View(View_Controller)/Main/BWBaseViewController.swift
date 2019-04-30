@@ -259,7 +259,7 @@ extension BWBaseViewController: UITableViewDataSource, UITableViewDelegate {
          */
         UIGraphicsBeginImageContextWithOptions(size, true, 0)
         
-        // 1.1 裁切前社长背景填充颜色
+        // 1.1 裁切前设置背景填充颜色
         backColor?.setFill()
         UIRectFill(rect)
         // 1.2 实例化一个圆形路径
