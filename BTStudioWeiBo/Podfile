@@ -5,7 +5,7 @@
 # 4. 使用静态链接库时,导入头文件: #import "xxx.h"; 使用动态链接库时,导入头文件: #import <xxx/xxx.h>
 #######################################
 
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 # 使用动态库 (动态链接库实际内容为: Header + 动态链接库 + 资源文件)
 use_frameworks!
@@ -21,5 +21,7 @@ target 'BTStudioWeiBo' do
     pod 'SDWebImage'
     pod 'pop'
     pod 'YYModel'
+    
+    pod 'Alamofire', '~> 5.0.0-beta.5'
 
 end

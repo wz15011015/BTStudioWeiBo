@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Alamofire
 
 class BWMessageViewController: BWBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        loadStatusList()
     }
     
 
@@ -27,4 +28,19 @@ class BWMessageViewController: BWBaseViewController {
     }
     */
 
+}
+
+
+// MARK: - Alamofire学习
+extension BWMessageViewController {
+    
+    private func loadStatusList() {
+        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
+        let parameter = ["access_token": "2.00UfZikCTQtzcE57ad9fa3c6DhHNJD", "since_id": "0", "max_id": "0"]
+        AF.request(urlString, method: .get, parameters: parameter).responseJSON { (response) in
+            let result = response.result
+            let value = response.value
+            print(result)
+        }
+    }
 }
