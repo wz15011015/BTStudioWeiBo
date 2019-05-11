@@ -79,17 +79,16 @@ extension BWEmoticonManager {
         // 1. 遍历表情包
         for package in packages {
             // 2. 在表情数组中过滤 chs
+            /**
+             如果闭包中只有一句代码,并且是返回语句,则:
+             - 闭包的定义格式可以省略,参数省略之后,使用 $0, $1, $2, ... 依次代替原有参数;
+             - return也可以省略;
+             */
             // 方法一:
 //            let result = package.emoticons.filter { (emoticon) -> Bool in
 //                return emoticon.chs == chs
 //            }
             
-            /**
-             如果闭包中只有一句代码,并且是返回语言,则:
-             - 闭包的定义格式可以省略
-             - 参数省略之后,使用 $0, $1, $2, ... 依次代替原有参数
-             - return 也可以省略
-             */
             // 方法二:
 //            let result = package.emoticons.filter {
 //                return $0.chs == chs
