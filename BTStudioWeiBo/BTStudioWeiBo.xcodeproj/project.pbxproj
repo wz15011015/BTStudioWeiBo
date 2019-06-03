@@ -87,6 +87,7 @@
 		06E21CEE224F191800FFF5C3 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CED224F191700FFF5C3 /* Bundle+Extensions.swift */; };
 		06E21CF2224F4EF500FFF5C3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CF1224F4EF500FFF5C3 /* UIColorExtension.swift */; };
 		06E21CF4224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */; };
+		06E3353E22A51F9C0064AC26 /* 模拟地点.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 06E3353D22A51F9C0064AC26 /* 模拟地点.gpx */; };
 		06E667E222742A740034C3B0 /* BWStatusListDAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E667E122742A740034C3B0 /* BWStatusListDAL.swift */; };
 		06E667E42274461B0034C3B0 /* BWEmoticonTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E667E32274461B0034C3B0 /* BWEmoticonTipView.swift */; };
 		06EA4533225C3627005D91E1 /* BWNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */; };
@@ -201,6 +202,7 @@
 		06E21CED224F191700FFF5C3 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		06E21CF1224F4EF500FFF5C3 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		06E21CF3224F68B000FFF5C3 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
+		06E3353D22A51F9C0064AC26 /* 模拟地点.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "模拟地点.gpx"; sourceTree = "<group>"; };
 		06E667E122742A740034C3B0 /* BWStatusListDAL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWStatusListDAL.swift; sourceTree = "<group>"; };
 		06E667E32274461B0034C3B0 /* BWEmoticonTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWEmoticonTipView.swift; sourceTree = "<group>"; };
 		06EA4532225C3627005D91E1 /* BWNetworkManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWNetworkManager+Extension.swift"; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				06E21CAD224F101600FFF5C3 /* Class */,
 				06914FF0224EF7A0002F3E1C /* AppDelegate.swift */,
 				06E21CEB224F13DF00FFF5C3 /* WeiBo_Bridge.h */,
+				06E3353D22A51F9C0064AC26 /* 模拟地点.gpx */,
 				06914FF4224EF7A0002F3E1C /* Main.storyboard */,
 				06914FF7224EF7A2002F3E1C /* Assets.xcassets */,
 				06914FFC224EF7A2002F3E1C /* Info.plist */,
@@ -709,6 +712,7 @@
 				06C1E5EC2268137500669C2F /* BWComposeTypeView.xib in Resources */,
 				06F207CA2272FB0300F7428E /* status.sql in Resources */,
 				06914FF6224EF7A0002F3E1C /* Main.storyboard in Resources */,
+				06E3353E22A51F9C0064AC26 /* 模拟地点.gpx in Resources */,
 				06FB1CD222700BB8009B5752 /* BWComposeViewController.xib in Resources */,
 				06DF3E9A226D8DD3007E28CD /* BWEmoticon.bundle in Resources */,
 			);
