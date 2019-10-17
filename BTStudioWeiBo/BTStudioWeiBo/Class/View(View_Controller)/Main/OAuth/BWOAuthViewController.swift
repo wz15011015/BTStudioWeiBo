@@ -58,7 +58,7 @@ class BWOAuthViewController: UIViewController {
     /// 点击登录按钮,执行 submit() 将本地数据提交给服务器
     @objc private func autoFill() {
         // 准备js
-        let js = "document.getElementById('userId').value = 'wz1310@sina.com';" + "document.getElementById('passwd').value = 'b24f5d113c';"
+        let js = "document.getElementById('userId').value = 'xxx.x.xxx';" + "document.getElementById('passwd').value = 'xxxxxxxxxx';"
         // 让 webView 执行js
         webView.evaluateJavaScript(js) { (result, error) in
             if error != nil {
