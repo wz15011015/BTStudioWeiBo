@@ -361,8 +361,8 @@ extension BWMainViewController {
         vc.tabBarItem.image = UIImage(named: "tabbar_" + imageName)?.withRenderingMode(.alwaysOriginal)
         vc.tabBarItem.selectedImage = UIImage(named: "tabbar_" + imageName + "_selected")?.withRenderingMode(.alwaysOriginal)
         
-        // 设置TabBar标题字体
-        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: RGBColor(51, 51, 51)], for: .highlighted)
+        // 设置TabBar标题颜色和字体
+        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: RGBColor(51, 51, 51)], for: .selected)
         // 系统默认字体大小是12,若要修改字体大小,则需要在Normal状态下修改
         vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.5)], for: .normal)
         
